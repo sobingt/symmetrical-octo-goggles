@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="ChefEzy">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Chef Ezy</title>
+    <link href="favicon.png" rel="shortcut icon">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,400italic,300italic,500,500italic,700,700italic,900,900italic|Droid+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/font-awesome/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="/vendor/angular-loading-bar/build/loading-bar.css" rel="stylesheet/">
+    <link href="/vendor/angular-toastr/dist/angular-toastr.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/ionicons.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+
+  </head>
+  <body class="boxed">
+	<!--WRAPPER-->	
+    <div class="wrapper">
+      <div ui-view="header"></div>
+      <div ui-view="container"></div>
+      <div ui-view="footer"></div>
+    </div>
+
+    <!-- Third-party Libraries -->
+    <script src="/vendor/jquery/dist/jquery.js"></script>
+    <script src="/vendor/angular/angular.js"></script>
+    <script src="/vendor/angular-animate/angular-animate.js"></script>
+    <script src="/vendor/angular-messages/angular-messages.js"></script>
+    <script src="/vendor/angular-resource/angular-resource.js"></script>
+    <script src="/vendor/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/vendor/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="/vendor/satellizer/satellizer.js"></script>
+    <script src="/vendor/angular-loading-bar/build/loading-bar.js"></script>
+
+    <!-- Application Code -->
+    <script src="/app.js"></script>
+    <script src="/controllers/home.js"></script>
+  </body>
+</html>

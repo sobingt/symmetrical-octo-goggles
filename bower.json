@@ -1,0 +1,40 @@
+{
+  "name": "Geekout",
+  "authors": [
+    "Sobin George Thomas <sobingt@gmail.com>"
+  ],
+  "description": "Geekout coworking app",
+  "main": "app.js",
+  "moduleType": [],
+  "keywords": [
+    "coworking",
+    "app",
+    "geekout",
+    "app"
+  ],
+  "license": "MIT",
+  "homepage": "geekout.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "client/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.2",
+    "font-awesome": "~4.3.0",
+    "angular": "1.4.4",
+    "angular-ui-router": "^0.2.18",
+    "angular-resource": "1.4.7",
+    "angular-sanitize": "1.4.7",
+    "satellizer": "^0.14.0",
+    "angular-mocks": "1.4.7",
+    "angular-messages": "1.4.7",
+    "angular-animate": "1.4.7",
+    "angular-cookies": "1.4.7",
+    "angular-toastr": "^1.7.0",
+    "angular-loading-bar": "^0.9.0"
+  }
+}
