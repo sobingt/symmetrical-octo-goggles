@@ -1,0 +1,270 @@
+<section class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <h6 class="rnd-title text-uppercase">Billing</h6>
+        <div class="list-group">
+          <a href="#" ui-sref="app.organization.billing" class="list-group-item active">Dashboard</a>
+          <a href="#" ui-sref="app.organization.billing.plans" class="list-group-item">Plans</a>
+          <a href="#" ui-sref="app.organization.billing.invoices" class="list-group-item">Invoices</a>
+          <a href="#" ui-sref="app.organization.billing.revenue" class="list-group-item">Revenue</a>
+          <a href="#" ui-sref="app.organization.billing.settings" class="list-group-item">Settings</a>
+        </div>
+    </div>
+    <div class="col-sm-9" ui-view="content">
+      <div ui-view="" class="ng-scope">
+        <section class="content">
+          <div>
+            <h4 class="rnd-title" title="Invoices">Invoices</h4>
+            <div class="btn-group">
+              <button class="btn btn-primary" ng-click="addInvoice()">Add invoice</button>
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a ng-click="">Add invoice</a></li>
+                <li><a ui-sref="" href="/geekout/billing/invoices/add">Add many invoices</a></li>
+              </ul>
+            </div>
+            <div class="rnd-container">
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="dashboard-card lower-case">
+                    <div class="dashboard-row">
+                      <strong class="ng-binding">0</strong>
+                      <label>Pending</label>
+                      <span class="ng-binding">₹0.00</span>
+                    </div>
+                    <div class="dashboard-row">
+                      <strong class="ng-binding">0</strong>
+                      <label>Awaiting payment</label>
+                      <span class="ng-binding">₹0.00</span>
+                    </div>
+                    <div class="dashboard-row">
+                      <strong class="ng-binding">0</strong>
+                      <label>Partially paid</label>
+                      <span class="ng-binding">₹0.00</span>
+                    </div>
+                    <div class="dashboard-row">
+                      <strong class="ng-binding">0</strong>
+                      <label>Failed</label>
+                      <span class="ng-binding">₹0.00</span>
+                    </div>
+                    <div class="dashboard-row">
+                      <strong class="ng-binding">0</strong>
+                      <label>Overdue</label>
+                      <span class="ng-binding">₹0.00</span>
+                    </div>
+                    <div class="dashboard-row">
+                      <strong class="ng-binding">0</strong>
+                      <label>Sent</label>
+                      <span class="ng-binding">₹0.00</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-7 col-sm-offset-1">
+                  <div kendo-chart="" k-options="invoicesOptions" k-rebind="months" k-data-source="months" data-role="chart" class="k-chart" style="position: relative; height: 200px;">
+                    <svg style="width: 100%; height: 100%; overflow: hidden; left: -0.0625px; top: 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+                      <defs>
+                        <clipPath id="kdef22">
+                          <path d="M33 15 L 476 15 476 166 33 166Z" stroke="#000" stroke-linejoin="miter" fill="none"></path>
+                        </clipPath>
+                      </defs>
+                      <g>
+                        <path d="M0 0 L 482 0 482 200 0 200Z" stroke="none" fill="none"></path>
+                        <path d="M33 15 L 476 15 476 166 33 166Z" stroke="none" fill="#fff" fill-opacity="0"></path>
+                        <g>
+                          <g></g>
+                          <g>
+                            <path d="M33.5 136.5 L 476.5 136.5" stroke="#dfdfdf" stroke-width="1" fill="none"></path>
+                            <path d="M33.5 106.5 L 476.5 106.5" stroke="#dfdfdf" stroke-width="1" fill="none"></path>
+                            <path d="M33.5 75.5 L 476.5 75.5" stroke="#dfdfdf" stroke-width="1" fill="none"></path>
+                            <path d="M33.5 45.5 L 476.5 45.5" stroke="#dfdfdf" stroke-width="1" fill="none"></path>
+                            <path d="M33.5 15.5 L 476.5 15.5" stroke="#dfdfdf" stroke-width="1" fill="none"></path>
+                          </g>
+                          <g>
+                            <g>
+                              <g>
+                                <path d="M33.5 166.5 L 476.5 166.5" stroke="#8e8e8e" stroke-width="1" fill="none"></path>
+                                <path d="M33.5 166.5 L 33.5 170.5" stroke="#8e8e8e" stroke-width="1" fill="none"></path>
+                                <path d="M144.5 166.5 L 144.5 170.5" stroke="#8e8e8e" stroke-width="1" fill="none"></path>
+                                <path d="M255.5 166.5 L 255.5 170.5" stroke="#8e8e8e" stroke-width="1" fill="none"></path>
+                                <path d="M365.5 166.5 L 365.5 170.5" stroke="#8e8e8e" stroke-width="1" fill="none"></path>
+                                <path d="M476.5 166.5 L 476.5 170.5" stroke="#8e8e8e" stroke-width="1" fill="none"></path>
+                              </g>
+                            </g>
+                          </g>
+                          <g clip-path="url(https://app.officernd.com/geekout/billing/plans#kdef22)">
+                            <g>
+                              <g>
+                                <g>
+                                  <g></g>
+                                  <g></g>
+                                </g>
+                              </g>
+                              <g>
+                                <g>
+                                  <g></g>
+                                  <g></g>
+                                </g>
+                              </g>
+                              <g>
+                                <g>
+                                  <g></g>
+                                  <g></g>
+                                </g>
+                              </g>
+                              <g>
+                                <g>
+                                  <g></g>
+                                  <g></g>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                          <g>
+                            <text style="font:12px Arial,Helvetica,sans-serif;" x="47.875" y="192" stroke="none" fill="#232323" fill-opacity="1">April 2016</text>
+                          </g>
+                          <g>
+                            <text style="font:12px Arial,Helvetica,sans-serif;" x="159.625" y="192" stroke="none" fill="#232323" fill-opacity="1">May 2016</text>
+                          </g>
+                          <g>
+                            <text style="font:12px Arial,Helvetica,sans-serif;" x="267.375" y="192" stroke="none" fill="#232323" fill-opacity="1">June 2016</text>
+                          </g>
+                          <g>
+                            <text style="font:12px Arial,Helvetica,sans-serif;" x="382.125" y="192" stroke="none" fill="#232323" fill-opacity="1">July 2016</text>
+                          </g>
+                          <g></g>
+                          <g>
+                            <text style="font:12px Arial,Helvetica,sans-serif;" x="5" y="173" stroke="none" fill="#232323" fill-opacity="1">₹0</text>
+                          </g>
+                          <g>
+                            <text style="font:12px Arial,Helvetica,sans-serif;" x="5" y="142.8" stroke="none" fill="#232323" fill-opacity="1">₹0</text>
+                          </g>
+                          <g>
+                            <text style="font:12px Arial,Helvetica,sans-serif;" x="5" y="112.6" stroke="none" fill="#232323" fill-opacity="1">₹0</text>
+                          </g>
+                          <g>
+                            <text style="font:12px Arial,Helvetica,sans-serif;" x="5" y="82.4" stroke="none" fill="#232323" fill-opacity="1">₹1</text>
+                          </g>
+                          <g>
+                            <text style="font:12px Arial,Helvetica,sans-serif;" x="5" y="52.2" stroke="none" fill="#232323" fill-opacity="1">₹1</text>
+                          </g>
+                          <g>
+                            <text style="font:12px Arial,Helvetica,sans-serif;" x="5" y="22" stroke="none" fill="#232323" fill-opacity="1">₹1</text>
+                          </g>
+                          <g opacity="1">
+                            <path d="M66.225 170 L 110.525 170 110.525 198 66.225 198Z" stroke="none" fill="#fff" fill-opacity="0.5"></path>
+                            <text style="font:11px Arial,Helvetica,sans-serif;" x="78.87499999999999" y="191" stroke="none" fill="#000" fill-opacity="1">₹0</text>
+                          </g>
+                          <g opacity="1">
+                            <path d="M66.225 134 L 110.525 134 110.525 162 66.225 162Z" stroke="none" fill="#fff" fill-opacity="0.5"></path>
+                            <text style="font:11px Arial,Helvetica,sans-serif;" x="78.87499999999999" y="155" stroke="none" fill="#000" fill-opacity="1">₹0</text>
+                          </g>
+                          <g opacity="1">
+                            <path d="M176.975 170 L 221.275 170 221.275 198 176.975 198Z" stroke="none" fill="#fff" fill-opacity="0.5"></path>
+                            <text style="font:11px Arial,Helvetica,sans-serif;" x="189.625" y="191" stroke="none" fill="#000" fill-opacity="1">₹0</text>
+                          </g>
+                          <g opacity="1">
+                            <path d="M176.975 134 L 221.275 134 221.275 162 176.975 162Z" stroke="none" fill="#fff" fill-opacity="0.5"></path>
+                            <text style="font:11px Arial,Helvetica,sans-serif;" x="189.625" y="155" stroke="none" fill="#000" fill-opacity="1">₹0</text>
+                          </g>
+                          <g opacity="1">
+                            <path d="M287.725 170 L 332.025 170 332.025 198 287.725 198Z" stroke="none" fill="#fff" fill-opacity="0.5"></path>
+                            <text style="font:11px Arial,Helvetica,sans-serif;" x="300.375" y="191" stroke="none" fill="#000" fill-opacity="1">₹0</text>
+                          </g>
+                          <g opacity="1">
+                            <path d="M287.725 134 L 332.025 134 332.025 162 287.725 162Z" stroke="none" fill="#fff" fill-opacity="0.5"></path>
+                            <text style="font:11px Arial,Helvetica,sans-serif;" x="300.375" y="155" stroke="none" fill="#000" fill-opacity="1">₹0</text>
+                          </g>
+                          <g opacity="1">
+                            <path d="M398.475 170 L 442.775 170 442.775 198 398.475 198Z" stroke="none" fill="#fff" fill-opacity="0.5"></path>
+                            <text style="font:11px Arial,Helvetica,sans-serif;" x="411.125" y="191" stroke="none" fill="#000" fill-opacity="1">₹0</text>
+                          </g>
+                          <g opacity="1">
+                            <path d="M398.475 134 L 442.775 134 442.775 162 398.475 162Z" stroke="none" fill="#fff" fill-opacity="0.5"></path>
+                            <text style="font:11px Arial,Helvetica,sans-serif;" x="411.125" y="155" stroke="none" fill="#000" fill-opacity="1">₹0</text>
+                          </g>
+                        </g>
+                        <g></g>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ng-scope">
+            <h4 class="rnd-title" title="Revenue">Revenue</h4>
+            <div class="rnd-container">
+              <div class="row">
+                <div class="col-sm-5">
+                  <div class="dashboard-card lower-case">
+                    <div class="dashboard-row">
+                      <strong class="ng-binding">1</strong>
+                      <label> Plans</label>
+                      <span class="ng-binding">₹100.00</span>
+                    </div>
+                    <hr>
+                    <!-- ngRepeat: group in plans | orderBy: 'plan.price' -->
+                    <div class="dashboard-row ng-scope" ng-repeat="group in plans | orderBy: 'plan.price'">
+                      <strong class="ng-binding">1</strong>
+                      <label>
+                        <expand-plan plan-id="group.plan._id" class="ng-isolate-scope">
+                          <!-- ngIf: formatedPlan -->
+                          <span ng-if="formatedPlan" ng-class="{'terminated-plan': terminated}" class="ng-binding ng-scope">
+                            <!-- ngIf: !noColor -->
+                            <div class="color-box ng-scope ng-isolate-scope" ng-if="!noColor" color="planColor" style="background-color: rgb(245, 136, 112);"></div>
+                            <!-- end ngIf: !noColor -->₹100.00, Inception
+                          </span>
+                          <!-- end ngIf: formatedPlan -->
+                          <!-- ngIf: !formatedPlan -->
+                          <!-- ngIf: menu && membership -->
+                        </expand-plan>
+                      </label>
+                      <span class="ng-binding">₹100.00</span>
+                    </div>
+                    <!-- end ngRepeat: group in plans | orderBy: 'plan.price' -->
+                  </div>
+                </div>
+                <div class="col-sm-6 col-sm-offset-1">
+                  <div kendo-chart="" k-options="plansPieOptions" k-rebind="groupedPlans" k-data-source="groupedPlans" data-role="chart" class="k-chart" style="position: relative; height: 300px;">
+                    <svg style="width: 100%; height: 100%; overflow: hidden; left: -0.46875px; top: 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+                      <defs>
+                        <radialGradient id="kdef24" cx="205" cy="150" r="101.5" gradientUnits="userSpaceOnUse">
+                          <stop offset="0.33" style="stop-color:#fff;stop-opacity:0.06;"></stop>
+                          <stop offset="0.83" style="stop-color:#fff;stop-opacity:0.2;"></stop>
+                          <stop offset="0.95" style="stop-color:#fff;stop-opacity:0;"></stop>
+                        </radialGradient>
+                      </defs>
+                      <g>
+                        <path d="M0 0 L 410 0 410 300 0 300Z" stroke="none" fill="none"></path>
+                        <path d="M5 5 L 405 5 405 295 5 295Z" stroke="none" fill="#fff" fill-opacity="0"></path>
+                        <g>
+                          <g></g>
+                        </g>
+                        <g>
+                          <g>
+                            <path d="M205 255.5 L 205 277.5 270.469 277.5" stroke="#939393" stroke-width="1" fill="none"></path>
+                            <g transform="matrix(1,0,0,1,0,0)">
+                              <path d="M205 48.5 C 231.573 48.5 257.982 59.439 276.771 78.229 295.561 97.018 306.5 123.427 306.5 150 306.5 176.573 295.561 202.982 276.771 221.771 257.982 240.561 231.573 251.5 205 251.5 178.427 251.5 152.018 240.561 133.229 221.771 114.439 202.982 103.5 176.573 103.5 150 103.5 123.427 114.439 97.018 133.229 78.229 152.018 59.439 178.427 48.5 205 48.5 L 205 150Z" stroke="none" fill="#f58870"></path>
+                              <path d="M205 48.5 C 231.573 48.5 257.982 59.439 276.771 78.229 295.561 97.018 306.5 123.427 306.5 150 306.5 176.573 295.561 202.982 276.771 221.771 257.982 240.561 231.573 251.5 205 251.5 178.427 251.5 152.018 240.561 133.229 221.771 114.439 202.982 103.5 176.573 103.5 150 103.5 123.427 114.439 97.018 133.229 78.229 152.018 59.439 178.427 48.5 205 48.5 L 205 150Z" stroke="none" fill="url(https://app.officernd.com/geekout/billing/plans#kdef24)"></path>
+                            </g>
+                          </g>
+                        </g>
+                        <g opacity="1">
+                          <path d="M274.969 267.5 L 351.969 267.5 351.969 287.5 274.969 287.5Z" stroke="#000" stroke-width="0" stroke-opacity="0.5" fill="none"></path>
+                          <text style="font:11px Arial,Helvetica,sans-serif;" x="274.96941773183363" y="284.5" stroke="none" fill="#000" fill-opacity="1">100.00 %</text>
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

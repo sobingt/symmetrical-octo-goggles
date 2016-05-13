@@ -1,0 +1,243 @@
+<div id="capsule-modal" role="dialog" tabindex="-1" rnd-modal="" allow-popups="" modal-focus="#change-date" modal-hidden="cleanUp()" class="ng-scope ng-isolate-scope modal fade">
+   <form role="form" class="form-horizontal ng-pristine ng-valid">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+               <h3 class="modal-title ng-binding">Configure  integration</h3>
+            </div>
+            <div class="modal-body">
+               <div class="properties-form ng-isolate-scope" properties="definition.properties" values="integration.settings">
+                  <!-- ngRepeat: property in properties -->
+               </div>
+               <!-- ngRepeat: office in offices -->
+            </div>
+            <div class="modal-footer">
+               <div class="pull-right">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" ng-click="save(definition)" class="btn btn-primary" data-dismiss="modal">
+                  Done
+                  </button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </form>
+</div>
+<div id="zapier-modal" rnd-modal="" modal-hidden="cleanUp()" class="ng-scope ng-isolate-scope modal fade">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h3 class="modal-title">Connect OfficeR&amp;D with Zapier</h3>
+         </div>
+         <div class="modal-body">
+            <div class="help-item">
+               <i class="fa fa-plus"></i>
+               <h3>Create new Zap</h3>
+               <p>
+                  Login to your Zapier accound and create new Zap. Setup a trigger for your new integration.
+               </p>
+            </div>
+            <div class="help-item">
+               <i class="fa fa-play-circle-o"></i>
+               <h3>Setup OfficeR&amp;D</h3>
+               <p>
+                  Add OfficeR&amp;D application to your Zapier account by following <a href="https://zapier.com/developer/invite/33683/eb8ec421537dc66e589f21c0ae798b7e/" target="_blank">this link</a>. This is needed because we are still in beta.
+               </p>
+            </div>
+            <div class="help-item">
+               <i class="fa fa-cogs"></i>
+               <h3>Add OfficeR&amp;D action</h3>
+               <p>
+                  When choosing the action for your new Zap, search for 'OfficeR&amp;D'.
+               </p>
+            </div>
+            <div class="help-item">
+               <i class="fa fa-key"></i>
+               <h3>Login with OfficeR&amp;D credentials</h3>
+               <p>While setting up your Zap you will be asked for your OfficeR&amp;D credentials. Just type in the ones you use to log in at OfficeR&amp;D.</p>
+            </div>
+            <div class="help-item">
+               <i class="fa fa-heart-o"></i>
+               <h3>Have fun</h3>
+               <p>Enjoy your newly created integration. Connect OfficeR&amp;D to hundreds of applications with Zapier.</p>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+            Close
+            </button>
+         </div>
+      </div>
+   </div>
+</div>
+<div id="integration-config-modal" rnd-modal="" modal-hidden="cleanUp()" class="ng-scope ng-isolate-scope modal fade">
+   <div class="modal-dialog">
+      <form role="form" class="form-horizontal ng-pristine ng-valid">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+               <h3 class="modal-title ng-binding"> Settungs</h3>
+            </div>
+            <div class="modal-body">
+               <div class="properties-form ng-isolate-scope" properties="definition.properties" values="integration.settings">
+                  <!-- ngRepeat: property in properties -->
+               </div>
+            </div>
+            <div class="modal-footer">
+               <div class="pull-right">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" ng-click="save(definition)" class="btn btn-primary" data-dismiss="modal">
+                  Done
+                  </button>
+               </div>
+            </div>
+         </div>
+      </form>
+   </div>
+</div>
+<div id="stripe-modal" rnd-modal="" modal-hidden="cleanUp()" class="ng-scope ng-isolate-scope modal fade">
+   <div class="modal-dialog">
+      <form role="form" class="form-horizontal ng-pristine ng-valid">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+               <h3 class="modal-title">Connect OfficeR&amp;D with Stripe</h3>
+            </div>
+            <div class="modal-body">
+               <div class="help-item">
+                  <h3>Get your Stripe keys</h3>
+                  <ol>
+                     <li>If you don't have Stripe account go to <a href="https://stripe.com/" target="_blank">https://stripe.com/</a> and create one</li>
+                     <li>Open API Keys under your Account Settings in the Stripe dashboard (or click <a href="https://dashboard.stripe.com/account/apikeys" target="_blank">here</a>)</li>
+                     <li>You will see two pairs of keys - test and live ones</li>
+                     <li>Go to our <a href="https://officernd.com/help/setup-payment-gateway/" target="_blank">payments gateway</a> help section for more details</li>
+                  </ol>
+               </div>
+               <div class="properties-form-border properties-form ng-isolate-scope" properties="definition.properties" values="integration.settings">
+                  <!-- ngRepeat: property in properties -->
+               </div>
+            </div>
+            <div class="modal-footer">
+               <div class="pull-right">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" ng-click="save(definition)" class="btn btn-primary" data-dismiss="modal">
+                  Done
+                  </button>
+               </div>
+            </div>
+         </div>
+      </form>
+   </div>
+</div>
+<div id="google-calendar-modal" rnd-modal="" modal-hidden="cleanUp()" class="ng-scope ng-isolate-scope modal fade">
+   <div class="modal-dialog">
+      <form role="form" class="form-horizontal ng-pristine ng-valid">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+               <h3 class="modal-title">Connect to Google Calendar</h3>
+            </div>
+            <div class="modal-body">
+               <!-- ngIf: !integration.settings.calendars -->
+               <div class="help-item ng-scope" ng-if="!integration.settings.calendars">
+                  <h3>Connect to your google account</h3>
+                  <ol>
+                     <li>Give OfficeR&amp;D permissions to your <a href="https://accounts.google.com/o/oauth2/auth?access_type=offline&amp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar&amp;response_type=code&amp;client_id=256129137753-3vaqaqsnqniua0g66uprs67gu9vq1lgu.apps.googleusercontent.com&amp;redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob" target="_blank"> Google calendar</a></li>
+                     <li>Copy the code received from Google.</li>
+                     <li>Paste in the box below and click 'Done'</li>
+                  </ol>
+               </div>
+               <!-- end ngIf: !integration.settings.calendars -->
+               <!-- ngIf: integration.settings.calendars -->
+               <!-- ngIf: !integration.settings.calendars -->
+               <div class="properties-form-border properties-form ng-isolate-scope" ng-if="!integration.settings.calendars" properties="definition.properties" values="integration.settings">
+                  <!-- ngRepeat: property in properties -->
+               </div>
+               <!-- end ngIf: !integration.settings.calendars -->
+               <mappings-form keys="calendarKeys" values="roomMapping" text-field="summary" value-field="id" options="integration.settings.calendars" class="ng-isolate-scope">
+                  <div class="properties-form ng-isolate-scope" properties="properties" values="values">
+                     <!-- ngRepeat: property in properties -->
+                  </div>
+               </mappings-form>
+            </div>
+            <div class="modal-footer">
+               <div class="pull-right">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" ng-click="save(definition)" class="btn btn-primary" data-dismiss="modal">
+                  Done
+                  </button>
+               </div>
+            </div>
+         </div>
+      </form>
+   </div>
+</div>
+<div id="xero-modal" role="dialog" tabindex="-1" rnd-modal="" allow-popups="" modal-focus="#xero-account" modal-hidden="cleanUp()" class="ng-scope ng-isolate-scope modal fade">
+   <form role="form" class="form-horizontal ng-pristine ng-valid">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+               <h3 class="modal-title ng-binding">Configure  integration</h3>
+            </div>
+            <div class="modal-body">
+               <!-- ngIf: !integration -->
+               <div class="form-group ng-scope" ng-if="!integration">
+                  <div class="col-md-12">
+                     <i class="fa fa-spinner fa-spin"></i> Loading accounts...
+                  </div>
+               </div>
+               <!-- end ngIf: !integration -->
+               <mappings-form keys="revenueAccountsNames" values="integration.settings.revenue" text-field="name" value-field="code" options="revenueAccounts" class="ng-isolate-scope">
+                  <div class="properties-form ng-isolate-scope" properties="properties" values="values">
+                     <!-- ngRepeat: property in properties -->
+                  </div>
+               </mappings-form>
+               <mappings-form keys="paymentsAccountsNames" values="integration.settings.payments" text-field="name" value-field="id" options="paymentsAccounts" class="ng-isolate-scope">
+                  <div class="properties-form ng-isolate-scope" properties="properties" values="values">
+                     <!-- ngRepeat: property in properties -->
+                  </div>
+               </mappings-form>
+               <div class="properties-form ng-isolate-scope" properties="definition.properties" values="integration.settings">
+                  <!-- ngRepeat: property in properties -->
+               </div>
+            </div>
+            <div class="modal-footer">
+               <div class="pull-right">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" ng-click="save(definition)" class="btn btn-primary" data-dismiss="modal">
+                  Done
+                  </button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </form>
+</div>
+<h4 class="rnd-title ng-scope" title="Integrations">Integrations</h4>
+<div class="row ng-scope">
+   <!-- ngRepeat: definition in availableIntegrations -->
+   <div ng-repeat="" class="col-md-6">
+      <div class="rnd-small-container">
+         <div class="inline pull-left profile-lg user-avatar ng-isolate-scope" item="definition">
+            <!-- ngIf: image --><img ng-if="image" ng-src="//d35ll89fr5oblf.cloudfront.net/static/integrations/capsule.jpeg" on-error="removeImage()" class="ng-scope" src="//d35ll89fr5oblf.cloudfront.net/static/integrations/capsule.jpeg"><!-- end ngIf: image -->
+            <!-- ngIf: !image -->
+         </div>
+         <div class="item-more-info">
+            <h2 class="rnd-container-header ng-binding">Capsule CRM</h2>
+            <!-- ngIf: isEnabled(definition) -->
+            <!-- ngIf: !isEnabled(definition) -->
+            <div ng-if="!isEnabled(definition)" class="ng-scope">
+               <a ng-click="toggleActivate(definition)" title="Activate">Activate</a>
+            </div>
+            <!-- end ngIf: !isEnabled(definition) -->
+            <!-- ngIf: isEnabled(definition) && definition.summary -->
+            <!-- ngIf: isEnabled(definition) -->
+         </div>
+         <div class="clearfix"></div>
+      </div>
+   </div>
+   <!-- end ngRepeat: definition in availableIntegrations -->
+</div>

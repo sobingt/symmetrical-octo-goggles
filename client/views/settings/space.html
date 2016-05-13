@@ -1,0 +1,110 @@
+<div id="label-modal" class="modal fade ng-scope">
+   <div class="modal-dialog">
+      <form class="form-horizontal ng-pristine ng-valid" role="form">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+               <!-- ngIf: editing -->
+               <!-- ngIf: !editing -->
+               <h4 ng-if="!editing" class="modal-title ng-scope">Edit Zone Type</h4>
+               <!-- end ngIf: !editing -->
+            </div>
+            <div class="modal-body">
+               <div class="form-group">
+                  <label for="label-name" class="col-sm-3 control-label">Name</label>
+                  <div class="col-sm-9">
+                     <input type="text" class="form-control ng-pristine ng-untouched ng-valid" id="label-name" placeholder="Meeting space" ng-model="label.name" autofocus="">
+                  </div>
+               </div>
+               <div class="form-group">
+                  <label for="label-color" class="col-sm-3 control-label">Color</label>
+                  <div class="col-sm-9">
+                     <span role="textbox" aria-haspopup="true" class="k-widget k-colorpicker k-header" aria-disabled="false" tabindex="0" aria-label="Current selected color is "><span class="k-picker-wrap k-state-default"><span class="k-selected-color" style="background-color: transparent;"></span><span class="k-select" unselectable="on"><span class="k-icon k-i-arrow-s" unselectable="on"></span></span></span><input kendo-color-picker="" class="form-control color-input ng-pristine ng-untouched ng-valid" id="label-color" placeholder="#00FF00" ng-model="label.color" data-role="colorpicker" style="display: none;"></span>
+                  </div>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               <button type="button" class="btn btn-primary" ng-click="commitLabel()" data-dismiss="modal">
+               Update
+               </button>
+            </div>
+         </div>
+      </form>
+   </div>
+</div>
+<div class="ng-scope">
+   <h4 class="rnd-title" title="Space Management">Space Management</h4>
+   <div class="rnd-container">
+      <form role="form" class="form-horizontal ng-pristine ng-valid ng-valid-min ng-valid-max">
+         <div class="form-group">
+            <label for="org-coef" class="col-sm-3 control-label">Hot Desk
+            Coefficient</label>
+            <div class="col-sm-6">
+               <input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-valid-min ng-valid-max" id="org-coef" min="1" max="5" step="0.1" ng-model="orgModel.settings.space.hotdeskCoef">
+               <small class="text-muted ng-binding">
+               This number is used to calculate the hot desking target revenue. For example if you have 10 hot
+               desks, your target plans will be 35.
+               </small>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+         <div class="form-group">
+            <label for="org-deskTemplate" class="col-sm-3 control-label">Desk Template</label>
+            <div class="col-sm-6">
+               <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="orgModel.deskTemplate" id="org-deskTemplate">
+            </div>
+         </div>
+         <div class="clearfix"></div>
+         <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-6">
+               <div class="checkbox">
+                  <label>
+                  <input type="checkbox" id="org-desk-id" ng-model="orgModel.settings.space.deskId" class="ng-pristine ng-untouched ng-valid">Desk Name
+                  </label>
+               </div>
+               <small class="text-muted">
+               Show/hide desk names (ids) on the floorplan.
+               </small>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+         <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-6">
+               <button type="button" class="btn btn-primary" ng-click="updateOrg(orgModel)">Update</button>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+      </form>
+   </div>
+</div>
+<h4 class="rnd-title ng-scope" title="Zone Types">Zone Types</h4>
+<button class="btn btn-primary ng-scope" ng-click="addLabel()">Add zone type</button>
+<div class="rnd-container ng-scope">
+   <table class="table">
+      <thead>
+         <tr>
+            <th>Name</th>
+         </tr>
+      </thead>
+      <tbody>
+         <!-- ngRepeat: label in org.labels -->
+         <tr class="grid-row ng-scope" ng-repeat=>
+            <td class="ng-binding">
+               <div class="color-box" style="background-color: #f9f6e8"></div>
+               Open space
+               <div class="dropdown room-menu">
+                  <button class="btn-icon dropdown-toggle" type="button" id="editMenu" data-toggle="dropdown">
+                  <i class="fa fa-cog"></i>
+                  </button>
+                  <ul class="dropdown-menu" data-placement="bottom" role="menu" aria-labelledby="editMenu">
+                     <li role="presentation"><a role="menuitem" tabindex="-1" ng-click=""> <span class="fa fa-pencil"></span> Edit</a></li>
+                     <li role="presentation"><a role="menuitem" tabindex="-1" ng-click=""><span class="fa fa-times"></span> Delete</a></li>
+                  </ul>
+               </div>
+            </td>
+         </tr>
+         <!-- end ngRepeat: label in org.labels -->
+      </tbody>
+   </table>
+</div>

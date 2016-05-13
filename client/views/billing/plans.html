@@ -1,0 +1,181 @@
+<div ui-view="">
+  <div id="plan-modal" rnd-modal="" modal-focus="#plan-name" modal-hidden="cleanUpData()" class="ng-scope ng-isolate-scope modal fade">
+    <div class="modal-dialog">
+      <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" role="form">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h3 class="modal-title ng-binding">Add Membership Plan</h3>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Type</label>
+              <div class="col-sm-10">
+                <div class="btn-group btn-group-justified">
+                  <!-- ngRepeat: (key, type) in plansModel.types -->
+                  <div class="btn-group ng-scope" ng-repeat="(key, type) in plansModel.types">
+                    <button type="button" class="btn btn-default btn-sm" ng-class="{ active: plan.type === key }" ng-click="plan.type=key" title="Private office">
+                      <i class="fa fa-building-o"></i>
+                      <div class="ng-binding">Private office</div>
+                    </button>
+                  </div>
+                  <!-- end ngRepeat: (key, type) in plansModel.types -->
+                  <div class="btn-group ng-scope" ng-repeat="(key, type) in plansModel.types">
+                    <button type="button" class="btn btn-default btn-sm" ng-class="{ active: plan.type === key }" ng-click="plan.type=key" title="Workstation">
+                      <i class="fa fa-desktop"></i>
+                      <div class="ng-binding">Workstation</div>
+                    </button>
+                  </div>
+                  <!-- end ngRepeat: (key, type) in plansModel.types -->
+                  <div class="btn-group ng-scope" ng-repeat="(key, type) in plansModel.types">
+                    <button type="button" class="btn btn-default btn-sm" ng-class="{ active: plan.type === key }" ng-click="plan.type=key" title="Hot desk">
+                      <i class="fa fa-laptop"></i>
+                      <div class="ng-binding">Hot desk</div>
+                    </button>
+                  </div>
+                  <!-- end ngRepeat: (key, type) in plansModel.types -->
+                  <div class="btn-group ng-scope" ng-repeat="(key, type) in plansModel.types">
+                    <button type="button" class="btn btn-default btn-sm" ng-class="{ active: plan.type === key }" ng-click="plan.type=key" title="Meeting room">
+                      <i class="fa fa-suitcase"></i>
+                      <div class="ng-binding">Meeting room</div>
+                    </button>
+                  </div>
+                  <!-- end ngRepeat: (key, type) in plansModel.types -->
+                  <div class="btn-group ng-scope" ng-repeat="(key, type) in plansModel.types">
+                    <button type="button" class="btn btn-default btn-sm" ng-class="{ active: plan.type === key }" ng-click="plan.type=key" title="Service">
+                      <i class="fa fa-print"></i>
+                      <div class="ng-binding">Service</div>
+                    </button>
+                  </div>
+                  <!-- end ngRepeat: (key, type) in plansModel.types -->
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="plan-name" class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="plan.name" id="plan-name" placeholder="Full-time">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="plan-price" class="col-sm-2 control-label">Price</label>
+              <div class="col-sm-5">
+                <div class="input-group">
+                  <input type="number" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-model="plan.price" step="1" id="plan-price" required="" placeholder="Example: ₹100.00">
+                  <span class="input-group-addon ng-binding">INR</span>
+                </div>
+              </div>
+              <div class="col-sm-5">
+                <span title="" class="k-widget k-dropdown k-header form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="plan-interval-length_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" style="" aria-activedescendant="48ecfe87-0475-4f08-b056-6996651257f8">
+                  <span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input ng-scope">hour</span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span>
+                  <select id="plan-interval-length" class="form-control" kendo-drop-down-list="" k-value-primitive="true" k-ng-model="plan.intervalLength" k-data-source="intervalLengths" data-role="dropdownlist" style="display: none;">
+                    <option value="hour">hour</option>
+                    <option value="day">day</option>
+                    <option value="month">month</option>
+                  </select>
+                </span>
+              </div>
+            </div>
+            <div class="form-group ng-hide" ng-show="plan.intervalLength === 'hour'">
+              <label for="plan-offprice" class="col-sm-2 control-label">Off hours price</label>
+              <div class="col-sm-5">
+                <div class="input-group">
+                  <input type="number" class="form-control ng-pristine ng-untouched ng-valid" ng-model="plan.offPrice" step="1" id="plan-offprice" placeholder="Example: ₹100.00">
+                  <span class="input-group-addon ng-binding">INR</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="plan-desc" class="col-sm-2 control-label">Description</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="plan.description" id="plan-desc" placeholder="Perfect for people just starting out">
+              </div>
+            </div>
+            <!-- ngIf: plan.type !== 'meeting_room' -->
+            <div class="form-group ng-scope" ng-if="plan.type !== 'meeting_room'">
+              <!-- ngIf: plan.type !== 'service' -->
+              <div class="col-sm-offset-2 col-sm-10 ng-scope" ng-if="plan.type !== 'service'">
+                <div class="checkbox">
+                  <label>
+                  <input type="checkbox" ng-model="plan.freeMeetingRooms" class="ng-pristine ng-untouched ng-valid"> Free meeting rooms
+                  </label>
+                </div>
+              </div>
+              <!-- end ngIf: plan.type !== 'service' -->
+              <!-- ngIf: org.settings.community.enabled -->
+              <!-- ngIf: org.settings.community.enabled -->
+            </div>
+            <!-- end ngIf: plan.type !== 'meeting_room' -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+            Close
+            </button>
+            <button type="submit" class="btn btn-primary" ng-click="commitPlan()" ng-disabled="plan.price===undefined" disabled="disabled">
+              <!-- ngIf: originalPlan -->
+              <!-- ngIf: !originalPlan --><span ng-if="!originalPlan" class="ng-scope">Add</span><!-- end ngIf: !originalPlan -->
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <button class="btn btn-primary ng-scope" ng-click="addPlan()">Add plan</button>
+  <!-- ngIf: plansModel && plansModel.items.length > 0 -->
+  <div class="rnd-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Plan</th>
+          <th>Active</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ngRepeat: plan in plansModel.items | orderBy: 'price' -->
+        <tr class="grid-row" ng-repeat="">
+          <td>
+            <a ng-click="editPlan(plan)" class="dark-link">
+              <expand-plan plan-id="plan._id" class="ng-isolate-scope">
+                <!-- ngIf: formatedPlan -->
+                <span>
+                  <!-- ngIf: !noColor -->
+                  <div class="color-box ng-scope ng-isolate-scope" color="planColor" style="background-color: rgb(245, 136, 112);"></div>
+                  <!-- end ngIf: !noColor -->₹100.00, Inception
+                </span>
+                <!-- end ngIf: formatedPlan -->
+                <!-- ngIf: !formatedPlan -->
+                <!-- ngIf: menu && membership -->
+              </expand-plan>
+            </a>
+            <div class="dropdown room-menu">
+              <button class="btn-icon dropdown-toggle" type="button" id="editMenu" data-toggle="dropdown">
+              <i class="fa fa-cog"></i>
+              </button>
+              <ul class="dropdown-menu" data-placement="bottom" role="menu" aria-labelledby="editMenu">
+                <li role="presentation">
+                  <a role="menuitem" tabindex="-1" ng-click="editPlan(plan)"> <span class="fa fa-pencil"></span> Edit</a>
+                </li>
+                <li class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deletePlan(plan)"><span class="fa fa-trash-o"></span> Delete</a></li>
+              </ul>
+            </div>
+          </td>
+          <td class="ng-binding">1</td>
+          <td class="ng-binding"><i class="fa fa-laptop"></i> Hot desk</td>
+          <td class="ng-binding">"Inception" is a single person plan for individuals who are freelancing from home or single startup founders who are looking to grow and learn from the community. Its a virtual plan</td>
+          <td>
+            <!-- ngIf: plan.public --><i class="fa fa-sign-in ng-scope" ng-if="plan.public" title="Public"></i><!-- end ngIf: plan.public -->
+            <!-- ngIf: plan.freeMeetingRooms -->
+          </td>
+        </tr>
+        <!-- end ngRepeat: plan in plansModel.items | orderBy: 'price' -->
+      </tbody>
+    </table>
+  </div>
+  <!-- end ngIf: plansModel && plansModel.items.length > 0 -->
+  <!-- ngIf: !plansModel -->
+  <!-- ngIf: plansModel && plansModel.items.length === 0 -->
+</div>

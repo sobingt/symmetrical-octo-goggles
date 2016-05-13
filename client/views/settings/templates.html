@@ -1,0 +1,26 @@
+<h4 class="rnd-title ng-scope">Templates</h4>
+<div class="rnd-container ng-scope">
+   <table class="table">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+         <!-- ngRepeat: template in templates | orderBy: 'type' -->
+         <tr ng-repeat="template in templates | orderBy: 'type'" class="ng-scope">
+            <td>
+               <a class="dark-link" ui-sref="organization.manage.settings.editTemplate({ templateType: template.type })" href="/geekout/settings/templates/admin_member_booking_created">
+                  <div class="inline profile-xs user-avatar">
+                     <i class="fa fa-envelope-o" ng-class="templatesInfo[template.type].icon"></i>
+                  </div>
+                  <span class="offset5 ng-binding">Admin - Member Booking Created</span>
+               </a>
+            </td>
+            <td class="ng-binding">Sent to admins when a member books a meeting room</td>
+         </tr>
+         <!-- end ngRepeat: template in templates | orderBy: 'type' -->
+      </tbody>
+   </table>
+</div>

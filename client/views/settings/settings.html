@@ -1,0 +1,122 @@
+<section class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <h4 class="rnd-title" title="Settings">Settings</h4>
+        <div class="list-group">
+          <a ui-sref="app.organization.settings" href="#" class="list-group-item">General</a>
+          <a ui-sref="app.organization.settings.admin" href="#" class="list-group-item">Admin</a>
+          <a ui-sref="app.organization.settings.integrations" href="#" class="list-group-item">Integrations</a>
+          <a ui-sref="app.organization.settings.templates" href="#" class="list-group-item">Templates</a>
+          <a ui-sref="app.organization.settings.community" href="#" class="list-group-item">Community</a>
+          <a ui-sref="app.organization.settings.billing" href="#" class="list-group-item">Billing</a>
+          <a ui-sref="app.organization.settings.space" href="#" class="list-group-item">Space</a>
+          <a ui-sref="app.organization.settings.calendar" href="#" class="list-group-item">Calendar</a>
+          <hr>
+          <a ui-sref="organization.manage.settings.portal" href="#" class="list-group-item">Community Portal</a>
+        </div>
+    </div>
+    <div class="col-sm-9" ui-view="content">
+      <!-- uiView:  -->
+      <div ui-view="">
+        <h4 class="rnd-title">Settings</h4>
+        <div class="rnd-container">
+          <form role="form" class="form-horizontal">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Picture</label>
+              <div class="col-sm-6">
+                <image-upload image-url="orgModel.image" target="" default-icon="fa-building-o">
+                  <div class="image-upload">
+                    <div class="user-avatar profile-lg inline image-picker">
+                      <!-- ngIf: imageUrl -->
+                      <!-- ngIf: !imageUrl -->
+                      <div ng-if="!imageUrl" class="image-replace ng-scope">
+                        <i class="fa fa-building-o" ng-class="defaultIcon"></i>
+                      </div>
+                      <!-- end ngIf: !imageUrl -->
+                      <button type="button" class="btn btn-primary" ng-disabled="uploading" ng-click="chooseImage()">
+                        <!-- ngIf: uploading -->
+                        <!-- ngIf: !uploading && imageUrl -->
+                        <!-- ngIf: !uploading && !imageUrl --><span ng-if="!uploading &amp;&amp; !imageUrl" class="ng-scope">Upload</span><!-- end ngIf: !uploading && !imageUrl -->
+                      </button>
+                    </div>
+                    <input type="file" id="upload-image" class="hidden-upload ng-isolate-scope" file-picked="uploadImg($file)" accept="image/*">
+                  </div>
+                </image-upload>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Name</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="org-name" placeholder="Name">
+                <small class="text-muted">
+                Once you change the name of the organization, its url will be changed according to the new
+                name.
+                <br>
+                </small>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Twitter</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="org-twitter" placeholder="Twitter">
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Email</label>
+              <div class="col-sm-6">
+                <input type="email" class="form-control" id="org-email1" placeholder="Email">
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group">
+              <label for="org-url" class="col-sm-3 control-label">Url</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="orgModel.url" id="org-url" placeholder="Url">
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group">
+              <label for="org-terms-url" class="col-sm-3 control-label">Terms url</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="orgModel.settings.general.termsUrl" id="org-terms-url" placeholder="Terms url">
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group">
+              <label for="org-address" class="col-sm-3 control-label">Address</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="orgModel.settings.general.address" id="org-address" placeholder="Address">
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group">
+              <label for="org-legal-name" class="col-sm-3 control-label">Legal Name</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="orgModel.settings.general.legalName" id="org-legal-name" placeholder="Legal name">
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group">
+              <label for="org-logo" class="col-sm-3 control-label">Logo Url</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="orgModel.settings.general.logoUrl" id="org-logo" placeholder="Logo Url">
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-6">
+                <button type="button" ng-disabled="perm<=1" class="btn btn-primary" ng-click="updateOrg(orgModel)">
+                Update
+                </button>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

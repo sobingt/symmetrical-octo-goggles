@@ -1,0 +1,162 @@
+
+<!-- uiView:  -->
+<div ui-view="">
+  <div>
+    <div id="download-invoices-modal" role="dialog" class="modal fade ng-isolate-scope">
+      <div class="modal-dialog modal-sm">
+        <form class="form-horizontal ng-pristine ng-valid">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+              <h3 class="modal-title">Export Selected Invoices</h3>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <div>
+                    <!-- ngIf: url -->
+                    <!-- ngIf: !url --><span ng-if="!url" class="ng-scope"><i class="fa fa-spinner fa-spin"></i> Generating...</span><!-- end ngIf: !url -->
+                  </div>
+                  <small>You can find more information about exporting data in OfficeR&amp;D <a href="https://officernd.com/help/exporting-data/" target="_blank">here</a>.</small>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" ng-click="addInvoice()">Add invoice</button>
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a ng-click="addInvoice()">Add invoice</a></li>
+        <li><a ui-sref="" href="">Add many invoices</a></li>
+      </ul>
+    </div>
+    <div class="pull-right">
+      <!-- ngIf: selectedInvoices.length > 0 -->
+      <!-- ngIf: selectedInvoices.length > 0 -->
+      <!-- ngIf: xeroIntegration.enabled -->
+    </div>
+    <div class="rnd-container">
+      <div class="">
+        <!-- ngIf: payments.length === 0 && !team && !member -->
+        <!-- ngIf: payments.length === 0 && (team || member) -->
+        <!-- ngIf: payments.length > 0 -->
+        <section class="ng-scope">
+          <section class="search-section">
+            <label for="search-input"><i class="fa fa-search"></i></label>
+            <input id="search-input" type="search" class="form-control inline-search" placeholder="Search">
+            <!-- ngIf: model -->
+          </section>
+          <section class="date-section search-section ng-isolate-scope" model="search.issueMonth">
+            <span class="k-widget k-datepicker k-header form-control"><span class="k-picker-wrap k-state-default"><input id="invoice-start-date" class="form-control k-input" kendo-date-picker="" k-ng-model="model" k-depth="'year'" k-start="'year'" k-format="'MMM yyyy'" k-rebind="model" k-parse-formats="['MMM yyyy', 'yyyy-MM-ddTHH:mm:ss']" data-role="datepicker" type="text" role="combobox" aria-expanded="false" aria-owns="invoice-start-date_dateview" aria-disabled="false" aria-readonly="false" style="width: 100%;"><span unselectable="on" class="k-select" role="button" aria-controls="invoice-start-date_dateview"><span unselectable="on" class="k-icon k-i-calendar">select</span></span></span></span>
+            <a ng-show="model" ng-click="model = undefined" class="fa fa-times-circle"></a>
+          </section>
+          <div class="rnd-filter-tabs-panel">
+            <label>Status</label>
+            <a ng-click="search.statuses = undefined" ng-class="{ active: !search.statuses }" class="active"><span class="filter-label">All</span></a>
+            <a ng-click="search.statuses = ['pending', 'awaiting_payment', 'partially_paid', 'failed', 'overdue']" ng-class="{ active: search.statuses.length === 5 }"><span class="filter-label">Not paid</span></a>
+            <a ng-click="search.statuses = ['paid']" ng-class="{ active: search.statuses.length === 1 &amp;&amp; search.statuses.indexOf('paid') >= 0 }"><span class="filter-label">Paid</span></a>
+          </div>
+        </section>
+        <!-- end ngIf: payments.length > 0 -->
+        <!-- ngIf: payments.length > 0 -->
+        <table class="table payments-table ng-scope ng-isolate-scope" ng-if="payments.length > 0" rnd-sortable="paymentsSort" sortable-default="number">
+          <thead>
+            <tr>
+              <th>
+                <input type="checkbox" ng-model="$parent.isSelected" class="ng-pristine ng-untouched ng-valid">
+                <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="number">
+                  <ng-transclude><span class="ng-scope">Invoice #</span></ng-transclude>
+                  <!-- ngIf: isSortedBy() --><i ng-if="isSortedBy()" class="fa ng-scope fa-sort-asc" ng-class="{ 'fa-sort-asc': !sort.sortDirection, 'fa-sort-desc': sort.sortDirection }"></i><!-- end ngIf: isSortedBy() -->
+                </span>
+              </th>
+              <!-- ngIf: !team && !member -->
+              <th ng-if="!team &amp;&amp; !member" class="ng-scope">
+                <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="to" value-selector="getTargetName">
+                  <ng-transclude><span class="ng-scope">To</span></ng-transclude>
+                  <!-- ngIf: isSortedBy() -->
+                </span>
+              </th>
+              <!-- end ngIf: !team && !member -->
+              <th>
+                <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="status">
+                  <ng-transclude><span class="ng-scope">Status</span></ng-transclude>
+                  <!-- ngIf: isSortedBy() -->
+                </span>
+              </th>
+              <th>
+                <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="date">
+                  <ng-transclude><span class="ng-scope">Issue Date</span></ng-transclude>
+                  <!-- ngIf: isSortedBy() -->
+                </span>
+              </th>
+              <th>
+                <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="date">
+                  <ng-transclude><span class="ng-scope">Due Date</span></ng-transclude>
+                  <!-- ngIf: isSortedBy() -->
+                </span>
+              </th>
+              <th>
+                <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="periodStart">
+                  <ng-transclude><span class="ng-scope">Period</span></ng-transclude>
+                  <!-- ngIf: isSortedBy() -->
+                </span>
+              </th>
+              <th>
+                <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="amount">
+                  <ng-transclude><span class="ng-scope">Amount</span></ng-transclude>
+                  <!-- ngIf: isSortedBy() -->
+                </span>
+              </th>
+              <th>
+                <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="isSent">
+                  <ng-transclude><span class="ng-scope">Sent</span></ng-transclude>
+                  <!-- ngIf: isSortedBy() -->
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ngRepeat: p in payments | invoiceFilter: search | rndSort: paymentsSort -->
+            <tr ng-repeat="p in payments | invoiceFilter: search | rndSort: paymentsSort" class="ng-scope">
+              <td>
+                <input class="align-top ng-pristine ng-untouched ng-valid" type="checkbox" ng-model="selected[p._id]">
+                <div class="image-table middle">
+                  <div class="info-cell">
+                    <a class="dark-link ng-binding" ui-sref="organization.manage.billing.invoice({id: p._id})" href="/geekout/billing/invoices/572a8d03c521afda7397010c"> No number</a>
+                    <!-- ngIf: !basicInvoicing -->
+                  </div>
+                </div>
+              </td>
+              <!-- ngIf: !team && !member -->
+              <td ng-if="!team &amp;&amp; !member" class="ng-scope">
+                <span target="p" class="ng-isolate-scope">
+                  <a class="dark-link ng-binding ng-isolate-scope" ui-sref="organization.manage.member({ id: member._id })" member="member" href="/geekout/community/members/"></a><!-- ngIf: team && member && !hideTeam --><!-- ngIf: !hideTeam --><a ui-sref="organization.manage.team({ team: team._id })" class="dark-link ng-binding ng-isolate-scope" ng-if="!hideTeam" team="team" href="/geekout/community/teams/571a5c570d5ad7c46ec5fbf6">Bit Brothers</a><!-- end ngIf: !hideTeam -->
+                </span>
+              </td>
+              <!-- end ngIf: !team && !member -->
+              <td class="payment-status ng-binding overdue" ng-class="getClassFromStatus(p.status)">
+                Overdue
+              </td>
+              <td class="ng-binding">May 5, 2016</td>
+              <td class="ng-binding">May 7, 2016</td>
+              <td class="ng-binding">May 7, 2016 - Jun 6, 2016</td>
+              <td class="ng-binding">₹100.00</td>
+              <td class="ng-binding"></td>
+            </tr>
+            <!-- end ngRepeat: p in payments | invoiceFilter: search | rndSort: paymentsSort -->
+          </tbody>
+        </table>
+        <!-- end ngIf: payments.length > 0 -->
+      </div>
+    </div>
+  </div>
+</div>
