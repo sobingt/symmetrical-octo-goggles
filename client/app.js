@@ -46,21 +46,66 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
           }
         }
       })
-      .state('app.organization.community.teams', {
-        url: '/teams',
-        views: {
-          'content': {
-            controller: 'HomeCtrl',
-            templateUrl: 'views/community/teams.html'
-          }
-        }
-      })
       .state('app.organization.community.members', {
         url: '/members',
         views: {
-          'content': {
+          'content@app.organization.community': {
             controller: 'HomeCtrl',
             templateUrl: 'views/community/members.html'
+          }
+        }
+      })
+      .state('app.organization.community.leads', {
+        url: '/leads',
+        views: {
+          'content@app.organization.community': {
+            controller: 'HomeCtrl',
+            templateUrl: 'views/community/leads.html'
+          }
+        }
+      })
+      .state('app.organization.community.contacts', {
+        url: '/contacts',
+        views: {
+          'content@app.organization.community': {
+            controller: 'HomeCtrl',
+            templateUrl: 'views/community/contacts.html'
+          }
+        }
+      })
+      .state('app.organization.community.memberships', {
+        url: '/memberships',
+        views: {
+          'content@app.organization.community': {
+            controller: 'HomeCtrl',
+            templateUrl: 'views/community/memberships.html'
+          }
+        }
+      })
+      .state('app.organization.community.former', {
+        url: '/former',
+        views: {
+          'content@app.organization.community': {
+            controller: 'HomeCtrl',
+            templateUrl: 'views/community/former.html'
+          }
+        }
+      })
+      .state('app.organization.community.benefits', {
+        url: '/benefits',
+        views: {
+          'content@app.organization.community': {
+            controller: 'HomeCtrl',
+            templateUrl: 'views/community/benefits.html'
+          }
+        }
+      })
+      .state('app.organization.community.checkins', {
+        url: '/checkins',
+        views: {
+          'content@app.organization.community': {
+            controller: 'HomeCtrl',
+            templateUrl: 'views/community/checkins.html'
           }
         }
       })
@@ -122,7 +167,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
       .state('app.organization.settings.admin', {
         url: '/admin',
         views: {
-          'content': {
+          'content@app.organization.settings': {
             controller: 'HomeCtrl',
             templateUrl: 'views/settings/admin.html'
           }
@@ -131,7 +176,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
       .state('app.organization.settings.integrations', {
         url: '/integrations',
         views: {
-          'content': {
+          'content@app.organization.settings': {
             controller: 'HomeCtrl',
             templateUrl: 'views/settings/integrations.html'
           }
@@ -140,7 +185,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
       .state('app.organization.settings.templates', {
         url: '/templates',
         views: {
-          'content': {
+          'content@app.organization.settings': {
             controller: 'HomeCtrl',
             templateUrl: 'views/settings/templates.html'
           }
@@ -149,7 +194,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
       .state('app.organization.settings.community', {
         url: '/community',
         views: {
-          'content': {
+          'content@app.organization.settings': {
             controller: 'HomeCtrl',
             templateUrl: 'views/settings/community.html'
           }
@@ -158,7 +203,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
       .state('app.organization.settings.billing', {
         url: '/billing',
         views: {
-          'content': {
+          'content@app.organization.settings': {
             controller: 'HomeCtrl',
             templateUrl: 'views/settings/billing.html'
           }
@@ -167,7 +212,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
       .state('app.organization.settings.space', {
         url: '/space',
         views: {
-          'content': {
+          'content@app.organization.settings': {
             controller: 'HomeCtrl',
             templateUrl: 'views/settings/space.html'
           }
@@ -176,7 +221,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
       .state('app.organization.settings.calendar', {
         url: '/calendar',
         views: {
-          'content': {
+          'content@app.organization.settings': {
             controller: 'HomeCtrl',
             templateUrl: 'views/settings/calendar.html'
           }
@@ -185,7 +230,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
       .state('app.organization.settings.portal', {
         url: '/portal',
         views: {
-          'content': {
+          'content@app.organization.settings': {
             controller: 'HomeCtrl',
             templateUrl: 'views/settings/portal.html'
           }

@@ -1,0 +1,83 @@
+
+<div class="ng-scope">
+  <div class="col-sm-6 search-section ng-isolate-scope" model="search.name">
+    <label for="search-input"><i class="fa fa-search"></i></label>
+    <input id="search-input" type="search" class="form-control inline-search ng-pristine ng-valid ng-touched" ng-model="model" placeholder="Search">
+    <!-- ngIf: model -->
+  </div>
+  <button class="btn btn-primary" ng-click="addContact()">Add contact</button>
+  <button class="btn btn-primary" ng-disabled="!enableExportButton" ng-click="exportContacts()">Export</button>
+</div>
+<!-- ngIf: allContacts && allContacts.length > 0 -->
+<div class="rnd-container contacts ng-scope">
+  <div class="rnd-filter-tabs-panel">
+    <label>Contacts</label>
+    <a ng-click="setSearch({ })"  class="active">
+    <span class="filter-label">All</span>
+    <strong class="ng-binding">6</strong>
+    </a>
+    <a ng-click="setSearch({ teams: true })">
+    <span class="filter-label">Companies</span>
+    <strong class="ng-binding">2</strong>
+    </a>
+    <a ng-click="setSearch({ members: true })">
+    <span class="filter-label">Members</span>
+    <strong class="ng-binding">4</strong>
+    </a>
+    <a ng-click="setSearch({ leads: true })">
+    <span class="filter-label">Leads</span>
+    <strong class="ng-binding">0</strong>
+    </a>
+  </div>
+  <table class="table ng-isolate-scope" rnd-sortable="contactsSort">
+    <thead>
+      <tr>
+        <th>
+          <input type="checkbox" ng-model="$parent.isSelected" class="ng-pristine ng-untouched ng-valid">
+          <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="name">
+            <ng-transclude><span class="ng-binding ng-scope"> Name</span></ng-transclude>
+            <!-- ngIf: isSortedBy() -->
+          </span>
+        </th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Social</th>
+      </tr>
+    </thead>
+    <tbody ng-init="membersLimit = 20" infinite-scroll="membersLimit = membersLimit + 6" infinite-scroll-distance="1">
+      <!-- ngRepeat: contact in allContacts | contactFilter: search | rndSort: contactsSort | limitTo: membersLimit -->
+      <tr ng-repeat="" class="ng-scope">
+        <td>
+          <input class="align-top ng-pristine ng-untouched ng-valid" type="checkbox" ng-change="showExportButton()">
+          <!-- ngIf: !contact.isTeam -->
+          <div class="image-table ng-scope" ng-if="">
+            <div class="profile-sm image-cell user-avatar ng-isolate-scope" item="contact">
+              <!-- ngIf: image --><img ng-if="image" ng-src="//www.gravatar.com/avatar/f7c0e4be1153703370a0537462b2af56?s=263&amp;d=mm" on-error="removeImage()" class="ng-scope" src="//www.gravatar.com/avatar/f7c0e4be1153703370a0537462b2af56?s=263&amp;d=mm"><!-- end ngIf: image -->
+              <!-- ngIf: !image -->
+            </div>
+            <div class="info-cell">
+              <a class="member-name dark-link ng-binding ng-isolate-scope" ui-sref="" member="contact" href=""></a>
+              <p class="member-email"><a ui-sref="" class="dark-link ng-binding" href=""></a></p>
+            </div>
+          </div>
+          <!-- end ngIf: !contact.isTeam -->
+          <!-- ngIf: contact.isTeam -->
+        </td>
+        <td class="ng-binding">
+        </td>
+        <td class="ng-binding">
+          -
+        </td>
+        <td>
+          <div class="social-profiles ng-isolate-scope" profiles="">
+            <!-- ngRepeat: profile in profiles | filter: essentialFilter -->
+          </div>
+        </td>
+      </tr>
+      <!-- end ngRepeat: contact in allContacts | contactFilter: search | rndSort: contactsSort | limitTo: membersLimit -->
+    </tbody>
+  </table>
+</div>
+<!-- end ngIf: allContacts && allContacts.length > 0 -->
+<!-- ngIf: allContacts && allContacts.length === 0 -->
+<!-- ngIf: !allContacts -->

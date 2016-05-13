@@ -1,0 +1,160 @@
+<div class="ng-scope">
+   <h4 class="rnd-title" title="Community Portal">Community Portal</h4>
+   <div class="rnd-container">
+      <form role="form" class="form-horizontal ng-valid ng-dirty ng-valid-parse">
+         <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-6">
+               <div class="checkbox">
+                  <label>
+                  <input type="checkbox" ng-model="community.enabled" class="ng-valid ng-dirty ng-valid-parse ng-touched"> Community Portal
+                  </label>
+               </div>
+               <small class="text-muted">
+               Enable to allow your members to login to OfficeR&amp;D - book meeting rooms, receive notifications and
+               etc.
+               </small>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+         <!-- ngIf: community.enabled -->
+         <div class="form-group ng-scope" ng-if="community.enabled">
+            <label class="col-sm-3 control-label">Url</label>
+            <div class="col-sm-6">
+               <input readonly="" type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="fullUrl">
+            </div>
+            <a class="col-sm-3 control-link" ng-href="" target="_blank" href="">Open</a>
+         </div>
+         <div class="clearfix"></div>
+         <!-- end ngIf: community.enabled -->
+         <!-- ngIf: community.enabled -->
+         <div class="form-group ng-scope" ng-if="community.enabled">
+            <div class="col-sm-offset-3 col-sm-6">
+               <div class="checkbox">
+                  <label>
+                  <input type="checkbox" ng-model="community.signup" class="ng-pristine ng-untouched ng-valid"> Member Signup
+                  </label>
+               </div>
+               <small class="text-muted">
+               Enable new members sign up from the community portal.
+               </small>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+         <!-- end ngIf: community.enabled -->
+         <!-- ngIf: community.enabled -->
+         <div class="form-group ng-scope" ng-if="community.enabled">
+            <div class="col-sm-offset-3 col-sm-6">
+               <div class="checkbox">
+                  <label>
+                  <input type="checkbox" ng-model="community.addPlans" class="ng-pristine ng-untouched ng-valid"> Member Add plans
+                  </label>
+               </div>
+               <small class="text-muted">
+               Enable members to add plans themselves from the community portal.
+               </small>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+         <!-- end ngIf: community.enabled -->
+         <div class="form-group" ng-show="community.enabled">
+            <label class="col-sm-3 control-label">Theme</label>
+            <div class="col-sm-6">
+               <div kendo-color-palette="" k-palette="palette" ng-model="pickedColor" class="ng-pristine ng-untouched ng-valid k-widget k-colorpalette" data-role="colorpalette" role="grid" aria-readonly="true" tabindex="0" aria-activedescendant="56c4b86e-8be8-42b4-a90b-394a7aac9448_selected">
+                  <table class="k-palette k-reset" role="presentation">
+                     <tbody>
+                        <tr role="row">
+                           <td role="gridcell" unselectable="on" style="background-color:#f44336" class="k-item" aria-label="#f44336"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#e91e63" class="k-item" aria-label="#e91e63"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#9c27b0" class="k-item" aria-label="#9c27b0"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#673ab7" class="k-item" aria-label="#673ab7"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#3f51b5" class="k-item k-state-selected" aria-label="#3f51b5" aria-selected="true" id="56c4b86e-8be8-42b4-a90b-394a7aac9448_selected"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#2196f3" class="k-item" aria-label="#2196f3"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#03a9f4" class="k-item" aria-label="#03a9f4"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#00bcd4" class="k-item" aria-label="#00bcd4"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#009688" class="k-item" aria-label="#009688"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#4caf50" class="k-item" aria-label="#4caf50"></td>
+                        </tr>
+                        <tr role="row">
+                           <td role="gridcell" unselectable="on" style="background-color:#8bc34a" class="k-item" aria-label="#8bc34a"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#cddc39" class="k-item" aria-label="#cddc39"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#ffeb3b" class="k-item" aria-label="#ffeb3b"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#ffc107" class="k-item" aria-label="#ffc107"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#ff9800" class="k-item" aria-label="#ff9800"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#ff5722" class="k-item" aria-label="#ff5722"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#795548" class="k-item" aria-label="#795548"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#9e9e9e" class="k-item" aria-label="#9e9e9e"></td>
+                           <td role="gridcell" unselectable="on" style="background-color:#607d8b" class="k-item" aria-label="#607d8b"></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <small class="text-muted">
+               Choose primary color for the community portal theme.
+               </small>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+         <div class="form-group" ng-show="community.enabled">
+            <label class="col-sm-3 control-label">Order Summary Disclaimer</label>
+            <div class="col-sm-9">
+               <table cellspacing="4" cellpadding="0" class="k-widget k-editor k-header k-editor-widget" role="presentation">
+                  <tbody>
+                     <tr role="presentation">
+                        <td class="k-editor-toolbar-wrap" role="presentation">
+                           <ul class="k-editor-toolbar ng-scope" role="toolbar" aria-controls="benefit-content" data-role="editortoolbar">
+                              <li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="Bold" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-bold"></span><span class="k-tool-text">Bold</span></a><a href="" role="button" class="k-tool" unselectable="on" title="Italic" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-italic"></span><span class="k-tool-text">Italic</span></a><a href="" role="button" class="k-tool" unselectable="on" title="Underline" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-underline"></span><span class="k-tool-text">Underline</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Strikethrough" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-strikethrough"></span><span class="k-tool-text">Strikethrough</span></a></li>
+                              <li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="Align text left" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-justifyLeft"></span><span class="k-tool-text">Align text left</span></a><a href="" role="button" class="k-tool" unselectable="on" title="Center text" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-justifyCenter"></span><span class="k-tool-text">Center text</span></a><a href="" role="button" class="k-tool" unselectable="on" title="Align text right" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-justifyRight"></span><span class="k-tool-text">Align text right</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Justify" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-justifyFull"></span><span class="k-tool-text">Justify</span></a></li>
+                              <li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="Insert unordered list" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-insertUnorderedList"></span><span class="k-tool-text">Insert unordered list</span></a><a href="" role="button" class="k-tool" unselectable="on" title="Insert ordered list" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-insertOrderedList"></span><span class="k-tool-text">Insert ordered list</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Indent"><span unselectable="on" class="k-tool-icon k-indent"></span><span class="k-tool-text">Indent</span></a><a href="" role="button" class="k-tool k-group-end k-state-disabled" unselectable="on" title="Outdent"><span unselectable="on" class="k-tool-icon k-outdent"></span><span class="k-tool-text">Outdent</span></a></li>
+                              <li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start k-group-end" unselectable="on" title="Insert hyperlink"><span unselectable="on" class="k-tool-icon k-createLink"></span><span class="k-tool-text">Insert hyperlink</span></a><a href="" role="button" class="k-tool k-group-end k-state-disabled" unselectable="on" title="Remove hyperlink"><span unselectable="on" class="k-tool-icon k-unlink"></span><span class="k-tool-text">Remove hyperlink</span></a></li>
+                              <li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="Subscript" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-subscript"></span><span class="k-tool-text">Subscript</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Superscript" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-superscript"></span><span class="k-tool-text">Superscript</span></a></li>
+                              <li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="View HTML"><span unselectable="on" class="k-tool-icon k-viewHtml"></span><span class="k-tool-text">View HTML</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Clean formatting"><span unselectable="on" class="k-tool-icon k-cleanFormatting"></span><span class="k-tool-text">Clean formatting</span></a></li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="k-editable-area"><iframe title="Editable area. Press F10 for toolbar." frameborder="0" class="k-content" src='javascript:""'></iframe><textarea kendo-editor="" k-tools="['bold', 'italic', 'underline', 'strikethrough', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'insertUnorderedList', 'insertOrderedList', 'indent', 'outdent', 'createLink', 'unlink', 'subscript', 'superscript', 'viewHtml', 'cleanFormatting']" class="form-control k-content k-raw-content" k-ng-model="community.orderSummaryDisclaimer" rows="10" id="benefit-content" placeholder="Content" data-role="editor" autocomplete="off" style="display: none;">                    </textarea></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <small class="text-muted">
+               Write a disclaimer which will be shown on the bottom of Order Summary section in the Sign-up page of your Community Portal.
+               </small>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+         <div class="form-group" ng-show="community.enabled">
+            <label class="col-sm-3 control-label">Background image</label>
+            <div class="col-sm-6">
+               <image-upload image-url="community.backgroundImage" target="" default-icon="fa-building-o" class="ng-isolate-scope">
+                  <div class="image-upload">
+                     <div class="user-avatar profile-lg inline image-picker">
+                        <!-- ngIf: imageUrl -->
+                        <!-- ngIf: !imageUrl -->
+                        <div ng-if="!imageUrl" class="image-replace ng-scope">
+                           <i class="fa fa-building-o" ng-class="defaultIcon"></i>
+                        </div>
+                        <!-- end ngIf: !imageUrl -->
+                        <button type="button" class="btn btn-primary" ng-disabled="uploading" ng-click="chooseImage()">
+                           <!-- ngIf: uploading -->
+                           <!-- ngIf: !uploading && imageUrl -->
+                           <!-- ngIf: !uploading && !imageUrl --><span ng-if="!uploading &amp;&amp; !imageUrl" class="ng-scope">Upload</span><!-- end ngIf: !uploading && !imageUrl -->
+                        </button>
+                     </div>
+                     <input type="file" id="upload-image" class="hidden-upload ng-isolate-scope" file-picked="uploadImg($file)" accept="image/*">
+                  </div>
+               </image-upload>
+               <small class="text-muted">
+               Choose background image for the community portal's login and signup pages.
+               </small>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+         <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-6">
+               <button type="button" class="btn btn-primary" ng-click="updateOrgPortal()">Update</button>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+      </form>
+   </div>
+</div>

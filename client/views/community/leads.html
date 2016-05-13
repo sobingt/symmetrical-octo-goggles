@@ -1,0 +1,21 @@
+<div class="ng-scope">
+  <div class="col-sm-6 search-section ng-isolate-scope" model="search.name">
+    <label for="search-input"><i class="fa fa-search"></i></label>
+    <input id="search-input" type="search" class="form-control inline-search ng-pristine ng-valid ng-touched" ng-model="model" placeholder="Search">
+    <!-- ngIf: model -->
+  </div>
+  <button class="btn btn-primary" ng-click="addLead()">Add lead</button>
+  <!-- ngIf: offices.length>1 -->
+</div>
+<!-- ngIf: leads && leads.length > 0 -->
+<!-- ngIf: leads && leads.length === 0 -->
+<div class="empty-section ng-isolate-scope" ng-if="" header="Add lead" help="It looks you don't have any leads.">
+  <!-- ngIf: header -->
+  <h3 ng-if="" class="ng-scope">
+    <a class="arrow-link ng-binding" ng-click="command()">Add lead</a>
+  </h3>
+  <!-- end ngIf: header -->
+  <p class="text-muted ng-binding">It looks you don't have any leads.</p>
+</div>
+<!-- end ngIf: leads && leads.length === 0 -->
+<!-- ngIf: !leads -->

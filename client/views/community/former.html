@@ -1,0 +1,41 @@
+
+<div class="row ng-scope">
+  <div class="col-sm-6 search-section ng-isolate-scope" model="search.name">
+    <label for="search-input"><i class="fa fa-search"></i></label>
+    <input id="search-input" type="search" class="form-control inline-search ng-pristine ng-untouched ng-valid" ng-model="model" placeholder="Search">
+    <!-- ngIf: model -->
+  </div>
+</div>
+<!-- ngIf: former && former.length > 0 -->
+<div class="rnd-container contacts ng-scope">
+  <div class="rnd-filter-tabs-panel">
+    <label>Former</label>
+    <a ng-click="setSearch({ teams: true })" ng-class="{ active: search.teams }" class="active">
+    <span class="filter-label">Companies</span>
+    </a>
+    <a ng-click="setSearch({ members: true })" ng-class="{ active: search.members }" class="">
+    <span class="filter-label">Members</span>
+    </a>
+  </div>
+  <table class="table ng-isolate-scope" rnd-sortable="contactsSort">
+    <thead>
+      <tr>
+        <th>
+          <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="name">
+            <ng-transclude><span class="ng-binding ng-scope"> Name</span></ng-transclude>
+            <!-- ngIf: isSortedBy() -->
+          </span>
+        </th>
+        <th>Email</th>
+        <!-- ngIf: showPhoneNumber -->
+        <th>Social</th>
+      </tr>
+    </thead>
+    <tbody ng-init="limit = 20" infinite-scroll="limit = limit + 6" infinite-scroll-distance="1">
+      <!-- ngRepeat: contact in former | contactFilter: search | rndSort: contactsSort | limitTo: limit -->
+    </tbody>
+  </table>
+</div>
+<!-- end ngIf: former && former.length > 0 -->
+<!-- ngIf: former && former.length === 0 -->
+<!-- ngIf: !former -->

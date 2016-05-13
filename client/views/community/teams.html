@@ -1,217 +1,128 @@
-<div ui-view="">
-   <div>
-      <section class="search-section ng-isolate-scope" model="search.name">
-         <label for="search-input"><i class="fa fa-search"></i></label>
-         <input id="search-input" type="search" class="form-control inline-search ng-pristine ng-untouched ng-valid" ng-model="model" placeholder="Search">
-         <!-- ngIf: model -->
-      </section>
-      <button class="btn btn-primary" ng-click="addMember()">Add member</button>
-      <button class="btn btn-primary" ng-click="exportMembers()">Export</button>
-      <!-- ngIf: offices.length>1 -->
-   </div>
-   <!-- ngIf: membersModel && membersModel.items.length > 0 -->
-   <div class="rnd-container ng-scope" ng-if="membersModel &amp;&amp; membersModel.items.length > 0">
-      <table class="table ng-isolate-scope" rnd-sortable="membersSort" sortable-default="name" default-sort="name" ng-init="membersLimit = 20" infinite-scroll="membersLimit = membersLimit + 6" infinite-scroll-distance="1">
-         <thead>
-            <tr>
-               <th>
-                  <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="name">
-                     <ng-transclude><span class="ng-scope">Name</span></ng-transclude>
-                     <!-- ngIf: isSortedBy() --><i ng-if="isSortedBy()" class="fa ng-scope fa-sort-asc" ng-class="{ 'fa-sort-asc': !sort.sortDirection, 'fa-sort-desc': sort.sortDirection }"></i><!-- end ngIf: isSortedBy() -->
-                  </span>
-               </th>
-               <th>
-                  <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="info.teamName">
-                     <ng-transclude><span class="ng-binding ng-scope">Company</span></ng-transclude>
-                     <!-- ngIf: isSortedBy() -->
-                  </span>
-               </th>
-               <th>
-                  <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="info.status">
-                     <ng-transclude><span class="ng-scope">Status</span></ng-transclude>
-                     <!-- ngIf: isSortedBy() -->
-                  </span>
-               </th>
-               <!-- ngIf: settings.billing.enabled -->
-               <th ng-if="settings.billing.enabled" class="ng-scope">Plan</th>
-               <!-- end ngIf: settings.billing.enabled -->
-               <th>
-                  <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="info.membership.startDate">
-                     <ng-transclude><span class="ng-scope">Period</span></ng-transclude>
-                     <!-- ngIf: isSortedBy() -->
-                  </span>
-               </th>
-               <th>Location</th>
-            </tr>
-         </thead>
-         <tbody>
-            <!-- ngRepeat: mem in members | memberFilter: search | rndSort: membersSort | limitTo: membersLimit -->
-            <tr ng-repeat="mem in members | memberFilter: search | rndSort: membersSort | limitTo: membersLimit" class="ng-scope">
-               <td hover-action="" action="editMember(mem)" icon="pencil" class="ng-isolate-scope">
-                  <div class="image-table ng-isolate-scope" contact="mem">
-                     <div class="profile-sm image-cell user-avatar ng-isolate-scope" item="contact">
-                        <!-- ngIf: image --><img ng-if="image" ng-src="//www.gravatar.com/avatar/42fdb3a097087e051cfbf3c9a184d3e1?s=263&amp;d=mm" on-error="removeImage()" class="ng-scope" src="//www.gravatar.com/avatar/42fdb3a097087e051cfbf3c9a184d3e1?s=263&amp;d=mm"><!-- end ngIf: image -->
-                        <!-- ngIf: !image -->
-                     </div>
-                     <div class="info-cell">
-                        <!-- ngIf: showLink --><a class="dark-link ng-binding ng-isolate-scope" ui-sref="organization.manage.member({ id: member._id })" ng-if="showLink" member="contact" href="/geekout/community/members/57343f0906a8709b598104f8">Darshan</a><!-- end ngIf: showLink -->
-                        <!-- ngIf: !showLink -->
-                        <p class="member-email ng-binding">darshansapaliga009@gmail.com</p>
-                     </div>
-                  </div>
-               </td>
-               <td>
-                  <a ui-sref="organization.manage.team({ team: mem.team })" class="dark-link ng-binding" href="/geekout/community/teams/5719deb80d5ad7c46ec5fbd5">Geekout</a>
-               </td>
-               <td><span class="member-info-value member-status ng-binding contact" ng-class="mem.info.status">Contact</span>
-               </td>
-               <!-- ngIf: settings.billing.enabled -->
-               <td ng-if="settings.billing.enabled" class="ng-scope">
-                  <expand-plan membership="mem.info.membership" price="true" class="ng-isolate-scope">
-                     <!-- ngIf: formatedPlan -->
-                     <!-- ngIf: !formatedPlan --><em ng-if="!formatedPlan" class="ng-scope">-</em><!-- end ngIf: !formatedPlan -->
-                     <!-- ngIf: menu && membership -->
-                  </expand-plan>
-               </td>
-               <!-- end ngIf: settings.billing.enabled -->
-               <td><span class="membership-period ng-binding">-</span></td>
-               <td>
-                  <span resource="mem.info.membership.resource" office="mem.info.membership.office" class="ng-isolate-scope">
-                     <!-- ngIf: location && location.resource && !team -->
-                     <!-- ngIf: location && location.resource && team -->
-                     <!-- ngIf: location && !location.resource -->
-                     <!-- ngIf: !location --><span class="empty-location ng-binding ng-scope" ng-if="!location"></span><!-- end ngIf: !location -->
-                  </span>
-               </td>
-            </tr>
-            <!-- end ngRepeat: mem in members | memberFilter: search | rndSort: membersSort | limitTo: membersLimit -->
-            <tr ng-repeat="mem in members | memberFilter: search | rndSort: membersSort | limitTo: membersLimit" class="ng-scope">
-               <td hover-action="" action="editMember(mem)" icon="pencil" class="ng-isolate-scope">
-                  <div class="image-table ng-isolate-scope" contact="mem">
-                     <div class="profile-sm image-cell user-avatar ng-isolate-scope" item="contact">
-                        <!-- ngIf: image --><img ng-if="image" ng-src="//www.gravatar.com/avatar/1e8788baa37fb035e74c5095f3581fca?s=263&amp;d=mm" on-error="removeImage()" class="ng-scope" src="//www.gravatar.com/avatar/1e8788baa37fb035e74c5095f3581fca?s=263&amp;d=mm"><!-- end ngIf: image -->
-                        <!-- ngIf: !image -->
-                     </div>
-                     <div class="info-cell">
-                        <!-- ngIf: showLink --><a class="dark-link ng-binding ng-isolate-scope" ui-sref="organization.manage.member({ id: member._id })" ng-if="showLink" member="contact" href="/geekout/community/members/571a640c0d5ad7c46ec5fbfc">Karthik David</a><!-- end ngIf: showLink -->
-                        <!-- ngIf: !showLink -->
-                        <p class="member-email ng-binding">born.as.jackal@gmail.com</p>
-                     </div>
-                  </div>
-               </td>
-               <td>
-                  <a ui-sref="organization.manage.team({ team: mem.team })" class="dark-link ng-binding" href="/geekout/community/teams/"></a>
-               </td>
-               <td><span class="member-info-value member-status ng-binding draft" ng-class="mem.info.status">Draft</span>
-               </td>
-               <!-- ngIf: settings.billing.enabled -->
-               <td ng-if="settings.billing.enabled" class="ng-scope">
-                  <expand-plan membership="mem.info.membership" price="true" class="ng-isolate-scope">
-                     <!-- ngIf: formatedPlan -->
-                     <!-- ngIf: !formatedPlan --><em ng-if="!formatedPlan" class="ng-scope">-</em><!-- end ngIf: !formatedPlan -->
-                     <!-- ngIf: menu && membership -->
-                  </expand-plan>
-               </td>
-               <!-- end ngIf: settings.billing.enabled -->
-               <td><span class="membership-period ng-binding">-</span></td>
-               <td>
-                  <span resource="mem.info.membership.resource" office="mem.info.membership.office" class="ng-isolate-scope">
-                     <!-- ngIf: location && location.resource && !team -->
-                     <!-- ngIf: location && location.resource && team -->
-                     <!-- ngIf: location && !location.resource -->
-                     <!-- ngIf: !location --><span class="empty-location ng-binding ng-scope" ng-if="!location"></span><!-- end ngIf: !location -->
-                  </span>
-               </td>
-            </tr>
-            <!-- end ngRepeat: mem in members | memberFilter: search | rndSort: membersSort | limitTo: membersLimit -->
-            <tr ng-repeat="mem in members | memberFilter: search | rndSort: membersSort | limitTo: membersLimit" class="ng-scope">
-               <td hover-action="" action="editMember(mem)" icon="pencil" class="ng-isolate-scope">
-                  <div class="image-table ng-isolate-scope" contact="mem">
-                     <div class="profile-sm image-cell user-avatar ng-isolate-scope" item="contact">
-                        <!-- ngIf: image --><img ng-if="image" ng-src="//www.gravatar.com/avatar/f7c0e4be1153703370a0537462b2af56?s=263&amp;d=mm" on-error="removeImage()" class="ng-scope" src="//www.gravatar.com/avatar/f7c0e4be1153703370a0537462b2af56?s=263&amp;d=mm"><!-- end ngIf: image -->
-                        <!-- ngIf: !image -->
-                     </div>
-                     <div class="info-cell">
-                        <!-- ngIf: showLink --><a class="dark-link ng-binding ng-isolate-scope" ui-sref="organization.manage.member({ id: member._id })" ng-if="showLink" member="contact" href="/geekout/community/members/5719deb80d5ad7c46ec5fbd6">Sobin George Thomas</a><!-- end ngIf: showLink -->
-                        <!-- ngIf: !showLink -->
-                        <p class="member-email ng-binding">sobingt@gmail.com</p>
-                     </div>
-                  </div>
-               </td>
-               <td>
-                  <a ui-sref="organization.manage.team({ team: mem.team })" class="dark-link ng-binding" href="/geekout/community/teams/5719deb80d5ad7c46ec5fbd5">Geekout</a>
-               </td>
-               <td><span class="member-info-value member-status ng-binding contact" ng-class="mem.info.status">Contact</span>
-               </td>
-               <!-- ngIf: settings.billing.enabled -->
-               <td ng-if="settings.billing.enabled" class="ng-scope">
-                  <expand-plan membership="mem.info.membership" price="true" class="ng-isolate-scope">
-                     <!-- ngIf: formatedPlan -->
-                     <!-- ngIf: !formatedPlan --><em ng-if="!formatedPlan" class="ng-scope">-</em><!-- end ngIf: !formatedPlan -->
-                     <!-- ngIf: menu && membership -->
-                  </expand-plan>
-               </td>
-               <!-- end ngIf: settings.billing.enabled -->
-               <td><span class="membership-period ng-binding">-</span></td>
-               <td>
-                  <span resource="mem.info.membership.resource" office="mem.info.membership.office" class="ng-isolate-scope">
-                     <!-- ngIf: location && location.resource && !team -->
-                     <!-- ngIf: location && location.resource && team -->
-                     <!-- ngIf: location && !location.resource -->
-                     <!-- ngIf: !location --><span class="empty-location ng-binding ng-scope" ng-if="!location"></span><!-- end ngIf: !location -->
-                  </span>
-               </td>
-            </tr>
-            <!-- end ngRepeat: mem in members | memberFilter: search | rndSort: membersSort | limitTo: membersLimit -->
-            <tr ng-repeat="mem in members | memberFilter: search | rndSort: membersSort | limitTo: membersLimit" class="ng-scope">
-               <td hover-action="" action="editMember(mem)" icon="pencil" class="ng-isolate-scope">
-                  <div class="image-table ng-isolate-scope" contact="mem">
-                     <div class="profile-sm image-cell user-avatar ng-isolate-scope" item="contact">
-                        <!-- ngIf: image --><img ng-if="image" ng-src="//www.gravatar.com/avatar/afb0cccfa047d219ba6eef98193a1281?s=263&amp;d=mm" on-error="removeImage()" class="ng-scope" src="//www.gravatar.com/avatar/afb0cccfa047d219ba6eef98193a1281?s=263&amp;d=mm"><!-- end ngIf: image -->
-                        <!-- ngIf: !image -->
-                     </div>
-                     <div class="info-cell">
-                        <!-- ngIf: showLink --><a class="dark-link ng-binding ng-isolate-scope" ui-sref="organization.manage.member({ id: member._id })" ng-if="showLink" member="contact" href="/geekout/community/members/571a5c840d5ad7c46ec5fbf7">Sobin Thomas</a><!-- end ngIf: showLink -->
-                        <!-- ngIf: !showLink -->
-                        <p class="member-email ng-binding">sobingt@bitbrothers.in</p>
-                     </div>
-                  </div>
-               </td>
-               <td>
-                  <a ui-sref="organization.manage.team({ team: mem.team })" class="dark-link ng-binding" href="/geekout/community/teams/571a5c570d5ad7c46ec5fbf6">Bit Brothers</a>
-               </td>
-               <td><span class="member-info-value member-status ng-binding active" ng-class="mem.info.status">Active</span>
-               </td>
-               <!-- ngIf: settings.billing.enabled -->
-               <td ng-if="settings.billing.enabled" class="ng-scope">
-                  <expand-plan membership="mem.info.membership" price="true" class="ng-isolate-scope">
-                     <!-- ngIf: formatedPlan -->
-                     <span ng-if="formatedPlan" ng-class="{'terminated-plan': terminated}" class="ng-binding ng-scope">
-                        <!-- ngIf: !noColor -->
-                        <div class="color-box ng-scope ng-isolate-scope" ng-if="!noColor" color="planColor" style="background-color: rgb(245, 136, 112);"></div>
-                        <!-- end ngIf: !noColor -->₹100.00
-                     </span>
-                     <!-- end ngIf: formatedPlan -->
-                     <!-- ngIf: !formatedPlan -->
-                     <!-- ngIf: menu && membership -->
-                  </expand-plan>
-               </td>
-               <!-- end ngIf: settings.billing.enabled -->
-               <td><span class="membership-period ng-binding">Apr 26, 2016 - </span></td>
-               <td>
-                  <span resource="mem.info.membership.resource" office="mem.info.membership.office" class="ng-isolate-scope">
-                     <!-- ngIf: location && location.resource && !team -->
-                     <!-- ngIf: location && location.resource && team -->
-                     <!-- ngIf: location && !location.resource -->
-                     <!-- ngIf: !location --><span class="empty-location ng-binding ng-scope" ng-if="!location"></span><!-- end ngIf: !location -->
-                  </span>
-               </td>
-            </tr>
-            <!-- end ngRepeat: mem in members | memberFilter: search | rndSort: membersSort | limitTo: membersLimit -->
-         </tbody>
-      </table>
-   </div>
-   <!-- end ngIf: membersModel && membersModel.items.length > 0 -->
-   <!-- ngIf: membersModel && membersModel.items.length === 0 -->
-   <!-- ngIf: !membersModel -->
+
+<div class="ng-scope">
+  <div class="col-sm-3 search-section">
+    <label for="search-input">
+      <i class="fa fa-search"></i>
+    </label>
+    <input id="search-input" type="search" class="form-control inline-search ng-pristine ng-untouched ng-valid" placeholder="Search">
+    <!-- ngIf: model -->
+  </div>
+    <button class="btn btn-primary ng-binding" ng-click="addTeam()">Add company</button>
+    <button class="btn btn-primary" ng-click="exportTeams()">Export</button>
+  <!-- ngIf: offices.length>1 -->
 </div>
+<!-- ngIf: teams && teams.length > 0 -->
+<div class="rnd-container ng-scope">
+  <table class="table ng-isolate-scope" infinite-scroll="limit = limit + 6" infinite-scroll-distance="1" rnd-sortable="teamsSort" sortable-default="name">
+    <thead>
+      <tr>
+        <th>
+          <span class="sortable-header ng-isolate-scope">
+            <ng-transclude><span class="ng-scope">Name</span></ng-transclude>
+            <!-- ngIf: isSortedBy() --><i ng-if="isSortedBy()" class="fa ng-scope fa-sort-asc"></i><!-- end ngIf: isSortedBy() -->
+          </span>
+        </th>
+        <th>
+          <span class="sortable-header ng-isolate-scope">
+            <ng-transclude><span class="ng-scope">Status</span></ng-transclude>
+            <!-- ngIf: isSortedBy() -->
+          </span>
+        </th>
+        <th>
+          <span class="sortable-header ng-isolate-scope" >
+            <ng-transclude><span class="ng-scope">Members</span></ng-transclude>
+            <!-- ngIf: isSortedBy() -->
+          </span>
+        </th>
+        <th>
+          <span class="sortable-header ng-isolate-scope">
+            <ng-transclude><span class="ng-scope">Plans</span></ng-transclude>
+            <!-- ngIf: isSortedBy() -->
+          </span>
+        </th>
+        <th title="Monthly Recurring Revenue">
+          <span class="sortable-header ng-isolate-scope">
+            <ng-transclude><span class="ng-scope">MRR</span></ng-transclude>
+            <!-- ngIf: isSortedBy() -->
+          </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- ngRepeat: team in teams | teamFilter:search | rndSort: teamsSort | limitTo: limit -->
+      <tr ng-repeat="team in teams | teamFilter:search | rndSort: teamsSort | limitTo: limit" class="ng-scope">
+        <td hover-action="" action="editTeam(team)" icon="pencil" class="ng-isolate-scope">
+          <div class="image-table">
+            <div class="profile-sm image-cell user-avatar ng-isolate-scope" item="team" icon="'fa-building-o'">
+              <!-- ngIf: image -->
+              <!-- ngIf: !image -->
+              <div ng-if="!image" class="image-replace ng-scope">
+                <i class="fa fa-building-o" ng-class="icon"></i>
+              </div>
+              <!-- end ngIf: !image -->
+            </div>
+            <div class="info-cell">
+              <a ui-sref="organization.manage.team({ team: team._id })" class="dark-link ng-binding ng-isolate-scope" team="team" href="/geekout/community/teams/571a5c570d5ad7c46ec5fbf6">Bit Brothers</a>
+              <p class="member-email ng-binding">sobingt@bitbrothers.in</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <span class="member-status ng-binding active" ng-class="team.info.status">Active</span>
+          <!-- ngIf: paymentsEnabled -->
+          <p class="member-payment-status ng-scope" ng-if="paymentsEnabled">
+            <!-- ngIf: team.billing.length === 0 --><i ng-if="team.billing.length === 0" class="fa fa-exclamation-triangle ng-scope" title="Missing payment provider"></i><!-- end ngIf: team.billing.length === 0 -->
+            <span class="ng-binding">Overdue</span>
+          </p>
+          <!-- end ngIf: paymentsEnabled -->
+        </td>
+        <td class="ng-binding">1</td>
+        <td class="ng-binding">
+          1
+        </td>
+        <td class="ng-binding">
+          ₹100.00
+        </td>
+      </tr>
+      <!-- end ngRepeat: team in teams | teamFilter:search | rndSort: teamsSort | limitTo: limit -->
+      <tr ng-repeat="team in teams | teamFilter:search | rndSort: teamsSort | limitTo: limit" class="ng-scope">
+        <td hover-action="" action="editTeam(team)" icon="pencil" class="ng-isolate-scope">
+          <div class="image-table">
+            <div class="profile-sm image-cell user-avatar ng-isolate-scope" item="team" icon="'fa-building-o'">
+              <!-- ngIf: image -->
+              <!-- ngIf: !image -->
+              <div ng-if="!image" class="image-replace ng-scope">
+                <i class="fa fa-building-o" ng-class="icon"></i>
+              </div>
+              <!-- end ngIf: !image -->
+            </div>
+            <div class="info-cell">
+              <a ui-sref="organization.manage.team({ team: team._id })" class="dark-link ng-binding ng-isolate-scope" team="team" href="/geekout/community/teams/5719deb80d5ad7c46ec5fbd5">Geekout</a>
+              <p class="member-email ng-binding">no email</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <span class="member-status ng-binding draft" ng-class="team.info.status">Draft</span>
+          <!-- ngIf: paymentsEnabled -->
+          <p class="member-payment-status ng-scope" ng-if="paymentsEnabled">
+            <!-- ngIf: team.billing.length === 0 --><i ng-if="team.billing.length === 0" class="fa fa-exclamation-triangle ng-scope" title="Missing payment provider"></i><!-- end ngIf: team.billing.length === 0 -->
+            <span class="ng-binding"></span>
+          </p>
+          <!-- end ngIf: paymentsEnabled -->
+        </td>
+        <td class="ng-binding">2</td>
+        <td class="ng-binding">
+          0
+        </td>
+        <td class="ng-binding">
+          ₹0.00
+        </td>
+      </tr>
+      <!-- end ngRepeat: team in teams | teamFilter:search | rndSort: teamsSort | limitTo: limit -->
+    </tbody>
+  </table>
+</div>
+<!-- end ngIf: teams && teams.length > 0 -->
+<!-- ngIf: teams && teams.length === 0 -->
+<!-- ngIf: !teams -->

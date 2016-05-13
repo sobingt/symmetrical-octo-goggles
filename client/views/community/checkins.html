@@ -1,0 +1,111 @@
+<div id="checkin-modal" role="dialog" rnd-modal="" modal-hidden="cleanUpCheckin()" class="ng-scope ng-isolate-scope modal fade" style="display: none;">
+  <form role="form" class="form-horizontal ng-pristine ng-valid">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+          <h3 class="modal-title ng-binding">Check in Member</h3>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="col-xs-3 control-label" for="change-member">Member</label>
+            <div class="col-xs-9">
+              <span title="" class="k-widget k-dropdown k-header form-control ng-scope" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="change-member_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="b9d2ce36-4768-4ce2-9f67-9e3e6ee08c9e" style="">
+                <span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input ng-scope"></span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span>
+                <select id="change-member" class="form-control ng-scope" kendo-drop-down-list="" k-ng-model="member._id" k-value-primitive="true" k-data-value-field="'_id'" k-data-text-field="'name'" k-filter="'contains'" k-rebind="member" k-on-change="onMemberChange()" k-data-source="members" data-role="dropdownlist" style="display: none;">
+                  <option value="5719deb80d5ad7c46ec5fbd6">Sobin George Thomas</option>
+                  <option value="571a5c840d5ad7c46ec5fbf7">Sobin Thomas</option>
+                  <option value="571a640c0d5ad7c46ec5fbfc">Karthik David</option>
+                  <option value="57343f0906a8709b598104f8">Darshan</option>
+                </select>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xs-3 control-label" for="start-date">Start</label>
+            <div class="col-xs-9">
+              <span class="k-widget k-datetimepicker k-header form-control"><span class="k-picker-wrap k-state-default"><input id="start-date" class="form-control k-input" kendo-date-time-picker="" k-ng-model="lastCheckin.start" k-format="'g'" k-parse-formats="['g', 'yyyy-MM-ddTHH:mm:ss']" data-role="datetimepicker" type="text" role="combobox" aria-expanded="false" aria-disabled="false" aria-readonly="false" style="width: 100%;"><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-calendar" role="button" aria-controls="start-date_dateview">select</span><span unselectable="on" class="k-icon k-i-clock" role="button" aria-controls="start-date_timeview">select</span></span></span></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xs-3 control-label" for="end-date">End</label>
+            <div class="col-xs-9">
+              <span class="k-widget k-datetimepicker k-header form-control"><span class="k-picker-wrap k-state-default"><input id="end-date" class="form-control k-input" kendo-date-time-picker="" k-ng-model="lastCheckin.end" k-format="'g'" k-parse-formats="['g', 'yyyy-MM-ddTHH:mm:ss']" data-role="datetimepicker" type="text" role="combobox" aria-expanded="false" aria-disabled="false" aria-readonly="false" style="width: 100%;"><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-calendar" role="button" aria-controls="end-date_dateview">select</span><span unselectable="on" class="k-icon k-i-clock" role="button" aria-controls="end-date_timeview">select</span></span></span></span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="pull-right">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" ng-click="confirmCheckin()" class="btn btn-primary">
+            Done
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="row ng-scope">
+  <button class="btn btn-primary" ng-click="toggleCheckin()">Check in</button>
+  <div class="col-sm-6 search-section ng-isolate-scope" model="search.name">
+    <label for="search-input"><i class="fa fa-search"></i></label>
+    <input id="search-input" type="search" class="form-control inline-search ng-pristine ng-untouched ng-valid" ng-model="model" placeholder="Search">
+    <!-- ngIf: model -->
+  </div>
+</div>
+<div class="rnd-container ng-scope">
+  <table class="table grouped-table" ng-init="limit = 40" infinite-scroll="limit = limit + 6" infinite-scroll-distance="1">
+    <thead>
+      <tr>
+        <th>Member</th>
+        <th>Last seen</th>
+        <th>For</th>
+        <th>Start</th>
+        <th>End</th>
+      </tr>
+    </thead>
+    <!-- ngRepeat: status in statuses -->
+    <tbody ng-repeat="status in statuses" class="ng-scope">
+      <tr>
+        <td colspan="5">
+          <h4 class="ng-binding">Online</h4>
+        </td>
+      </tr>
+      <!-- ngRepeat: mem in members | memberFilter: search | onlineFilter: status | orderBy: 'name' | limitTo: limit -->
+    </tbody>
+    <!-- end ngRepeat: status in statuses -->
+    <tbody ng-repeat="status in statuses" class="ng-scope">
+      <tr>
+        <td colspan="5">
+          <h4 class="ng-binding">Offline</h4>
+        </td>
+      </tr>
+      <!-- ngRepeat: mem in members | memberFilter: search | onlineFilter: status | orderBy: 'name' | limitTo: limit -->
+      <tr ng-repeat="">
+        <td>
+          <a class="grouped-first" ng-click="toggleCheckin(mem)">
+          <span class="activity-indicator Offline" ng-class="status"></span></a>
+          <a class="dark-link offset5" ui-sref="organization.manage.member({ id: mem._id })" href="/geekout/community/members/57343f0906a8709b598104f8">
+          <span class="ng-binding">Darshan</span>, <em class="ng-binding">Geekout</em>
+          </a>
+        </td>
+        <td>
+          <em ng-init="ls=lastSeen(mem.lastCheckin)" ng-class="{positive: ls==='Now'}" class="ng-binding"></em>
+        </td>
+        <td>
+          <span class="ng-binding"></span>
+        </td>
+        <td>
+          <span class="ng-binding"></span>
+        </td>
+        <td>
+          <span class="ng-binding"></span>
+        </td>
+      </tr>
+      <!-- end ngRepeat: mem in members | memberFilter: search | onlineFilter: status | orderBy: 'name' | limitTo: limit -->
+    </tbody>
+    <!-- end ngRepeat: status in statuses -->
+  </table>
+</div>
+<!-- ngIf: !membersModel -->
