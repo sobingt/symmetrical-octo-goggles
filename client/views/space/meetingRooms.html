@@ -1,0 +1,26 @@
+<div class="ng-scope">
+  <div>
+    <h4 class="rnd-title" title="Meeting Rooms">Meeting Rooms</h4>
+    <!-- ngIf: offices.length>1 -->
+  </div>
+  <!-- ngIf: resources -->
+  <div class="rnd-container ng-scope">
+    <div class="col-sm-6 search-section ng-isolate-scope" model="search.name">
+      <label for="search-input"><i class="fa fa-search"></i></label>
+      <input id="search-input" type="search" class="form-control inline-search ng-pristine ng-untouched ng-valid" ng-model="model" placeholder="Search">
+      <!-- ngIf: model -->
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Plan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ngRepeat: resource in resources | deskFilter:roomsById:search | orderBy: getNormalized('name') -->
+      </tbody>
+    </table>
+  </div>
+  <!-- end ngIf: resources -->
+</div>

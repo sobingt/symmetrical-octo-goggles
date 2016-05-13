@@ -1,0 +1,43 @@
+<h4 class="rnd-title ng-scope">Space</h4>
+<!-- ngIf: organizationZoneSummary -->
+<div class="ng-scope">
+  <div class="rnd-container">
+    <div class="row offset-top">
+      <div class="col-md-5">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Zone Type</th>
+              <th>Area</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ngRepeat: zoneType in organizationZoneSummary | orderBy: '-area' -->
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-7">
+        <div kendo-chart="" options="zonesChartOptions" k-data-source="organizationZoneSummary" data-role="chart" class="k-chart" style="position: relative; height: 350px;">
+          <svg style="width: 100%; height: 100%; overflow: hidden; left: -0.90625px; top: 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+            <defs></defs>
+            <g>
+              <path d="M0 0 L 485 0 485 350 0 350Z" stroke="none" fill="none"></path>
+              <path d="M5 5 L 480 5 480 345 5 345Z" stroke="none" fill="#fff" fill-opacity="0"></path>
+              <g>
+                <g></g>
+              </g>
+              <g>
+                <g></g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <!-- ngRepeat: officeData in zoneSummaryByOffice -->
+  </div>
+</div>
+<!-- end ngIf: organizationZoneSummary -->
+<!-- ngIf: !organizationZoneSummary -->

@@ -126,7 +126,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
       .state('app.organization.billing.plans', {
         url: '/plans',
         views: {
-          'content': {
+          'content@app.organization.billing': {
             controller: 'HomeCtrl',
             templateUrl: 'views/billing/plans.html'
           }
@@ -135,7 +135,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
       .state('app.organization.billing.invoices', {
         url: '/invoices',
         views: {
-          'content': {
+          'content@app.organization.billing': {
             controller: 'HomeCtrl',
             templateUrl: 'views/billing/invoices.html'
           }
@@ -144,9 +144,91 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
       .state('app.organization.billing.revenue', {
         url: '/revenue',
         views: {
-          'content': {
+          'content@app.organization.billing': {
             controller: 'HomeCtrl',
             templateUrl: 'views/billing/revenue.html'
+          }
+        }
+      })
+      /*
+       |------------------------------
+       | SPACE
+       |------------------------------
+      */
+      .state('app.organization.space', {
+        url: '/space',
+        views: {
+          'container@': {
+            controller: 'HomeCtrl',
+            templateUrl: 'views/space/space.html'
+          }
+        }
+      })
+      .state('app.organization.space.meetingRooms', {
+        url: '/meeting-rooms',
+        views: {
+          'content@app.organization.space': {
+            controller: 'HomeCtrl',
+            templateUrl: 'views/space/meetingRooms.html'
+          }
+        }
+      })
+      .state('app.organization.space.privateOffices', {
+        url: '/private-offices',
+        views: {
+          'content@app.organization.space': {
+            controller: 'HomeCtrl',
+            templateUrl: 'views/space/privateOffices.html'
+          }
+        }
+      })
+      .state('app.organization.space.desks', {
+        url: '/desks',
+        views: {
+          'content@app.organization.space': {
+            controller: 'HomeCtrl',
+            templateUrl: 'views/space/desks.html'
+          }
+        }
+      })
+      .state('app.organization.space.furniture', {
+        url: '/furniture',
+        views: {
+          'content@app.organization.space': {
+            controller: 'HomeCtrl',
+            templateUrl: 'views/space/furniture.html'
+          }
+        }
+      })
+      .state('app.organization.space.occupancy', {
+        url: '/occupancy',
+        views: {
+          'content@app.organization.space': {
+            controller: 'HomeCtrl',
+            templateUrl: 'views/space/occupancy.html'
+          }
+        }
+      })
+      .state('app.organization.space.analytics', {
+        url: '/analytics',
+        views: {
+          'content@app.organization.space': {
+            controller: 'HomeCtrl',
+            templateUrl: 'views/space/analytics.html'
+          }
+        }
+      })
+      /*
+       |------------------------------
+       | CALENDAR
+       |------------------------------
+      */
+      .state('app.organization.calendar', {
+        url: '/calendar',
+        views: {
+          'container@': {
+            controller: 'HomeCtrl',
+            templateUrl: 'views/calendar.html'
           }
         }
       })
