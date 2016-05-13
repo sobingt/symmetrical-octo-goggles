@@ -1,33 +1,33 @@
-<!-- uiView:  -->
-<div ui-view="" class="ng-scope">
-  <div class="ng-scope">
-    <h4 class="rnd-title" title="Revenue">Revenue</h4>
-    <!-- ngIf: offices.length>1 -->
-    <div class="rnd-container">
-      <table class="table filterable" ng-init="limit = 40" infinite-scroll="limit = limit + 6" infinite-scroll-distance="1">
-        <thead>
-          <tr>
-            <th>
-              <section class="search-section ng-isolate-scope" model="teamsFilter.team.name">
-                <label for="search-input"><i class="fa fa-search"></i></label>
-                <input id="search-input" type="search" class="form-control inline-search ng-pristine ng-untouched ng-valid" ng-model="model" placeholder="Search">
-                <!-- ngIf: model -->
-              </section>
-            </th>
-            <!-- ngRepeat: month in months -->
-            <th ng-repeat="" class=""></th>
-            <!-- end ngRepeat: month in months -->
-          </tr>
-        </thead>
+<div class="ng-scope">
+  <h4 class="rnd-title" title="Revenue">Revenue</h4>
+  <!-- ngIf: offices.length>1 -->
+  <div class="rnd-container">
+    <table class="table filterable" ng-init="limit = 40" infinite-scroll="limit = limit + 6" infinite-scroll-distance="1">
+      <thead>
+        <tr>
+          <th>
+            <div class="col-sm-3 search-section ng-isolate-scope" model="teamsFilter.team.name">
+              <input id="search-input" type="search" class="form-control inline-search ng-pristine ng-untouched ng-valid" ng-model="model" placeholder="Search">
+              <!-- ngIf: model -->
+            </div>
+          </th>
+          <!-- ngRepeat: month in months -->
+          <th ng-repeat="" class=""></th>
+          <!-- end ngRepeat: month in months -->
+        </tr>
+      </thead>
+      <tbody>
         <tbody>
           <tr>
             <td><strong>Total</strong></td>
             <!-- ngRepeat: month in months -->
-            <td ng-repeat=""><strong class="ng-binding"></strong></td>
+            <td ng-repeat="month in months" class="ng-scope">
+              <strong class="ng-binding">₹16.44</strong>
+            </td>
             <!-- end ngRepeat: month in months -->
           </tr>
           <!-- ngRepeat: x in byTeam | filter:teamsFilter | orderBy: 'team.name' | limitTo: limit -->
-          <tr ng-repeat="">
+          <tr ng-repeat="x in byTeam | filter:teamsFilter | orderBy: 'team.name' | limitTo: limit" class="ng-scope">
             <td>
               <!-- ngIf: x.team --><a ng-if="x.team" class="dark-link ng-binding ng-scope" ui-sref="organization.manage.team({ team: x.team._id })" href="/geekout/community/teams/571a5c570d5ad7c46ec5fbf6">
               Bit Brothers
@@ -35,25 +35,26 @@
               <!-- ngIf: !x.team -->
             </td>
             <!-- ngRepeat: amount in x.months track by $index -->
-            <td ng-repeat="" class="">
+            <td ng-repeat="amount in x.months track by $index" class="ng-binding ng-scope">
+              ₹16.44
             </td>
             <!-- end ngRepeat: amount in x.months track by $index -->
           </tr>
           <!-- end ngRepeat: x in byTeam | filter:teamsFilter | orderBy: 'team.name' | limitTo: limit -->
-          <tr ng-repeat="">
+          <tr ng-repeat="x in byTeam | filter:teamsFilter | orderBy: 'team.name' | limitTo: limit" class="ng-scope">
             <td>
               <!-- ngIf: x.team -->
               <!-- ngIf: !x.team --><span ng-if="!x.team" class="dark-link ng-scope"><b>Individuals</b></span><!-- end ngIf: !x.team -->
             </td>
             <!-- ngRepeat: amount in x.months track by $index -->
-            <td ng-repeat="" class="ng-binding ng-scope">
-            </td>
+            <td ng-repeat="amount in x.months track by $index" class="ng-binding ng-scope">
+              ₹0.00
             </td>
             <!-- end ngRepeat: amount in x.months track by $index -->
           </tr>
           <!-- end ngRepeat: x in byTeam | filter:teamsFilter | orderBy: 'team.name' | limitTo: limit -->
         </tbody>
-      </table>
-    </div>
+      </tbody>
+    </table>
   </div>
 </div>
