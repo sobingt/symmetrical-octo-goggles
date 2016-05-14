@@ -3,18 +3,18 @@
     <h4 class="rnd-title" title="Meeting Rooms">Meeting Rooms</h4>
  </div>
  <div class="rnd-container">
-    <form role="form" class="form-horizontal ng-pristine ng-valid">
+    <form role="form" class="form-horizontal">
        <div class="form-group">
           <label class="col-sm-3 control-label">Date Format</label>
           <div class="col-sm-6">
-             <span title="" class="k-widget k-dropdown k-header form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="dc5e773f-9277-4832-95b8-eb180a7f0907" style="">
-                <span unselectable="on" class="k-dropdown-wrap k-state-default">
-                  <span unselectable="on" class="k-input ng-scope">31/12/2016</span>
-                  <span unselectable="on" class="k-select">
-                    <span unselectable="on" class="k-icon k-i-arrow-s">select</span>
+             <span title="" class="form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="dc5e773f-9277-4832-95b8-eb180a7f0907" style="">
+                <span unselectable="on">
+                  <span unselectable="on">31/12/2016</span>
+                  <span unselectable="on">
+                    <span unselectable="on">select</span>
                   </span>
                 </span>
-                <select class="form-control" kendo-drop-down-list="" k-ng-model="dateFormat" k-data-source="dateFormats" k-data-text-field="'text'" k-data-value-field="'value'" k-value-primitive="true" data-role="dropdownlist" style="display: none;">
+                <select class="form-control" data-role="dropdownlist" style="display: none;">
                    <option value="MM/dd/yyyy">12/31/2016</option>
                    <option value="dd/MM/yyyy" selected="selected">31/12/2016</option>
                 </select>
@@ -25,68 +25,79 @@
        <div class="form-group">
           <label class="col-sm-3 control-label">Workdays</label>
           <div class="col-sm-6">
-             <!-- ngRepeat: day in weekDays -->
-             <div class="checkbox-inline ng-scope" ng-repeat="day in weekDays">
-                <label class="ng-binding">
-                <input type="checkbox" ng-checked="workDay($index)" ng-click="toggleWorkDay($index)" checked="checked">Sun
+             <div class="checkbox-inline">
+                <label>
+                <input type="checkbox" checked="checked">Sun
                 </label>
              </div>
-             <!-- end ngRepeat: day in weekDays -->
-             <div class="checkbox-inline ng-scope" ng-repeat="day in weekDays">
-                <label class="ng-binding">
-                <input type="checkbox" ng-checked="workDay($index)" ng-click="toggleWorkDay($index)" checked="checked">Mon
+             <div class="checkbox-inline">
+                <label>
+                <input type="checkbox" checked="checked">Mon
                 </label>
              </div>
-             <!-- end ngRepeat: day in weekDays -->
-             <div class="checkbox-inline ng-scope" ng-repeat="day in weekDays">
-                <label class="ng-binding">
-                <input type="checkbox" ng-checked="workDay($index)" ng-click="toggleWorkDay($index)" checked="checked">Tue
+             <div class="checkbox-inline" ng-repeat="day in weekDays">
+                <label>
+                <input type="checkbox" checked="checked">Tue
                 </label>
              </div>
-             <!-- end ngRepeat: day in weekDays -->
-             <div class="checkbox-inline ng-scope" ng-repeat="day in weekDays">
-                <label class="ng-binding">
-                <input type="checkbox" ng-checked="workDay($index)" ng-click="toggleWorkDay($index)" checked="checked">Wed
+             <div class="checkbox-inline" ng-repeat="day in weekDays">
+                <label>
+                <input type="checkbox" checked="checked">Wed
                 </label>
              </div>
-             <!-- end ngRepeat: day in weekDays -->
-             <div class="checkbox-inline ng-scope" ng-repeat="day in weekDays">
-                <label class="ng-binding">
-                <input type="checkbox" ng-checked="workDay($index)" ng-click="toggleWorkDay($index)" checked="checked">Thu
+             <div class="checkbox-inline" ng-repeat="day in weekDays">
+                <label>
+                <input type="checkbox" checked="checked">Thu
                 </label>
              </div>
-             <!-- end ngRepeat: day in weekDays -->
-             <div class="checkbox-inline ng-scope" ng-repeat="day in weekDays">
-                <label class="ng-binding">
-                <input type="checkbox" ng-checked="workDay($index)" ng-click="toggleWorkDay($index)" checked="checked">Fri
+             <div class="checkbox-inline" ng-repeat="day in weekDays">
+                <label>
+                <input type="checkbox" checked="checked">Fri
                 </label>
              </div>
-             <!-- end ngRepeat: day in weekDays -->
-             <div class="checkbox-inline ng-scope" ng-repeat="day in weekDays">
-                <label class="ng-binding">
-                <input type="checkbox" ng-checked="workDay($index)" ng-click="toggleWorkDay($index)">Sat
+             <div class="checkbox-inline" ng-repeat="day in weekDays">
+                <label>
+                <input type="checkbox">Sat
                 </label>
              </div>
-             <!-- end ngRepeat: day in weekDays -->
           </div>
        </div>
        <div class="clearfix"></div>
        <div class="form-group">
           <label class="col-sm-3 control-label">Business hours</label>
           <div class="col-sm-3">
-             <span class="k-widget k-timepicker k-header"><span class="k-picker-wrap k-state-default"><input kendo-time-picker="" k-ng-model="organizationWorkHours.open" data-role="timepicker" type="text" class="k-input" role="combobox" aria-expanded="false" aria-disabled="false" aria-readonly="false" style="width: 100%;"><span unselectable="on" class="k-select" role="button"><span unselectable="on" class="k-icon k-i-clock">select</span></span></span></span>
+             <span>
+               <span>
+                 <input data-role="timepicker" type="text" class="k-input" role="combobox" aria-expanded="false" aria-disabled="false" aria-readonly="false" style="width: 100%;">
+                 <span unselectable="on" class="k-select" role="button">
+                   <span unselectable="on" class="k-icon k-i-clock">select</span>
+                 </span>
+               </span>
+             </span>
           </div>
           <div class="col-sm-3">
-             <span class="k-widget k-timepicker k-header"><span class="k-picker-wrap k-state-default"><input kendo-time-picker="" k-ng-model="organizationWorkHours.close" data-role="timepicker" type="text" class="k-input" role="combobox" aria-expanded="false" aria-disabled="false" aria-readonly="false" style="width: 100%;"><span unselectable="on" class="k-select" role="button"><span unselectable="on" class="k-icon k-i-clock">select</span></span></span></span>
+             <span>
+               <span>
+                 <input data-role="timepicker" type="text" role="combobox" aria-expanded="false" aria-disabled="false" aria-readonly="false" style="width: 100%;">
+                 <span unselectable="on" class="k-select" role="button">
+                   <span unselectable="on" class="k-icon k-i-clock">select</span>
+                 </span>
+               </span>
+             </span>
           </div>
        </div>
        <div class="clearfix"></div>
        <div class="form-group">
           <label class="col-sm-3 control-label">Timezone</label>
           <div class="col-sm-6">
-             <span title="" class="k-widget k-dropdown k-header form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="ed8bc600-08a1-48c0-84ca-6b6aa3e8dacd" style="">
-                <span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input ng-scope">Europe/London</span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span>
-                <select class="form-control" kendo-drop-down-list="" k-ng-model="timezone" k-data-source="timezones" k-data-text-field="'zone'" k-data-value-field="'zone'" k-filter="'contains'" k-value-primitive="true" data-role="dropdownlist" style="display: none;">
+             <span title="" class="form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="ed8bc600-08a1-48c0-84ca-6b6aa3e8dacd" style="">
+                <span unselectable="on">
+                  <span unselectable="on">Europe/London</span>
+                  <span unselectable="on">
+                    <span unselectable="on">select</span>
+                  </span>
+                </span>
+                <select class="form-control" data-role="dropdownlist" style="display: none;">
                    <option value="Etc/GMT+12">Etc/GMT+12</option>
                    <option value="Etc/GMT+11">Etc/GMT+11</option>
                    <option value="Pacific/Pago_Pago">Pacific/Pago_Pago</option>
@@ -523,7 +534,7 @@
        <div class="clearfix"></div>
        <div class="form-group">
           <div class="col-sm-offset-3 col-sm-6">
-             <button type="button" class="btn btn-primary" ng-click="updateOrgWorkingHours()">Update</button>
+             <button type="button" class="btn btn-primary">Update</button>
           </div>
        </div>
        <div class="clearfix"></div>

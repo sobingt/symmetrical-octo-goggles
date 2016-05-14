@@ -1,12 +1,12 @@
-<div class="ng-scope">
+<div>
    <h4 class="rnd-title" title="Community Portal">Community Portal</h4>
    <div class="rnd-container">
-      <form role="form" class="form-horizontal ng-valid ng-dirty ng-valid-parse">
+      <form role="form" class="form-horizontal">
          <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
                <div class="checkbox">
                   <label>
-                  <input type="checkbox" ng-model="community.enabled" class="ng-valid ng-dirty ng-valid-parse ng-touched"> Community Portal
+                  <input type="checkbox"> Community Portal
                   </label>
                </div>
                <small class="text-muted">
@@ -16,22 +16,19 @@
             </div>
          </div>
          <div class="clearfix"></div>
-         <!-- ngIf: community.enabled -->
-         <div class="form-group ng-scope" ng-if="community.enabled">
+         <div class="form-group">
             <label class="col-sm-3 control-label">Url</label>
             <div class="col-sm-6">
-               <input readonly="" type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="fullUrl">
+               <input readonly="" type="text" class="form-control">
             </div>
-            <a class="col-sm-3 control-link" ng-href="" target="_blank" href="">Open</a>
+            <a class="col-sm-3 control-link" target="_blank" href="">Open</a>
          </div>
          <div class="clearfix"></div>
-         <!-- end ngIf: community.enabled -->
-         <!-- ngIf: community.enabled -->
-         <div class="form-group ng-scope" ng-if="community.enabled">
+         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
                <div class="checkbox">
                   <label>
-                  <input type="checkbox" ng-model="community.signup" class="ng-pristine ng-untouched ng-valid"> Member Signup
+                  <input type="checkbox" > Member Signup
                   </label>
                </div>
                <small class="text-muted">
@@ -40,13 +37,11 @@
             </div>
          </div>
          <div class="clearfix"></div>
-         <!-- end ngIf: community.enabled -->
-         <!-- ngIf: community.enabled -->
-         <div class="form-group ng-scope" ng-if="community.enabled">
+         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
                <div class="checkbox">
                   <label>
-                  <input type="checkbox" ng-model="community.addPlans" class="ng-pristine ng-untouched ng-valid"> Member Add plans
+                  <input type="checkbox"> Member Add plans
                   </label>
                </div>
                <small class="text-muted">
@@ -55,11 +50,10 @@
             </div>
          </div>
          <div class="clearfix"></div>
-         <!-- end ngIf: community.enabled -->
-         <div class="form-group" ng-show="community.enabled">
+         <div class="form-group">
             <label class="col-sm-3 control-label">Theme</label>
             <div class="col-sm-6">
-               <div kendo-color-palette="" k-palette="palette" ng-model="pickedColor" class="ng-pristine ng-untouched ng-valid k-widget k-colorpalette" data-role="colorpalette" role="grid" aria-readonly="true" tabindex="0" aria-activedescendant="56c4b86e-8be8-42b4-a90b-394a7aac9448_selected">
+               <div kendo-color-palette="" k-palette="palette" data-role="colorpalette" role="grid" aria-readonly="true" tabindex="0" aria-activedescendant="56c4b86e-8be8-42b4-a90b-394a7aac9448_selected">
                   <table class="k-palette k-reset" role="presentation">
                      <tbody>
                         <tr role="row">
@@ -94,20 +88,20 @@
             </div>
          </div>
          <div class="clearfix"></div>
-         <div class="form-group" ng-show="community.enabled">
+         <div class="form-group">
             <label class="col-sm-3 control-label">Order Summary Disclaimer</label>
             <div class="col-sm-9">
                <table cellspacing="4" cellpadding="0" class="k-widget k-editor k-header k-editor-widget" role="presentation">
                   <tbody>
                      <tr role="presentation">
                         <td class="k-editor-toolbar-wrap" role="presentation">
-                           <ul class="k-editor-toolbar ng-scope" role="toolbar" aria-controls="benefit-content" data-role="editortoolbar">
-                              <li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="Bold" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-bold"></span><span class="k-tool-text">Bold</span></a><a href="" role="button" class="k-tool" unselectable="on" title="Italic" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-italic"></span><span class="k-tool-text">Italic</span></a><a href="" role="button" class="k-tool" unselectable="on" title="Underline" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-underline"></span><span class="k-tool-text">Underline</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Strikethrough" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-strikethrough"></span><span class="k-tool-text">Strikethrough</span></a></li>
-                              <li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="Align text left" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-justifyLeft"></span><span class="k-tool-text">Align text left</span></a><a href="" role="button" class="k-tool" unselectable="on" title="Center text" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-justifyCenter"></span><span class="k-tool-text">Center text</span></a><a href="" role="button" class="k-tool" unselectable="on" title="Align text right" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-justifyRight"></span><span class="k-tool-text">Align text right</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Justify" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-justifyFull"></span><span class="k-tool-text">Justify</span></a></li>
-                              <li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="Insert unordered list" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-insertUnorderedList"></span><span class="k-tool-text">Insert unordered list</span></a><a href="" role="button" class="k-tool" unselectable="on" title="Insert ordered list" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-insertOrderedList"></span><span class="k-tool-text">Insert ordered list</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Indent"><span unselectable="on" class="k-tool-icon k-indent"></span><span class="k-tool-text">Indent</span></a><a href="" role="button" class="k-tool k-group-end k-state-disabled" unselectable="on" title="Outdent"><span unselectable="on" class="k-tool-icon k-outdent"></span><span class="k-tool-text">Outdent</span></a></li>
-                              <li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start k-group-end" unselectable="on" title="Insert hyperlink"><span unselectable="on" class="k-tool-icon k-createLink"></span><span class="k-tool-text">Insert hyperlink</span></a><a href="" role="button" class="k-tool k-group-end k-state-disabled" unselectable="on" title="Remove hyperlink"><span unselectable="on" class="k-tool-icon k-unlink"></span><span class="k-tool-text">Remove hyperlink</span></a></li>
-                              <li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="Subscript" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-subscript"></span><span class="k-tool-text">Subscript</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Superscript" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-superscript"></span><span class="k-tool-text">Superscript</span></a></li>
-                              <li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="View HTML"><span unselectable="on" class="k-tool-icon k-viewHtml"></span><span class="k-tool-text">View HTML</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Clean formatting"><span unselectable="on" class="k-tool-icon k-cleanFormatting"></span><span class="k-tool-text">Clean formatting</span></a></li>
+                           <ul class="k-editor-toolbar" role="toolbar" aria-controls="benefit-content" data-role="editortoolbar">
+                              <li role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="Bold" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-bold"></span><span class="k-tool-text">Bold</span></a><a href="" role="button" class="k-tool" unselectable="on" title="Italic" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-italic"></span><span class="k-tool-text">Italic</span></a><a href="" role="button" class="k-tool" unselectable="on" title="Underline" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-underline"></span><span class="k-tool-text">Underline</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Strikethrough" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-strikethrough"></span><span class="k-tool-text">Strikethrough</span></a></li>
+                              <li role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="Align text left" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-justifyLeft"></span><span class="k-tool-text">Align text left</span></a><a href="" role="button" class="k-tool" unselectable="on" title="Center text" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-justifyCenter"></span><span class="k-tool-text">Center text</span></a><a href="" role="button" class="k-tool" unselectable="on" title="Align text right" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-justifyRight"></span><span class="k-tool-text">Align text right</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Justify" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-justifyFull"></span><span class="k-tool-text">Justify</span></a></li>
+                              <li role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="Insert unordered list" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-insertUnorderedList"></span><span class="k-tool-text">Insert unordered list</span></a><a href="" role="button" class="k-tool" unselectable="on" title="Insert ordered list" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-insertOrderedList"></span><span class="k-tool-text">Insert ordered list</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Indent"><span unselectable="on" class="k-tool-icon k-indent"></span><span class="k-tool-text">Indent</span></a><a href="" role="button" class="k-tool k-group-end k-state-disabled" unselectable="on" title="Outdent"><span unselectable="on" class="k-tool-icon k-outdent"></span><span class="k-tool-text">Outdent</span></a></li>
+                              <li role="presentation"><a href="" role="button" class="k-tool k-group-start k-group-end" unselectable="on" title="Insert hyperlink"><span unselectable="on" class="k-tool-icon k-createLink"></span><span class="k-tool-text">Insert hyperlink</span></a><a href="" role="button" class="k-tool k-group-end k-state-disabled" unselectable="on" title="Remove hyperlink"><span unselectable="on" class="k-tool-icon k-unlink"></span><span class="k-tool-text">Remove hyperlink</span></a></li>
+                              <li role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="Subscript" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-subscript"></span><span class="k-tool-text">Subscript</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Superscript" aria-pressed="false"><span unselectable="on" class="k-tool-icon k-superscript"></span><span class="k-tool-text">Superscript</span></a></li>
+                              <li role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="View HTML"><span unselectable="on" class="k-tool-icon k-viewHtml"></span><span class="k-tool-text">View HTML</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Clean formatting"><span unselectable="on" class="k-tool-icon k-cleanFormatting"></span><span class="k-tool-text">Clean formatting</span></a></li>
                            </ul>
                         </td>
                      </tr>
@@ -122,25 +116,19 @@
             </div>
          </div>
          <div class="clearfix"></div>
-         <div class="form-group" ng-show="community.enabled">
+         <div class="form-group">
             <label class="col-sm-3 control-label">Background image</label>
             <div class="col-sm-6">
-               <image-upload image-url="community.backgroundImage" target="" default-icon="fa-building-o" class="ng-isolate-scope">
+               <image-upload image-url="community.backgroundImage" target="" default-icon="fa-building-o">
                   <div class="image-upload">
                      <div class="user-avatar profile-lg inline image-picker">
-                        <!-- ngIf: imageUrl -->
-                        <!-- ngIf: !imageUrl -->
-                        <div ng-if="!imageUrl" class="image-replace ng-scope">
-                           <i class="fa fa-building-o" ng-class="defaultIcon"></i>
+                        <div class="image-replace">
+                           <i class="fa fa-building-o"></i>
                         </div>
-                        <!-- end ngIf: !imageUrl -->
-                        <button type="button" class="btn btn-primary" ng-disabled="uploading" ng-click="chooseImage()">
-                           <!-- ngIf: uploading -->
-                           <!-- ngIf: !uploading && imageUrl -->
-                           <!-- ngIf: !uploading && !imageUrl --><span ng-if="!uploading &amp;&amp; !imageUrl" class="ng-scope">Upload</span><!-- end ngIf: !uploading && !imageUrl -->
+                        <button type="button" class="btn btn-primary"><span>Upload</span>
                         </button>
                      </div>
-                     <input type="file" id="upload-image" class="hidden-upload ng-isolate-scope" file-picked="uploadImg($file)" accept="image/*">
+                     <input type="file" id="upload-image" class="hidden-upload" file-picked="uploadImg($file)" accept="image/*">
                   </div>
                </image-upload>
                <small class="text-muted">
@@ -151,7 +139,7 @@
          <div class="clearfix"></div>
          <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
-               <button type="button" class="btn btn-primary" ng-click="updateOrgPortal()">Update</button>
+               <button type="button" class="btn btn-primary">Update</button>
             </div>
          </div>
          <div class="clearfix"></div>

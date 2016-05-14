@@ -1,15 +1,14 @@
 <div class="col-sm-9">
-   <!-- uiView:  -->
-   <div ui-view="" class="ng-scope">
-      <div class="ng-scope">
+   <div>
+      <div>
          <h4 class="rnd-title" title="Billing &amp; Invoicing">Billing &amp; Invoicing</h4>
          <div class="rnd-container">
-            <form role="form" class="form-horizontal ng-pristine ng-valid ng-valid-min">
+            <form role="form" class="form-horizontal">
                <div class="form-group">
                   <div class="col-sm-offset-3 col-sm-6">
                      <div class="checkbox">
                         <label>
-                        <input type="checkbox" ng-model="settings.billing.enabled" class="ng-pristine ng-untouched ng-valid"> Billing module
+                        <input type="checkbox"> Billing module
                         </label>
                      </div>
                      <small class="text-muted">
@@ -19,15 +18,17 @@
                   </div>
                </div>
                <div class="clearfix"></div>
-               <!-- ngIf: settings.billing.enabled -->
-               <div class="form-group ng-scope" ng-if="settings.billing.enabled">
+               <div class="form-group">
                   <label for="currency-code" class="col-sm-3 control-label">Currency</label>
                   <div class="col-sm-6">
-                     <span title="" class="k-widget k-dropdown k-header form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="currency-code_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="58cb6c25-98c9-4d0d-a999-bfc60e3b7b34" style="">
-                        <span unselectable="on" class="k-dropdown-wrap k-state-default">
-                          <span unselectable="on" class="k-input ng-scope">Indian Rupee (INR)</span>
-                            <span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span>
-                        <select id="currency-code" class="form-control" kendo-drop-down-list="" k-data-text-field="'label'" k-data-value-field="'code'" k-value-primitive="true" k-filter="'contains'" k-ng-model="settings.billing.currency" k-rebind="settings.billing" k-data-source="currencies" data-role="dropdownlist" style="display: none;">
+                     <span title="" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="currency-code_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="58cb6c25-98c9-4d0d-a999-bfc60e3b7b34" style="">
+                        <span unselectable="on">
+                          <span unselectable="on">Indian Rupee (INR)</span>
+                            <span unselectable="on">
+                              <span unselectable="on">select</span>
+                            </span>
+                          </span>
+                        <select id="currency-code" class="form-control" data-role="dropdownlist" style="display: none;">
                            <option value="AFN">Afghani (AFN)</option>
                            <option value="EUR">Euro (EUR)</option>
                            <option value="ALL">Lek (ALL)</option>
@@ -200,19 +201,22 @@
                         </select>
                      </span>
                      <small class="text-muted">
-                     Example: <i class="ng-binding">₹100.50</i>
+                     Example: <i>₹100.50</i>
                      </small>
                   </div>
                </div>
                <div class="clearfix"></div>
-               <!-- end ngIf: settings.billing.enabled -->
-               <!-- ngIf: settings.billing.enabled -->
-               <div class="form-group ng-scope" ng-if="settings.billing.enabled">
+               <div class="form-group">
                   <label for="billing-date" class="col-sm-3 control-label">Billing date</label>
                   <div class="col-sm-6">
-                     <span title="" class="k-widget k-dropdown k-header form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="billing-date_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="55861a4f-9c12-4462-81da-19ec796ed315" style="">
-                        <span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input ng-scope">7th</span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span>
-                        <select id="billing-date" class="form-control" kendo-drop-down-list="" k-data-text-field="'name'" k-data-value-field="'value'" k-value-primitive="true" k-ng-model="settings.billing.date" k-rebind="settings.billing" k-option-label="{ name: 'Not selected', value: null }" k-data-source="possibleDates" data-role="dropdownlist" style="display: none;">
+                     <span title="" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="billing-date_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="55861a4f-9c12-4462-81da-19ec796ed315" style="">
+                        <span unselectable="on">
+                          <span unselectable="on">7th</span>
+                          <span unselectable="on">
+                            <span unselectable="on">select</span>
+                          </span>
+                        </span>
+                        <select id="billing-date" class="form-control" data-role="dropdownlist" style="display: none;">
                            <option value="">Not selected</option>
                            <option value="1">1st</option>
                            <option value="2">2nd</option>
@@ -245,22 +249,22 @@
                            <option value="29">29th</option>
                            <option value="30">30th</option>
                         </select>
-                     </span>
-                     <!-- ngIf: settings.billing.date --><small ng-if="settings.billing.date" class="text-muted ng-scope">
-                     All members will be billed on <i class="ng-binding">7th</i> of each month.
-                     </small><!-- end ngIf: settings.billing.date -->
-                     <!-- ngIf: !settings.billing.date -->
+                     </span><small>
+                     All members will be billed on <i>7th</i> of each month.
                   </div>
                </div>
                <div class="clearfix"></div>
-               <!-- end ngIf: settings.billing.enabled -->
-               <!-- ngIf: settings.billing.enabled -->
-               <div class="form-group ng-scope" ng-if="settings.billing.enabled">
+               <div class="form-group">
                   <label for="invoicing-period" class="col-sm-3 control-label">Invoicing period</label>
                   <div class="col-sm-6">
-                     <span title="" class="k-widget k-dropdown k-header form-control ng-pristine ng-untouched ng-valid" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="invoicing-period_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="bb6fd7c6-9665-44ea-98c8-5f4ab88e97bc" style="">
-                        <span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input ng-scope">1 month</span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span>
-                        <select id="invoicing-period" class="form-control ng-pristine ng-untouched ng-valid" kendo-drop-down-list="" ng-model="settings.billing.invoicingPeriod" data-role="dropdownlist" style="display: none;">
+                     <span title="" class="k-widget k-dropdown k-header form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="invoicing-period_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="bb6fd7c6-9665-44ea-98c8-5f4ab88e97bc" style="">
+                        <span unselectable="on">
+                          <span unselectable="on">1 month</span>
+                          <span unselectable="on">
+                            <span unselectable="on">select</span>
+                          </span>
+                        </span>
+                        <select id="invoicing-period" class="form-control" data-role="dropdownlist" style="display: none;">
                            <option value="1">1 month</option>
                            <option value="2">2 months</option>
                            <option value="3">3 months</option>
@@ -270,77 +274,70 @@
                         </select>
                      </span>
                      <small class="text-muted">
-                     Invoices will be generated by default on <i class="ng-binding">1</i> month bases.
+                     Invoices will be generated by default on <i>1</i> month bases.
                      </small>
                   </div>
                </div>
                <div class="clearfix"></div>
-               <!-- end ngIf: settings.billing.enabled -->
-               <!-- ngIf: settings.billing.enabled -->
-               <div class="form-group ng-scope" ng-if="settings.billing.enabled">
+               <div class="form-group">
                   <div class="col-sm-offset-3 col-sm-6">
                      <div class="checkbox">
                         <label>
-                        <input id="generate-payments" type="checkbox" ng-model="settings.payments.enabled" class="ng-pristine ng-untouched ng-valid"> Automated payments
+                        <input id="generate-payments" type="checkbox"> Automated payments
                         </label>
-                     </div>
-                     <!-- ngIf: settings.payments.enabled --><small class="text-muted ng-scope" ng-if="settings.payments.enabled">
-                     Automatically generate payments <input class="inline-input ng-pristine ng-untouched ng-valid ng-valid-min" type="number" min="0" step="1" ng-model="settings.payments.daysBefore"> days before the billing date.
-                     </small><!-- end ngIf: settings.payments.enabled -->
-                     <!-- ngIf: settings.payments.enabled -->
-                     <div class="checkbox ng-scope" ng-if="settings.payments.enabled">
+                     </div><small class="text-muted">
+                     Automatically generate payments <input class="inline-input" type="number" min="0" step="1"> days before the billing date.
+                     <div class="checkbox">
                         <label>
-                        <input id="send-invoice" type="checkbox" ng-model="settings.payments.sendInvoice" class="ng-pristine ng-untouched ng-valid"> Send the invoice
+                        <input id="send-invoice" type="checkbox"> Send the invoice
                         </label>
                      </div>
-                     <!-- end ngIf: settings.payments.enabled -->
-                     <!-- ngIf: settings.payments.enabled -->
-                     <div class="checkbox ng-scope" ng-if="settings.payments.enabled">
+                     <div class="checkbox">
                         <label>
-                        <input id="charge-account" type="checkbox" ng-model="settings.payments.chargeAccount" class="ng-pristine ng-untouched ng-valid"> Automatically charge customers' accounts
+                        <input id="charge-account" type="checkbox"> Automatically charge customers' accounts
                         </label>
                      </div>
-                     <!-- end ngIf: settings.payments.enabled -->
                   </div>
                </div>
                <div class="clearfix"></div>
-               <!-- end ngIf: settings.billing.enabled -->
-               <!-- ngIf: settings.billing.enabled -->
-               <div class="form-group ng-scope" ng-if="settings.billing.enabled">
+               <div class="form-group">
                   <label for="invoicing-vat" class="col-sm-3 control-label">VAT</label>
                   <div class="col-sm-6">
-                     <span title="" class="k-widget k-dropdown k-header form-control ng-pristine ng-untouched ng-valid" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="invoicing-vat_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="d9431bc0-0dcc-4341-b83f-c4380761d8cb" style="">
-                        <span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input ng-scope">Excluded</span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span>
-                        <select id="invoicing-vat" class="form-control ng-pristine ng-untouched ng-valid" kendo-drop-down-list="" ng-model="settings.billing.invoicingVat" data-role="dropdownlist" style="display: none;">
+                     <span title="" class="k-widget k-dropdown k-header form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="invoicing-vat_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="d9431bc0-0dcc-4341-b83f-c4380761d8cb" style="">
+                        <span unselectable="on">
+                          <span unselectable="on">Excluded</span>
+                          <span unselectable="on">
+                            <span unselectable="on">select</span>
+                          </span>
+                        </span>
+                          <select id="invoicing-vat" class="form-control" kendo-drop-down-list="" data-role="dropdownlist" style="display: none;">
                            <option value="included">Included</option>
                            <option value="excluded" selected="selected">Excluded</option>
                            <option value="noTax">No Tax</option>
                         </select>
                      </span>
                      <small class="text-muted">
-                     All prices are with VAT - <i class="ng-binding">excluded</i>.
+                     All prices are with VAT - <i>excluded</i>.
                      </small>
                   </div>
                </div>
                <div class="clearfix"></div>
-               <!-- end ngIf: settings.billing.enabled -->
-               <!-- ngIf: settings.billing.enabled -->
-               <div class="form-group ng-scope" ng-if="settings.billing.enabled">
+               <div class="form-group">
                   <label class="col-sm-3 control-label">Invoicing</label>
                   <div class="col-sm-6">
                      <div class="btn-group btn-group-justified">
                         <div class="btn-group">
-                           <button type="button" class="btn btn-default active" ng-class="{ active: settings.billing.invoicing==='none' }" ng-click="settings.billing.invoicing='none'">
+                           <button type="button" class="btn btn-default active">
                            None
                            </button>
                         </div>
                         <div class="btn-group">
-                           <button type="button" class="btn btn-default" ng-class="{ active: settings.billing.invoicing==='basic' }" ng-click="settings.billing.invoicing='basic'">
+                           <button type="button" class="btn btn-default">
                            Basic
                            </button>
                         </div>
                         <div class="btn-group">
-                           <button type="button" class="btn btn-default" ng-disabled="!isXeroEnabled" ng-class="{ active: settings.billing.invoicing==='xero' }" ng-click="settings.billing.invoicing='xero'" title="You should Enable Xero integration." disabled="disabled">
+                           <button type="button" class="btn btn-default" title="You should Enable Xero integration." disabled="disabled">
                            Xero
                            </button>
                         </div>
@@ -348,12 +345,9 @@
                   </div>
                </div>
                <div class="clearfix"></div>
-               <!-- end ngIf: settings.billing.enabled -->
-               <!-- ngIf: settings.billing.enabled && settings.billing.invoicing === 'basic' -->
-               <!-- ngIf: settings.billing.enabled && settings.billing.invoicing !== 'none' -->
                <div class="form-group">
                   <div class="col-sm-offset-3 col-sm-6">
-                     <button type="button" class="btn btn-primary" ng-click="saveOrgSettings()">Update
+                     <button type="button" class="btn btn-primary">Update
                      </button>
                   </div>
                </div>

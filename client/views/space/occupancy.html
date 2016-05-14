@@ -1,8 +1,7 @@
-<div class="ng-scope">
+<div>
   <h4 class="rnd-title">Occupancy</h4>
   <div class="rnd-container">
-    <!-- ngIf: occupancyHistory -->
-    <div class="offset-top ng-scope">
+    <div class="offset-top ">
       <div kendo-chart="" k-options="occupancyHistoryOptions" k-data-source="occupancyHistory" data-role="chart" class="k-chart" style="position: relative; height: 250px;">
         <svg style="width: 100%; height: 100%; overflow: hidden;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
           <defs>
@@ -115,13 +114,11 @@
         </svg>
       </div>
     </div>
-    <!-- end ngIf: occupancyHistory -->
   </div>
 </div>
-<div class="ng-scope">
+<div>
   <h4 class="rnd-title">Real-time Occupancy</h4>
-  <!-- ngIf: statuses -->
-  <div class="rnd-container ng-scope">
+  <div class="rnd-container ">
     <div class="row offset-top">
       <div class="col-sm-5">
         <table class="table">
@@ -132,7 +129,7 @@
             </tr>
           </thead>
           <tbody>
-            <!-- ngRepeat: status in statuses | orderBy:'-count' -->
+
           </tbody>
         </table>
       </div>
@@ -155,5 +152,4 @@
       </div>
     </div>
   </div>
-  <!-- end ngIf: statuses -->
 </div>

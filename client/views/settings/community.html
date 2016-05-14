@@ -1,21 +1,18 @@
 
-<div id="property-modal" rnd-modal="" modal-focus="#property-title" modal-hidden="cleanUpData()" class="ng-scope ng-isolate-scope modal fade">
+<div id="property-modal" rnd-modal="" modal-focus="#property-title" class=" modal fade">
    <div class="modal-dialog">
-      <form name="addPropertyForm" class="form-horizontal ng-pristine ng-invalid-required ng-valid-org-custom-property-title-validator ng-pending" role="form" novalidate="">
+      <form name="addPropertyForm" class="form-horizontal" role="form" novalidate="">
          <div class="modal-content">
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-               <!-- ngIf: !originalProperty -->
-               <h3 ng-if="!originalProperty" class="modal-title ng-scope">Add Property</h3>
-               <!-- end ngIf: !originalProperty -->
-               <!-- ngIf: originalProperty -->
+               <h3 class="modal-title">Add Property</h3>
             </div>
             <div class="modal-body">
                <div class="form-group">
                   <label for="property-title" class="col-sm-3 control-label">Title</label>
                   <div class="col-sm-9">
-                     <input name="title" type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-org-custom-property-title-validator" ng-model="property.title" id="property-title" placeholder="Full-time" required="" org-custom-property-title-validator="">
-                     <div class="error ng-hide" ng-show="addPropertyForm.title.$error.orgCustomPropertyTitleValidator">
+                     <input name="title" type="text" class="form-control" id="property-title" placeholder="Full-time" required="">
+                     <div class="error">
                         <span>Property with such name already exists.</span>
                      </div>
                   </div>
@@ -23,7 +20,7 @@
                <div class="form-group">
                   <label for="property-values" class="col-sm-3 control-label">Values</label>
                   <div class="col-sm-9">
-                     <input name="title" type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="values" id="property-values" placeholder="Values">
+                     <input name="title" type="text" class="form-control" id="property-values" placeholder="Values">
                      <small class="text-muted">Comma separated values.</small>
                   </div>
                </div>
@@ -31,7 +28,7 @@
                   <div class="col-sm-offset-3 col-sm-9">
                      <div class="checkbox">
                         <label>
-                        <input type="checkbox" ng-model="property.public" class="ng-pristine ng-untouched ng-valid"> Public
+                        <input type="checkbox"> Public
                         </label>
                      </div>
                      <small class="text-muted">Enable to make this property available in the Community Portal.</small>
@@ -39,10 +36,11 @@
                </div>
                <div class="form-group">
                   <div class="col-sm-offset-3 checkbox col-sm-4">
-                     <targets-checkbox text="Apply to members" ng-model="property.targets.length" property="property" target="member" toggle-selection="toggleSelection(collection, item)" class="ng-pristine ng-untouched ng-isolate-scope ng-pending"><label class="ng-binding"><input type="checkbox" ng-checked="property.targets.indexOf(target) > -1" ng-click="toggleSelection()">Apply to members</label></targets-checkbox>
+                   <label>
+                     <input type="checkbox">Apply to members</label>
                   </div>
                   <div class="checkbox col-sm-5">
-                     <targets-checkbox text="Apply to teams" ng-model="property.targets.length" property="property" target="team" toggle-selection="toggleSelection(collection, item)" class="ng-pristine ng-untouched ng-isolate-scope ng-pending"><label class="ng-binding"><input type="checkbox" ng-checked="property.targets.indexOf(target) > -1" ng-click="toggleSelection()">Apply to teams</label></targets-checkbox>
+                      <label><input type="checkbox">Apply to teams</label>
                   </div>
                </div>
             </div>
@@ -50,16 +48,14 @@
                <button type="button" class="btn btn-default" data-dismiss="modal">
                Close
                </button>
-               <button type="submit" class="btn btn-primary" ng-disabled="addPropertyForm.$invalid" ng-click="commitProperty()">
-                  <!-- ngIf: originalProperty -->
-                  <!-- ngIf: !originalProperty --><span ng-if="!originalProperty" class="ng-scope">Add</span><!-- end ngIf: !originalProperty -->
+               <button type="submit" class="btn btn-primary"><span>Add</span>
                </button>
             </div>
          </div>
       </form>
    </div>
 </div>
-<div id="imported-members-modal" class="modal fade ng-scope">
+<div id="imported-members-modal" class="modal fade">
    <div class="modal-dialog modal-xl">
       <div class="modal-content">
          <div class="modal-header">
@@ -72,31 +68,27 @@
                   <tr>
                      <th>Name</th>
                      <th>Email</th>
-                     <th class="ng-binding">Company</th>
-                     <!-- ngRepeat: prop in org.customProperties -->
-                     <th ng-repeat="prop in org.customProperties" class="ng-binding ng-scope">Position</th>
-                     <!-- end ngRepeat: prop in org.customProperties -->
-                     <th ng-repeat="prop in org.customProperties" class="ng-binding ng-scope">Phone</th>
-                     <!-- end ngRepeat: prop in org.customProperties -->
+                     <th>Company</th>
+                     <th>Position</th>
+                     <th>Phone</th>
                   </tr>
                </thead>
                <tbody>
-                  <!-- ngRepeat: member in importedMembers -->
                </tbody>
             </table>
          </div>
          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancelImport()" ng-disabled="importingMembers">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
             Close
             </button>
-            <button type="button" class="btn btn-primary ng-isolate-scope" ng-click="commitImport()" data-dismiss="modal" rnd-loading="importingMembers" data-loading-text="Importing...">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" rnd-loading="importingMembers" data-loading-text="Importing...">
             Import
             </button>
          </div>
       </div>
    </div>
 </div>
-<div class="ng-scope">
+<div>
    <h4 class="rnd-title" title="Members Management">Members Management</h4>
    <button class="btn btn-primary" onclick="document.getElementById('import-members').click(); return false">
    Import members
@@ -108,8 +100,13 @@
             <label for="team-property" class="col-sm-3 control-label">Team Property</label>
             <div class="col-sm-6">
                <span title="" class="k-widget k-dropdown k-header form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="team-property_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="de7c74bf-5615-414a-a8ce-ba8f7dac0868" style="">
-                  <span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input ng-scope">Company</span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span>
-                  <select id="team-property" class="form-control" kendo-drop-down-list="" k-data-text-field="'name'" k-data-value-field="'name'" k-ng-model="settings.teamProperty" k-rebind="settings" k-data-source="propertyTypes" data-role="dropdownlist" style="display: none;">
+                  <span unselectable="on" class="k-dropdown-wrap k-state-default">
+                    <span unselectable="on" class="k-input">Company</span>
+                    <span unselectable="on" class="k-select">
+                      <span unselectable="on" class="k-icon k-i-arrow-s">select</span>
+                    </span>
+                  </span>
+                  <select id="team-property" class="form-control" data-role="dropdownlist" style="display: none;">
                      <option value="Team">Team</option>
                      <option value="Company" selected="selected">Company</option>
                   </select>
@@ -121,7 +118,7 @@
             <div class="col-sm-offset-3 col-sm-6">
                <div class="checkbox">
                   <label>
-                  <input type="checkbox" ng-model="settings.contracts.enabled" class="ng-pristine ng-untouched ng-valid">Contracts management
+                  <input type="checkbox">Contracts management
                   </label>
                </div>
                <small class="text-muted">
@@ -130,13 +127,17 @@
             </div>
          </div>
          <div class="clearfix"></div>
-         <!-- ngIf: settings.contracts.enabled -->
-         <div class="form-group ng-scope" ng-if="settings.contracts.enabled">
+         <div class="form-group">
             <label for="contract-template" class="col-sm-3 control-label">Contract template</label>
             <div class="col-sm-6">
                <span title="" class="k-widget k-dropdown k-header form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="contract-template_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="19883a3c-5196-417d-9362-908fc664b8d0" style="">
-                  <span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input ng-scope">coworking-contract-en-gb</span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span>
-                  <select id="contract-template" class="form-control" kendo-drop-down-list="" k-value-primitive="true" k-ng-model="settings.contracts.defaultTemplate" k-data-source="settings.contracts.enabledTemplates" data-role="dropdownlist" style="display: none;">
+                  <span unselectable="on" class="k-dropdown-wrap k-state-default">
+                    <span unselectable="on" class="k-input">coworking-contract-en-gb</span>
+                    <span unselectable="on" class="k-select">
+                      <span unselectable="on" class="k-icon k-i-arrow-s">select</span>
+                    </span>
+                  </span>
+                  <select id="contract-template" class="form-control" data-role="dropdownlist" style="display: none;">
                      <option value="coworking-contract-en-gb" selected="selected">coworking-contract-en-gb</option>
                      <option value="coworking-contract-bg-bg">coworking-contract-bg-bg</option>
                   </select>
@@ -144,12 +145,11 @@
             </div>
          </div>
          <div class="clearfix"></div>
-         <!-- end ngIf: settings.contracts.enabled -->
          <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
                <div class="checkbox">
                   <label>
-                  <input type="checkbox" ng-model="settings.occupancy.enabled" class="ng-pristine ng-untouched ng-valid">Member Checkins
+                  <input type="checkbox">Member Checkins
                   </label>
                </div>
                <small class="text-muted">
@@ -160,7 +160,7 @@
          <div class="clearfix"></div>
          <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
-               <button type="button" class="btn btn-primary" ng-click="saveOrgSettings()">Update
+               <button type="button" class="btn btn-primary">Update
                </button>
             </div>
          </div>
@@ -168,13 +168,12 @@
       </form>
    </div>
 </div>
-<div class="ng-scope">
+<div>
    <h4 class="rnd-title" title="Member properties">Member Properties</h4>
-   <button type="button" class="btn btn-primary" ng-click="addProperty()">Add property</button>
+   <button type="button" class="btn btn-primary">Add property</button>
    <div class="rnd-container">
       <ol class="numbered-list">
-         <!-- ngRepeat: property in org.customProperties | filter: 'member' -->
-         <li ng-repeat="property in org.customProperties | filter: 'member'" class="ng-binding ng-scope">
+         <li>
             Position
             <div class="dropdown room-menu">
                <button class="btn-icon dropdown-toggle" type="button" id="editMenu" data-toggle="dropdown">
@@ -182,19 +181,20 @@
                </button>
                <ul class="dropdown-menu" data-placement="bottom" role="menu" aria-labelledby="editMenu">
                   <li role="presentation">
-                     <a role="menuitem" tabindex="-1" ng-click="editProperty(property)"> <span class="fa fa-pencil"></span> Edit</a>
+                     <a role="menuitem" tabindex="-1">
+                       <span class="fa fa-pencil"></span> Edit</a>
                   </li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteProperty(property)"><span class="fa fa-times"></span> Delete</a></li>
+                  <li role="presentation">
+                    <a role="menuitem" tabindex="-1"><span class="fa fa-times"></span> Delete</a>
+                  </li>
                </ul>
             </div>
          </li>
-         <!-- end ngRepeat: property in org.customProperties | filter: 'member' -->
       </ol>
    </div>
    <h4 class="rnd-title" title="Team properties">Team Properties</h4>
    <div class="rnd-container">
       <ol class="numbered-list">
-         <!-- ngRepeat: property in org.customProperties | filter: 'team' -->
       </ol>
    </div>
 </div>

@@ -1,58 +1,42 @@
-<div class="ng-scope">
+<div>
   <h4 class="rnd-title" title="Revenue">Revenue</h4>
-  <!-- ngIf: offices.length>1 -->
   <div class="rnd-container">
-    <table class="table filterable" ng-init="limit = 40" infinite-scroll="limit = limit + 6" infinite-scroll-distance="1">
+    <table class="table filterable">
       <thead>
         <tr>
           <th>
-            <div class="col-sm-3 search-section ng-isolate-scope" model="teamsFilter.team.name">
-              <input id="search-input" type="search" class="form-control inline-search ng-pristine ng-untouched ng-valid" ng-model="model" placeholder="Search">
-              <!-- ngIf: model -->
+            <div class="col-sm-3 search-section">
+              <input id="search-input" type="search" class="form-control inline-search" placeholder="Search">
             </div>
           </th>
-          <!-- ngRepeat: month in months -->
-          <th ng-repeat="" class=""></th>
-          <!-- end ngRepeat: month in months -->
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tbody>
           <tr>
             <td><strong>Total</strong></td>
-            <!-- ngRepeat: month in months -->
-            <td ng-repeat="month in months" class="ng-scope">
-              <strong class="ng-binding">₹16.44</strong>
-            </td>
-            <!-- end ngRepeat: month in months -->
-          </tr>
-          <!-- ngRepeat: x in byTeam | filter:teamsFilter | orderBy: 'team.name' | limitTo: limit -->
-          <tr ng-repeat="x in byTeam | filter:teamsFilter | orderBy: 'team.name' | limitTo: limit" class="ng-scope">
             <td>
-              <!-- ngIf: x.team --><a ng-if="x.team" class="dark-link ng-binding ng-scope" ui-sref="organization.manage.team({ team: x.team._id })" href="/geekout/community/teams/571a5c570d5ad7c46ec5fbf6">
-              Bit Brothers
-              </a><!-- end ngIf: x.team -->
-              <!-- ngIf: !x.team -->
+              <strong>₹16.44</strong>
             </td>
-            <!-- ngRepeat: amount in x.months track by $index -->
-            <td ng-repeat="amount in x.months track by $index" class="ng-binding ng-scope">
+          </tr>
+          <tr>
+            <td>
+              <a class="dark-link ng-binding ng-scope" ui-sref="organization.manage.team({ team: x.team._id })" href="/geekout/community/teams/571a5c570d5ad7c46ec5fbf6">
+              Bit Brothers
+            </td>
+            <td>
               ₹16.44
             </td>
-            <!-- end ngRepeat: amount in x.months track by $index -->
           </tr>
-          <!-- end ngRepeat: x in byTeam | filter:teamsFilter | orderBy: 'team.name' | limitTo: limit -->
-          <tr ng-repeat="x in byTeam | filter:teamsFilter | orderBy: 'team.name' | limitTo: limit" class="ng-scope">
+          <tr>
             <td>
-              <!-- ngIf: x.team -->
-              <!-- ngIf: !x.team --><span ng-if="!x.team" class="dark-link ng-scope"><b>Individuals</b></span><!-- end ngIf: !x.team -->
+              <span class="dark-link ng-scope"><b>Individuals</b></span>
             </td>
-            <!-- ngRepeat: amount in x.months track by $index -->
-            <td ng-repeat="amount in x.months track by $index" class="ng-binding ng-scope">
+            <td>
               ₹0.00
             </td>
-            <!-- end ngRepeat: amount in x.months track by $index -->
           </tr>
-          <!-- end ngRepeat: x in byTeam | filter:teamsFilter | orderBy: 'team.name' | limitTo: limit -->
         </tbody>
       </tbody>
     </table>

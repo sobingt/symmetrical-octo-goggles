@@ -16,7 +16,6 @@
         </div>
     </div>
     <div class="col-sm-9" ui-view="content">
-      <!-- uiView:  -->
       <div ui-view="">
         <h4 class="rnd-title">Settings</h4>
         <div class="rnd-container">
@@ -27,19 +26,14 @@
                 <image-upload image-url="orgModel.image" target="" default-icon="fa-building-o">
                   <div class="image-upload">
                     <div class="user-avatar profile-lg inline image-picker">
-                      <!-- ngIf: imageUrl -->
-                      <!-- ngIf: !imageUrl -->
-                      <div ng-if="!imageUrl" class="image-replace ng-scope">
-                        <i class="fa fa-building-o" ng-class="defaultIcon"></i>
+                      <div class="image-replace">
+                        <i class="fa fa-building-o"></i>
                       </div>
-                      <!-- end ngIf: !imageUrl -->
-                      <button type="button" class="btn btn-primary" ng-disabled="uploading" ng-click="chooseImage()">
-                        <!-- ngIf: uploading -->
-                        <!-- ngIf: !uploading && imageUrl -->
-                        <!-- ngIf: !uploading && !imageUrl --><span ng-if="!uploading &amp;&amp; !imageUrl" class="ng-scope">Upload</span><!-- end ngIf: !uploading && !imageUrl -->
+                      <button type="button" class="btn btn-primary">
+                        <span>Upload</span>
                       </button>
                     </div>
-                    <input type="file" id="upload-image" class="hidden-upload ng-isolate-scope" file-picked="uploadImg($file)" accept="image/*">
+                    <input type="file" id="upload-image" class="hidden-upload">
                   </div>
                 </image-upload>
               </div>
@@ -74,41 +68,41 @@
             <div class="form-group">
               <label for="org-url" class="col-sm-3 control-label">Url</label>
               <div class="col-sm-6">
-                <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="orgModel.url" id="org-url" placeholder="Url">
+                <input type="text" class="form-control" id="org-url" placeholder="Url">
               </div>
             </div>
             <div class="clearfix"></div>
             <div class="form-group">
               <label for="org-terms-url" class="col-sm-3 control-label">Terms url</label>
               <div class="col-sm-6">
-                <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="orgModel.settings.general.termsUrl" id="org-terms-url" placeholder="Terms url">
+                <input type="text" class="form-control" id="org-terms-url" placeholder="Terms url">
               </div>
             </div>
             <div class="clearfix"></div>
             <div class="form-group">
               <label for="org-address" class="col-sm-3 control-label">Address</label>
               <div class="col-sm-6">
-                <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="orgModel.settings.general.address" id="org-address" placeholder="Address">
+                <input type="text" class="form-control" id="org-address" placeholder="Address">
               </div>
             </div>
             <div class="clearfix"></div>
             <div class="form-group">
               <label for="org-legal-name" class="col-sm-3 control-label">Legal Name</label>
               <div class="col-sm-6">
-                <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="orgModel.settings.general.legalName" id="org-legal-name" placeholder="Legal name">
+                <input type="text" class="form-control" id="org-legal-name" placeholder="Legal name">
               </div>
             </div>
             <div class="clearfix"></div>
             <div class="form-group">
               <label for="org-logo" class="col-sm-3 control-label">Logo Url</label>
               <div class="col-sm-6">
-                <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="orgModel.settings.general.logoUrl" id="org-logo" placeholder="Logo Url">
+                <input type="text" class="form-control" id="org-logo" placeholder="Logo Url">
               </div>
             </div>
             <div class="clearfix"></div>
             <div class="form-group">
               <div class="col-sm-offset-3 col-sm-6">
-                <button type="button" ng-disabled="perm<=1" class="btn btn-primary" ng-click="updateOrg(orgModel)">
+                <button type="button">
                 Update
                 </button>
               </div>

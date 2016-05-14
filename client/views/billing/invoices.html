@@ -12,8 +12,7 @@
             <div class="form-group">
               <div class="col-sm-12">
                 <div>
-                  <!-- ngIf: url -->
-                  <!-- ngIf: !url --><span ng-if="!url" class="ng-scope"><i class="fa fa-spinner fa-spin"></i> Generating...</span><!-- end ngIf: !url -->
+                  <span ng-if="!url"><i class="fa fa-spinner fa-spin"></i> Generating...</span><!-- end ngIf: !url -->
                 </div>
                 <small>You can find more information about exporting data in OfficeR&amp;D <a href="https://officernd.com/help/exporting-data/" target="_blank">here</a>.</small>
               </div>
@@ -38,19 +37,12 @@
     </ul>
   </div>
   <div class="pull-right">
-    <!-- ngIf: selectedInvoices.length > 0 -->
-    <!-- ngIf: selectedInvoices.length > 0 -->
-    <!-- ngIf: xeroIntegration.enabled -->
   </div>
   <div class="rnd-container">
     <div class="">
-      <!-- ngIf: payments.length === 0 && !team && !member -->
-      <!-- ngIf: payments.length === 0 && (team || member) -->
-      <!-- ngIf: payments.length > 0 -->
-      <div class="ng-scope">
+      <div>
         <div class="col-sm-3 search-section">
           <input id="search-input" type="search" class="form-control inline-search" placeholder="Search">
-          <!-- ngIf: model -->
         </div>
         <div class="col-sm-3 date-section search-section ng-isolate-scope" model="search.issueMonth">
           <span class="k-widget k-datepicker k-header form-control"><span class="k-picker-wrap k-state-default">
@@ -67,98 +59,79 @@
         </div>
         <div class="clearfix"></div>
       </div>
-      <!-- end ngIf: payments.length > 0 -->
-      <!-- ngIf: payments.length > 0 -->
       <table class="table payments-table ng-scope ng-isolate-scope">
         <thead>
           <tr>
             <th>
               <input type="checkbox" ng-model="$parent.isSelected" class="ng-pristine ng-untouched ng-valid">
               <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="number">
-                <ng-transclude><span class="ng-scope">Invoice #</span></ng-transclude>
-                <!-- ngIf: isSortedBy() --><i ng-if="isSortedBy()" class="fa ng-scope fa-sort-asc" ng-class="{ 'fa-sort-asc': !sort.sortDirection, 'fa-sort-desc': sort.sortDirection }"></i><!-- end ngIf: isSortedBy() -->
+                <ng-transclude><span>Invoice #</span></ng-transclude><i ng-if="isSortedBy()" class="fa ng-scope fa-sort-asc" ng-class="{ 'fa-sort-asc': !sort.sortDirection, 'fa-sort-desc': sort.sortDirection }"></i><!-- end ngIf: isSortedBy() -->
               </span>
             </th>
-            <!-- ngIf: !team && !member -->
-            <th ng-if="!team &amp;&amp; !member" class="ng-scope">
+            <th ng-if="!team &amp;&amp; !member">
               <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="to" value-selector="getTargetName">
-                <ng-transclude><span class="ng-scope">To</span></ng-transclude>
-                <!-- ngIf: isSortedBy() -->
+                <ng-transclude><span>To</span></ng-transclude>
               </span>
             </th>
-            <!-- end ngIf: !team && !member -->
             <th>
               <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="status">
-                <ng-transclude><span class="ng-scope">Status</span></ng-transclude>
-                <!-- ngIf: isSortedBy() -->
+                <ng-transclude><span>Status</span></ng-transclude>
               </span>
             </th>
             <th>
               <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="date">
-                <ng-transclude><span class="ng-scope">Issue Date</span></ng-transclude>
-                <!-- ngIf: isSortedBy() -->
+                <ng-transclude><span>Issue Date</span></ng-transclude>
               </span>
             </th>
             <th>
               <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="date">
-                <ng-transclude><span class="ng-scope">Due Date</span></ng-transclude>
-                <!-- ngIf: isSortedBy() -->
+                <ng-transclude><span>Due Date</span></ng-transclude>
               </span>
             </th>
             <th>
               <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="periodStart">
-                <ng-transclude><span class="ng-scope">Period</span></ng-transclude>
-                <!-- ngIf: isSortedBy() -->
+                <ng-transclude><span>Period</span></ng-transclude>
               </span>
             </th>
             <th>
               <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="amount">
-                <ng-transclude><span class="ng-scope">Amount</span></ng-transclude>
-                <!-- ngIf: isSortedBy() -->
+                <ng-transclude><span>Amount</span></ng-transclude>
               </span>
             </th>
             <th>
               <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="isSent">
-                <ng-transclude><span class="ng-scope">Sent</span></ng-transclude>
-                <!-- ngIf: isSortedBy() -->
+                <ng-transclude><span>Sent</span></ng-transclude>
               </span>
             </th>
           </tr>
         </thead>
         <tbody>
-          <!-- ngRepeat: p in payments | invoiceFilter: search | rndSort: paymentsSort -->
-          <tr ng-repeat="" class="ng-scope">
+          <tr>
             <td>
-              <input class="align-top ng-pristine ng-untouched ng-valid" type="checkbox" ng-model="selected[p._id]">
+              <input class="align-top" type="checkbox">
               <div class="image-table middle">
                 <div class="info-cell">
                   <a class="dark-link ng-binding" ui-sref="organization.manage.billing.invoice({id: p._id})" href="/geekout/billing/invoices/572a8d03c521afda7397010c"> No number</a>
-                  <!-- ngIf: !basicInvoicing -->
                 </div>
               </div>
             </td>
-            <!-- ngIf: !team && !member -->
-            <td ng-if="!team &amp;&amp; !member" class="ng-scope">
-              <span target="p" class="ng-isolate-scope">
-                <a class="dark-link ng-binding ng-isolate-scope" ui-sref="" member="member" href=""></a>
-                <!-- ngIf: team && member && !hideTeam --><!-- ngIf: !hideTeam -->
-                <a ui-sref="" class="dark-link ng-binding ng-isolate-scope" ng-if="!hideTeam" team="team" href="">Bit Brothers</a><!-- end ngIf: !hideTeam -->
+            <td>
+              <span target="p">
+                <a class="dark-link" member="member" href=""></a>
+                <a class="dark-link" href="">Bit Brothers</a>
               </span>
             </td>
-            <!-- end ngIf: !team && !member -->
-            <td class="payment-status ng-binding overdue" ng-class="getClassFromStatus(p.status)">
+            <td class="payment-status">
               Overdue
             </td>
-            <td class="ng-binding">May 5, 2016</td>
-            <td class="ng-binding">May 7, 2016</td>
-            <td class="ng-binding">May 7, 2016 - Jun 6, 2016</td>
-            <td class="ng-binding">₹100.00</td>
-            <td class="ng-binding"></td>
+            <td>May 5, 2016</td>
+            <td>May 7, 2016</td>
+            <td>May 7, 2016 - Jun 6, 2016</td>
+            <td>₹100.00</td>
+            <td></td>
           </tr>
-          <!-- end ngRepeat: p in payments | invoiceFilter: search | rndSort: paymentsSort -->
         </tbody>
       </table>
-      <!-- end ngIf: payments.length > 0 -->
     </div>
   </div>
 </div>

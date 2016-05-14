@@ -1,41 +1,36 @@
 
-<div class="row ng-scope">
-  <div class="col-sm-6 search-section ng-isolate-scope" model="search.name">
-    <label for="search-input"><i class="fa fa-search"></i></label>
-    <input id="search-input" type="search" class="form-control inline-search ng-pristine ng-untouched ng-valid" ng-model="model" placeholder="Search">
-    <!-- ngIf: model -->
+<div class="row">
+  <div class="col-sm-6 search-section">
+    <label for="search-input">
+      <i class="fa fa-search"></i>
+    </label>
+    <input id="search-input" type="search" class="form-control inline-search" placeholder="Search">
   </div>
 </div>
-<!-- ngIf: former && former.length > 0 -->
-<div class="rnd-container contacts ng-scope">
+<div class="rnd-container">
   <div class="rnd-filter-tabs-panel">
     <label>Former</label>
-    <a ng-click="setSearch({ teams: true })" ng-class="{ active: search.teams }" class="active">
+    <a class="active">
     <span class="filter-label">Companies</span>
     </a>
-    <a ng-click="setSearch({ members: true })" ng-class="{ active: search.members }" class="">
+    <a>
     <span class="filter-label">Members</span>
     </a>
   </div>
-  <table class="table ng-isolate-scope" rnd-sortable="contactsSort">
+  <table class="table">
     <thead>
       <tr>
         <th>
-          <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="name">
-            <ng-transclude><span class="ng-binding ng-scope"> Name</span></ng-transclude>
-            <!-- ngIf: isSortedBy() -->
+          <span class="sortable-header">
+            <span class="ng-binding ng-scope"> Name</span>
           </span>
         </th>
         <th>Email</th>
-        <!-- ngIf: showPhoneNumber -->
         <th>Social</th>
       </tr>
     </thead>
-    <tbody ng-init="limit = 20" infinite-scroll="limit = limit + 6" infinite-scroll-distance="1">
-      <!-- ngRepeat: contact in former | contactFilter: search | rndSort: contactsSort | limitTo: limit -->
+    <tbody>
+      
     </tbody>
   </table>
 </div>
-<!-- end ngIf: former && former.length > 0 -->
-<!-- ngIf: former && former.length === 0 -->
-<!-- ngIf: !former -->

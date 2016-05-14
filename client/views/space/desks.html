@@ -1,24 +1,20 @@
-<div class="ng-scope">
+<div>
   <div>
     <h4 class="rnd-title" title="Furniture">Desks</h4>
-    <!-- ngIf: offices.length>1 -->
   </div>
-  <!-- ngIf: resources -->
-  <div class="rnd-container ng-scope">
-    <div class="col-sm-6 search-section ng-isolate-scope" model="search.name">
-      <input id="search-input" type="search" class="form-control inline-search ng-pristine ng-untouched ng-valid" ng-model="model" placeholder="Search">
-      <!-- ngIf: model -->
+  <div class="rnd-container">
+    <div class="col-sm-6 search-section">
+      <input id="search-input" type="search" class="form-control inline-search" placeholder="Search">
     </div>
     <div class="rnd-filter-tabs-panel">
-      <a ng-click="search.types=deskTypes;search.status=undefined;" ng-class="" class="ng-binding active">
+      <a class="active">
       All (0)</a>
-      <a ng-click="search.types=['hotdesk']" ng-class="" class="ng-binding">
+      <a>
       Hot desks (0)</a>
-      <a ng-click="search.types=['desk']" ng-class="" class="ng-binding">
+      <a>
       Workstations (0)</a>
-      <!-- ngRepeat: status in statuses -->
     </div>
-    <table class="table" ng-init="limit = 40" infinite-scroll="limit = limit + 6" infinite-scroll-distance="1">
+    <table class="table">
       <thead>
         <tr>
           <th>Name</th>
@@ -28,11 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        <!-- ngRepeat: resource in resources | deskFilter:roomsById:search | orderBy: getNormalized('name') | limitTo: limit -->
       </tbody>
     </table>
   </div>
-  <!-- end ngIf: resources -->
-  <!-- ngIf: !resources -->
-  <!-- ngIf: rooms && offices.length === 0 -->
 </div>

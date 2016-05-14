@@ -1,94 +1,95 @@
-<div id="user-modal" rnd-modal="" modal-focus="#user-email" modal-hidden="cleanupPermission()" class="ng-scope ng-isolate-scope modal fade">
+<div id="user-modal" role="dialog" tabindex="-1" class="modal fade">
    <div class="modal-dialog">
-      <form class="form-horizontal ng-pristine ng-valid ng-valid-email" role="form">
+      <form class="form-horizontal" role="form">
          <div class="modal-content">
             <div class="modal-header">
-               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-               <h3 class="modal-title ng-binding">Invite Teammate</h3>
+               <button type="button" class="close" data-dismiss="modal">
+                 <span aria-hidden="true">×</span>
+                 <span class="sr-only">Close</span>
+               </button>
+               <h3 class="modal-title">Invite Teammate</h3>
             </div>
             <div class="modal-body">
                <div class="form-group">
                   <label for="user-member" class="col-sm-3 control-label">Contact</label>
-                  <!-- ngIf: !member -->
-                  <div class="col-sm-9 ng-scope" ng-if="!member">
-                     <span title="" class="k-widget k-dropdown k-header form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="" aria-disabled="false" aria-readonly="false" aria-busy="false" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input ng-scope">Add new...</span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span><select class="form-control" kendo-drop-down-list="" k-ng-model="permission.contact" k-data-source="members" k-data-text-field="'name'" k-data-value-field="'_id'" k-rebind="permission.contact" k-value-primitive="true" k-option-label="{ name: 'Add new...' }" data-role="dropdownlist" style="display: none;"></select></span>
+                  <div class="col-sm-9">
+                     <span title="" class="form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="" aria-disabled="false" aria-readonly="false" aria-busy="false" style="">
+                       <span unselectable="on">
+                         <span unselectable="on">Add new...</span>
+                         <span unselectable="on">
+                           <span unselectable="on">select</span>
+                         </span>
+                       </span>
+                       <select class="form-control" data-role="dropdownlist" style="display: none;"></select>
+                     </span>
                   </div>
-                  <!-- end ngIf: !member -->
-                  <!-- ngIf: member -->
                </div>
-               <!-- ngIf: !member && !permission.contact -->
-               <div class="form-group ng-scope" ng-if="!member &amp;&amp; !permission.contact">
+               <div class="form-group">
                   <label for="user-name" class="col-sm-3 control-label">Name</label>
                   <div class="col-sm-9">
-                     <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="permission.name" id="user-name" placeholder="John Doe">
+                     <input type="text" class="form-control" id="user-name" placeholder="John Doe">
                   </div>
                </div>
-               <!-- end ngIf: !member && !permission.contact -->
-               <!-- ngIf: !member && !permission.contact -->
-               <div class="form-group ng-scope" ng-if="!member &amp;&amp; !permission.contact">
+               <div class="form-group">
                   <label for="user-email" class="col-sm-3 control-label">Email</label>
                   <div class="col-sm-9">
-                     <input type="email" class="form-control ng-pristine ng-untouched ng-valid ng-valid-email" ng-model="permission.email" id="user-email" placeholder="Invite user by email">
+                     <input type="email" class="form-control" id="user-email" placeholder="Invite user by email">
                   </div>
                </div>
-               <!-- end ngIf: !member && !permission.contact -->
                <div class="form-group">
                   <label class="col-sm-3 control-label">Role</label>
                   <div class="col-sm-9">
-                     <!-- ngRepeat: role in permissionsModel.roles -->
-                     <div class="role-radios ng-scope" ng-repeat="role in permissionsModel.roles">
-                        <input ng-model="permission.role" id="role-Owner" type="radio" name="role" value="Owner" class="ng-pristine ng-untouched ng-valid">
-                        <label for="role-Owner" title="" class="ng-binding">
+                     <div class="role-radios">
+                        <input id="role-Owner" type="radio" name="role" value="Owner">
+                        <label for="role-Owner" title="">
                         Owner
                         </label>
                      </div>
-                     <!-- end ngRepeat: role in permissionsModel.roles -->
-                     <div class="role-radios ng-scope" ng-repeat="role in permissionsModel.roles">
-                        <input ng-model="permission.role" id="role-Collaborator" type="radio" name="role" value="Collaborator" class="ng-pristine ng-untouched ng-valid">
-                        <label for="role-Collaborator" title="" class="ng-binding">
+                     <div class="role-radios">
+                        <input id="role-Collaborator" type="radio" name="role" value="Collaborator">
+                        <label for="role-Collaborator" title="">
                         Collaborator
                         </label>
                      </div>
-                     <!-- end ngRepeat: role in permissionsModel.roles -->
-                     <div class="role-radios ng-scope" ng-repeat="role in permissionsModel.roles">
-                        <input ng-model="permission.role" id="role-Viewer" type="radio" name="role" value="Viewer" class="ng-pristine ng-untouched ng-valid">
-                        <label for="role-Viewer" title="" class="ng-binding">
+                     <div class="role-radios">
+                        <input id="role-Viewer" type="radio" name="role" value="Viewer">
+                        <label for="role-Viewer" title="">
                         Viewer
                         </label>
                      </div>
-                     <!-- end ngRepeat: role in permissionsModel.roles -->
                   </div>
                </div>
             </div>
             <div class="modal-footer">
-               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-               <!-- ngIf: !originalPermission --><button type="submit" class="btn btn-primary ng-scope" ng-click="commitPermission()" ng-if="!originalPermission" ng-disabled="!permission.contact &amp;&amp; !permission.email" disabled="disabled">Add
-               </button><!-- end ngIf: !originalPermission -->
-               <!-- ngIf: originalPermission -->
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button><button type="submit" class="btn btn-primary" disabled="disabled">Add
+               </button>
             </div>
          </div>
       </form>
    </div>
 </div>
-<div id="add-access-key-modal" rnd-modal="" class="modal fade ng-scope ng-isolate-scope" modal-focus="#access-key-name">
+<div id="add-access-key-modal" rnd-modal="" class="modal fade">
    <div class="modal-dialog">
-      <form class="form-horizontal ng-pristine ng-invalid ng-invalid-required" role="form">
+      <form class="form-horizontal" role="form">
          <div class="modal-content">
             <div class="modal-header">
-               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+               <button type="button" class="close" data-dismiss="modal">
+                 <span aria-hidden="true">×</span>
+                 <span class="sr-only">Close</span>
+               </button>
                <h3 class="modal-title">Add Access Key</h3>
             </div>
             <div class="modal-body">
                <div class="form-group">
                   <label for="access-key-name" class="col-sm-3 control-label">Name</label>
                   <div class="col-sm-9">
-                     <input id="access-key-name" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-model="newAccessKey.name" placeholder="Example: Members portal" required="" autofocus="">
+                     <input id="access-key-name" class="form-control" placeholder="Example: Members portal" required="" autofocus="">
                   </div>
                </div>
             </div>
             <div class="modal-footer">
                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-               <button type="submit" class="btn btn-primary" ng-click="addAccessKey()" data-dismiss="modal">
+               <button type="submit" class="btn btn-primary" data-dismiss="modal">
                Add
                </button>
             </div>
@@ -96,11 +97,11 @@
       </form>
    </div>
 </div>
-<h4 class="rnd-title ng-scope">Teammates</h4>
-<div class="pull-right ng-scope">
-   <button class="btn btn-primary" ng-click="addPermission()">Add Teammate</button>
+<h4 class="rnd-title">Teammates</h4>
+<div class="pull-right">
+   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#user-modal">Add Teammate</button>
 </div>
-<div class="rnd-container ng-scope">
+<div class="rnd-container">
    <table class="table">
       <thead>
          <tr>
@@ -109,39 +110,38 @@
          </tr>
       </thead>
       <tbody>
-         <!-- ngRepeat: permission in permissionsModel.items | filter: adminMember -->
-         <tr ng-repeat="">
+         <tr>
             <td hover-action="" action="" icon="pencil">
                <div class="image-table">
                   <div class="profile-sm image-cell user-avatar">
-                     <!-- ngIf: image --><img ng-if="image" ng-src="" on-error="removeImage()" src=""><!-- end ngIf: image -->
-                     <!-- ngIf: !image -->
+                    <img>
                   </div>
-                  <div class="info-cell">
-                     <!-- ngIf: showLink --><a class="dark-link ng-binding ng-isolate-scope" ui-sref="" member="contact" href=""></a><!-- end ngIf: showLink -->
-                     <!-- ngIf: !showLink -->
+                  <div class="info-cell"><a class="dark-link" member="contact" href=""></a>
                      <p class="member-email"></p>
                   </div>
                </div>
             </td>
-            <td class="ng-binding">
+            <td>
                Owner
                <div class="dropdown room-menu">
                   <button class="btn-icon dropdown-toggle" type="button" id="editMenu" data-toggle="dropdown">
                   <i class="fa fa-cog"></i>
                   </button>
                   <ul class="dropdown-menu" data-placement="bottom" role="menu" aria-labelledby="editMenu">
-                     <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="editPermission(permission)"> <span class="fa fa-pencil"></span> Edit</a></li>
-                     <li role="presentation" ng-hide="isMe(permission.user)"><a role="menuitem" tabindex="-1" ng-click="deletePermission(permission)"><span class="fa fa-times"></span> Delete</a></li>
+                     <li role="presentation">
+                       <a role="menuitem" tabindex="-1">
+                         <span class="fa fa-pencil"></span> Edit
+                       </a>
+                     </li>
+                     <li role="presentation">
+                       <a role="menuitem" tabindex="-1">
+                         <span class="fa fa-times"></span> Delete
+                       </a>
+                     </li>
                   </ul>
                </div>
             </td>
          </tr>
-         <!-- end ngRepeat: permission in permissionsModel.items | filter: adminMember -->
       </tbody>
    </table>
 </div>
-<!-- ngIf: perm === 4 -->
-<!-- ngIf: perm === 4 -->
-<!-- ngIf: perm === 4 -->
-<!-- ngIf: perm === 4 -->
