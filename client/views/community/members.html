@@ -41,15 +41,15 @@
          </tr>
       </thead>
       <tbody>
-         <tr>
+         <tr ng-repeat="user in users">
             <td>
                <div class="image-table" contact="mem">
                   <div class="profile-sm image-cell user-avatar" item="contact">
                      <img>
                   </div>
                   <div class="info-cell">
-                     <a class="dark-link">Darshan</a>
-                     <p class="member-email">darshansapaliga009@gmail.com</p>
+                     <a class="dark-link">{{user.userName}}</a>
+                     <p class="member-email">{{user.email}}</p>
                   </div>
                </div>
             </td>
@@ -60,7 +60,10 @@
               <span class="member-info-value member-status">Contact</span>
             </td>
             <td>
-
+              <span class="member-info-value member-status">Plan</span>
+              <div ng-repeat="plan in user.plans">
+                <p> {{plan.name}} </p>
+              </div>
             </td>
             <td>
               <span class="membership-period">-</span>

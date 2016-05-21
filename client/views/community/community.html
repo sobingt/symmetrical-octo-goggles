@@ -1,4 +1,4 @@
-<section class="container">
+<section ng-app="Community" class="container">
   <div class="row">
     <div class="col-sm-3">
       <h6 class="rnd-title text-uppercase">Community</h6>
@@ -59,8 +59,8 @@
               </th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
+          <tbody ng-if"users">
+            <tr ng-repeat="user in users | filter: 'ORG'">
               <td icon="pencil">
                 <div class="image-table">
                   <div class="profile-sm image-cell user-avatar" icon="'fa-building-o'">
@@ -69,13 +69,15 @@
                     </div>
                   </div>
                   <div class="info-cell">
-                    <a ui-sref="organization.manage.team({ team: team._id })" class="dark-link" href="">Bit Brothers</a>
-                    <p class="member-email">sobingt@bitbrothers.in</p>
+                    <a ui-sref="organization.manage.team({ team: team._id })" class="dark-link" href="">
+                      {{user.userName}}
+                    </a>
+                    <p class="member-email">{{user.email}}</p>
                   </div>
                 </div>
               </td>
               <td>
-                <span class="member-status active">Active</span>
+                <span class="member-status active">{{user.coworkingId.active}}</span>
                 <p class="member-payment-status">
                   <i class="fa fa-exclamation-triangle" title="Missing payment provider"></i>
                   <span>Overdue</span>

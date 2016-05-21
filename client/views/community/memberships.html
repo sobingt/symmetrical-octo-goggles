@@ -66,11 +66,11 @@
           </th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody ng-if"users">
+        <tr ng-repeat="user in users">
           <td>
-            <input type="checkbox">
-              ₹100.00, Inception
+            <input type="checkbox" ng-repeat="plan in user.plan">
+              {{plan.planId}}
             <div class="dropdown room-menu">
               <button class="btn-icon dropdown-toggle" type="button" id="editMenu" data-toggle="dropdown">
               <i class="fa fa-cog"></i>
@@ -97,13 +97,13 @@
           </td>
           <td>
             <span target="membership">
-              <a class="dark-link" href="">Sobin Thomas</a>
+              <a class="dark-link" href="">{{user.userName}}</a>
               <span>, </span>
-              <a class="dark-link"href="">Bit Brothers</a>
+              <a class="dark-link"href="">{{user.orgUserId.userName}}</a>
             </span>
           </td>
           <td>
-            <span class="active">Active</span>
+            <span class="active">{{user.coworkingId.active}}</span>
           </td>
           <td>
             <span>Apr 26, 2016 - </span>

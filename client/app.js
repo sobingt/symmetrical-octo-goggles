@@ -41,7 +41,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/community',
         views: {
           'container@': {
-            controller: 'HomeCtrl',
+            controller: 'CommunityCtrl',
             templateUrl: 'views/community/community.html'
           }
         }
@@ -50,7 +50,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/members',
         views: {
           'content@app.organization.community': {
-            controller: 'HomeCtrl',
+            controller: 'CommunityCtrl',
             templateUrl: 'views/community/members.html'
           }
         }
@@ -59,7 +59,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/leads',
         views: {
           'content@app.organization.community': {
-            controller: 'HomeCtrl',
+            controller: 'CommunityCtrl',
             templateUrl: 'views/community/leads.html'
           }
         }
@@ -68,7 +68,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/contacts',
         views: {
           'content@app.organization.community': {
-            controller: 'HomeCtrl',
+            controller: 'CommunityCtrl',
             templateUrl: 'views/community/contacts.html'
           }
         }
@@ -77,7 +77,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/memberships',
         views: {
           'content@app.organization.community': {
-            controller: 'HomeCtrl',
+            controller: 'CommunityCtrl',
             templateUrl: 'views/community/memberships.html'
           }
         }
@@ -86,7 +86,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/former',
         views: {
           'content@app.organization.community': {
-            controller: 'HomeCtrl',
+            controller: 'CommunityCtrl',
             templateUrl: 'views/community/former.html'
           }
         }
@@ -95,7 +95,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/benefits',
         views: {
           'content@app.organization.community': {
-            controller: 'HomeCtrl',
+            controller: 'CommunityCtrl',
             templateUrl: 'views/community/benefits.html'
           }
         }
@@ -104,7 +104,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/checkins',
         views: {
           'content@app.organization.community': {
-            controller: 'HomeCtrl',
+            controller: 'CommunityCtrl',
             templateUrl: 'views/community/checkins.html'
           }
         }
@@ -118,7 +118,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/billing',
         views: {
           'container@': {
-            controller: 'HomeCtrl',
+            controller: 'BillingCtrl',
             templateUrl: 'views/billing/billing.html'
           }
         }
@@ -127,8 +127,17 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/plans',
         views: {
           'content@app.organization.billing': {
-            controller: 'HomeCtrl',
+            controller: 'BillingCtrl',
             templateUrl: 'views/billing/plans.html'
+          }
+        }
+      })
+      .state('app.organization.billing.rates', {
+        url: '/rates',
+        views: {
+          'content@app.organization.billing': {
+            controller: 'BillingCtrl',
+            templateUrl: 'views/billing/rates.html'
           }
         }
       })
@@ -136,7 +145,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/invoices',
         views: {
           'content@app.organization.billing': {
-            controller: 'HomeCtrl',
+            controller: 'BillingCtrl',
             templateUrl: 'views/billing/invoices.html'
           }
         }
@@ -145,7 +154,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/revenue',
         views: {
           'content@app.organization.billing': {
-            controller: 'HomeCtrl',
+            controller: 'BillingCtrl',
             templateUrl: 'views/billing/revenue.html'
           }
         }
@@ -159,7 +168,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/space',
         views: {
           'container@': {
-            controller: 'HomeCtrl',
+            controller: 'SpaceCtrl',
             templateUrl: 'views/space/space.html'
           }
         }
@@ -168,7 +177,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/meeting-rooms',
         views: {
           'content@app.organization.space': {
-            controller: 'HomeCtrl',
+            controller: 'SpaceCtrl',
             templateUrl: 'views/space/meetingRooms.html'
           }
         }
@@ -177,7 +186,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/private-offices',
         views: {
           'content@app.organization.space': {
-            controller: 'HomeCtrl',
+            controller: 'SpaceCtrl',
             templateUrl: 'views/space/privateOffices.html'
           }
         }
@@ -186,7 +195,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/desks',
         views: {
           'content@app.organization.space': {
-            controller: 'HomeCtrl',
+            controller: 'SpaceCtrl',
             templateUrl: 'views/space/desks.html'
           }
         }
@@ -195,7 +204,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/furniture',
         views: {
           'content@app.organization.space': {
-            controller: 'HomeCtrl',
+            controller: 'SpaceCtrl',
             templateUrl: 'views/space/furniture.html'
           }
         }
@@ -204,7 +213,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/occupancy',
         views: {
           'content@app.organization.space': {
-            controller: 'HomeCtrl',
+            controller: 'SpaceCtrl',
             templateUrl: 'views/space/occupancy.html'
           }
         }
@@ -213,7 +222,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/analytics',
         views: {
           'content@app.organization.space': {
-            controller: 'HomeCtrl',
+            controller: 'SpaceCtrl',
             templateUrl: 'views/space/analytics.html'
           }
         }
@@ -241,7 +250,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/settings',
         views: {
           'container@': {
-            controller: 'HomeCtrl',
+            controller: 'SettingsCtrl',
             templateUrl: 'views/settings/settings.html'
           }
         }
@@ -250,7 +259,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/admin',
         views: {
           'content@app.organization.settings': {
-            controller: 'HomeCtrl',
+            controller: 'SettingsCtrl',
             templateUrl: 'views/settings/admin.html'
           }
         }
@@ -259,7 +268,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/integrations',
         views: {
           'content@app.organization.settings': {
-            controller: 'HomeCtrl',
+            controller: 'SettingsCtrl',
             templateUrl: 'views/settings/integrations.html'
           }
         }
@@ -268,7 +277,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/templates',
         views: {
           'content@app.organization.settings': {
-            controller: 'HomeCtrl',
+            controller: 'SettingsCtrl',
             templateUrl: 'views/settings/templates.html'
           }
         }
@@ -277,7 +286,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/community',
         views: {
           'content@app.organization.settings': {
-            controller: 'HomeCtrl',
+            controller: 'SettingsCtrl',
             templateUrl: 'views/settings/community.html'
           }
         }
@@ -286,7 +295,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/billing',
         views: {
           'content@app.organization.settings': {
-            controller: 'HomeCtrl',
+            controller: 'SettingsCtrl',
             templateUrl: 'views/settings/billing.html'
           }
         }
@@ -295,7 +304,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/space',
         views: {
           'content@app.organization.settings': {
-            controller: 'HomeCtrl',
+            controller: 'SettingsCtrl',
             templateUrl: 'views/settings/space.html'
           }
         }
@@ -304,7 +313,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/calendar',
         views: {
           'content@app.organization.settings': {
-            controller: 'HomeCtrl',
+            controller: 'SettingsCtrl',
             templateUrl: 'views/settings/calendar.html'
           }
         }
@@ -313,7 +322,7 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
         url: '/portal',
         views: {
           'content@app.organization.settings': {
-            controller: 'HomeCtrl',
+            controller: 'SettingsCtrl',
             templateUrl: 'views/settings/portal.html'
           }
         }

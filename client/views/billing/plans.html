@@ -127,12 +127,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="grid-row">
+        <tr class="grid-row" ng-repeat="plan in plans">
           <td>
             <a class="dark-link">
               <span>
                 <div class="color-box" color="planColor" style="background-color: rgb(245, 136, 112);"></div>
-                ₹100.00, Inception
+                {{plan.plan}}
               </span>
             </a>
             <div class="dropdown room-menu">
@@ -148,9 +148,14 @@
               </ul>
             </div>
           </td>
-          <td>1</td>
-          <td><i class="fa fa-laptop"></i> Hot desk</td>
-          <td>"Inception" is a single person plan for individuals who are freelancing from home or single startup founders who are looking to grow and learn from the community. Its a virtual plan</td>
+          <td>
+            {{plan.active}}
+          </td>
+          <td><i class="fa fa-laptop"></i> {{plan.type}}</td>
+          <td>
+            <span>Coffee: </span>
+            {{plan.amenities.coffee}}
+          </td>
           <td><i class="fa fa-sign-in" title="Public"></i>
           </td>
         </tr>

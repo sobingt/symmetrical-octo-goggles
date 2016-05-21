@@ -33,7 +33,7 @@
     </button>
     <ul class="dropdown-menu">
       <li><a ng-click="addInvoice()">Add invoice</a></li>
-      <li><a ui-sref="" href="">Add many invoices</a></li>
+      <li><a href="">Add many invoices</a></li>
     </ul>
   </div>
   <div class="pull-right">
@@ -65,69 +65,71 @@
             <th>
               <input type="checkbox" ng-model="$parent.isSelected" class="ng-pristine ng-untouched ng-valid">
               <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="number">
-                <ng-transclude><span>Invoice #</span></ng-transclude><i ng-if="isSortedBy()" class="fa ng-scope fa-sort-asc" ng-class="{ 'fa-sort-asc': !sort.sortDirection, 'fa-sort-desc': sort.sortDirection }"></i><!-- end ngIf: isSortedBy() -->
+                <span>Invoice #</span><i ng-if="isSortedBy()" class="fa ng-scope fa-sort-asc" ng-class="{ 'fa-sort-asc': !sort.sortDirection, 'fa-sort-desc': sort.sortDirection }"></i><!-- end ngIf: isSortedBy() -->
               </span>
             </th>
-            <th ng-if="!team &amp;&amp; !member">
-              <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="to" value-selector="getTargetName">
-                <ng-transclude><span>To</span></ng-transclude>
+            <th>
+              <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="to">
+                <span>To</span>
               </span>
             </th>
             <th>
               <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="status">
-                <ng-transclude><span>Status</span></ng-transclude>
+                <span>Status</span>
               </span>
             </th>
             <th>
               <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="date">
-                <ng-transclude><span>Issue Date</span></ng-transclude>
+                <span>Issue Date</span>
               </span>
             </th>
             <th>
               <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="date">
-                <ng-transclude><span>Due Date</span></ng-transclude>
+                <span>Due Date</span>
               </span>
             </th>
             <th>
               <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="periodStart">
-                <ng-transclude><span>Period</span></ng-transclude>
+                <span>Period</span>
               </span>
             </th>
             <th>
               <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="amount">
-                <ng-transclude><span>Amount</span></ng-transclude>
+                <span>Amount</span>
               </span>
             </th>
             <th>
               <span class="sortable-header ng-isolate-scope" ng-click="toggleSortBy()" property="isSent">
-                <ng-transclude><span>Sent</span></ng-transclude>
+                <span>Sent</span>
               </span>
             </th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr ng-repeat="invoice in invoices">
             <td>
               <input class="align-top" type="checkbox">
               <div class="image-table middle">
                 <div class="info-cell">
-                  <a class="dark-link ng-binding" ui-sref="organization.manage.billing.invoice({id: p._id})" href="/geekout/billing/invoices/572a8d03c521afda7397010c"> No number</a>
+                  <a class="dark-link ng-binding" ui-sref="organization.manage.billing.invoice({id: p._id})" href="/geekout/billing/invoices/572a8d03c521afda7397010c">
+                    {{invoice.invoiceNo}}
+                  </a>
                 </div>
               </div>
             </td>
             <td>
               <span target="p">
                 <a class="dark-link" member="member" href=""></a>
-                <a class="dark-link" href="">Bit Brothers</a>
+                <a class="dark-link" href="">{{invoice.to}}</a>
               </span>
             </td>
             <td class="payment-status">
-              Overdue
+              {{invoice.status}}
             </td>
-            <td>May 5, 2016</td>
-            <td>May 7, 2016</td>
+            <td>{{invoice.issueDate}}</td>
+            <td>{{invoice.paidDate}}</td>
             <td>May 7, 2016 - Jun 6, 2016</td>
-            <td>₹100.00</td>
+            <td>{{invoice.total}}</td>
             <td></td>
           </tr>
         </tbody>

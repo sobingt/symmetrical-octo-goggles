@@ -110,19 +110,24 @@
          </tr>
       </thead>
       <tbody>
-         <tr>
+         <tr ng-repeat="user in users | filter: 'ADM'">
             <td hover-action="" action="" icon="pencil">
                <div class="image-table">
                   <div class="profile-sm image-cell user-avatar">
                     <img>
                   </div>
-                  <div class="info-cell"><a class="dark-link" member="contact" href=""></a>
-                     <p class="member-email"></p>
+                  <div class="info-cell">
+                    <a class="dark-link" member="contact" href="">
+                      {{user.userName}}
+                    </a>
+                     <p class="member-email">
+                       {{user.email}}
+                     </p>
                   </div>
                </div>
             </td>
             <td>
-               Owner
+               {{user.type}}
                <div class="dropdown room-menu">
                   <button class="btn-icon dropdown-toggle" type="button" id="editMenu" data-toggle="dropdown">
                   <i class="fa fa-cog"></i>
