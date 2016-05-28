@@ -1,0 +1,69 @@
+<form class="form-horizontal" role="form">
+  <div class="modal-content">
+    <div class="form-header">
+      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      <h3 class="modal-title inline">Add Resource Rate</h3>
+    </div>
+    <div class="form-body">
+      <div class="form-group">
+        <label for="plan-name" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" ng-model="plan.name" id="plan-name" placeholder="Full-time">
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="form-group">
+        <label for="plan-price" class="col-sm-2 control-label">Price</label>
+        <div class="col-sm-5">
+          <div class="input-group">
+            <input type="number" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-model="plan.price" step="1" id="plan-price" required="" placeholder="Price">
+            <span class="input-group-addon ng-binding">INR</span>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <span title="" class=" form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="plan-interval-length_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" style="" aria-activedescendant="a3f2c56a-bc83-4cb5-90dc-17e8fd730995">
+            <span unselectable="on">
+              <span unselectable="on">
+                hour
+              </span>
+              <span unselectable="on">
+                <span unselectable="on">
+                  select
+                </span>
+              </span>
+            </span>
+            <select id="plan-interval-length" class="form-control" kendo-drop-down-list="" k-value-primitive="true" k-ng-model="plan.intervalLength" k-data-source="intervalLengths" data-role="dropdownlist" style="display: none;">
+              <option value="hour">hour</option>
+            </select>
+          </span>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="form-group">
+        <label for="plan-offprice" class="col-sm-2 control-label">Off hours price</label>
+        <div class="col-sm-5">
+          <div class="input-group">
+            <input type="number" class="form-control" ng-model="plan.offPrice" step="1" id="plan-offprice" placeholder="Price">
+            <span class="input-group-addon ng-binding">INR</span>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="form-group">
+        <label for="plan-desc" class="col-sm-2 control-label">Description</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="plan-desc" placeholder="Small meeting room rate">
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="form-footer">
+      <button type="button" class="btn btn-default" ui-sref="app.organization.billing.rates" data-dismiss="modal">
+      Back
+      </button>
+      <button type="submit" class="btn btn-primary" disabled="disabled">
+        <span>Add</span>
+      </button>
+    </div>
+  </div>
+</form>

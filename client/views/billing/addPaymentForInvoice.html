@@ -1,0 +1,51 @@
+<form class="form-horizontal ng-pristine ng-valid ng-valid-required">
+  <div class="form-header">
+    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+    <h3 class="modal-title ng-binding">Add Payment for Invoice #</h3>
+  </div>
+  <div class="form-body">
+    <div class="form-group">
+      <label for="charge-account" class="col-sm-3 control-label">Method</label>
+      <div class="col-sm-9">
+        <span title="" class="k-widget k-dropdown k-header form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="charge-account_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" style="" aria-activedescendant="9d147be1-263f-41ac-a479-a2ee416f913e">
+          <span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input ng-scope">Cash</span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span>
+          <select id="charge-account" class="form-control" kendo-drop-down-list="" k-ng-model="charge.account" k-value-primitive="true" k-data-source="accounts" data-role="dropdownlist" style="display: none;">
+            <option value="Cash">Cash</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+            <option value="POS">POS</option>
+            <option value="Cheque">Cheque</option>
+          </select>
+        </span>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="form-group">
+      <label for="charge-amount" class="col-sm-3 control-label">Amount</label>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <input type="number" class="form-control ng-pristine ng-valid ng-valid-required ng-touched" ng-model="charge.amount" step="1" id="charge-amount" required="" placeholder="Example: ₹100.00">
+          <span class="input-group-addon ng-binding">INR</span>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="form-group">
+      <label for="charge-reference" class="col-sm-3 control-label">Reference</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="charge.reference" id="charge-reference">
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="form-group">
+      <label for="charge-date" class="col-sm-3 control-label">Date</label>
+      <div class="col-sm-9">
+        <span class="k-widget k-datepicker k-header form-control"><span class="k-picker-wrap k-state-default"><input id="charge-date" class="form-control k-input" kendo-date-picker="" k-ng-model="charge.date" k-format="dateFormat" data-role="datepicker" type="text" role="combobox" aria-expanded="false" aria-owns="charge-date_dateview" aria-disabled="false" aria-readonly="false" style="width: 100%;"><span unselectable="on" class="k-select" role="button" aria-controls="charge-date_dateview"><span unselectable="on" class="k-icon k-i-calendar">select</span></span></span></span>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="form-footer">
+    <button type="button" class="btn btn-default" ui-sref="app.organization.billing.invoices.viewInvoice">Back</button>
+    <button type="submit" class="btn btn-primary" ng-click="saveCharge()" ng-disabled="!charge.amount" data-dismiss="modal">Add</button>
+  </div>
+</form>

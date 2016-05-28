@@ -69,7 +69,7 @@
       <tbody ng-if"users">
         <tr ng-repeat="user in users">
           <td>
-            <input type="checkbox" ng-repeat="plan in user.plan">
+            <input type="checkbox">
               {{plan.planId}}
             <div class="dropdown room-menu">
               <button class="btn-icon dropdown-toggle" type="button" id="editMenu" data-toggle="dropdown">
@@ -97,7 +97,7 @@
           </td>
           <td>
             <span target="membership">
-              <a class="dark-link" href="">{{user.userName}}</a>
+              <a class="dark-link" href="" ui-sref="app.organization.community.members.profile">{{user.userName}}</a>
               <span>, </span>
               <a class="dark-link"href="">{{user.orgUserId.userName}}</a>
             </span>

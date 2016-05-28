@@ -1,60 +1,3 @@
-
-<div id="property-modal" rnd-modal="" modal-focus="#property-title" class=" modal fade">
-   <div class="modal-dialog">
-      <form name="addPropertyForm" class="form-horizontal" role="form" novalidate="">
-         <div class="modal-content">
-            <div class="modal-header">
-               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-               <h3 class="modal-title">Add Property</h3>
-            </div>
-            <div class="modal-body">
-               <div class="form-group">
-                  <label for="property-title" class="col-sm-3 control-label">Title</label>
-                  <div class="col-sm-9">
-                     <input name="title" type="text" class="form-control" id="property-title" placeholder="Full-time" required="">
-                     <div class="error">
-                        <span>Property with such name already exists.</span>
-                     </div>
-                  </div>
-               </div>
-               <div class="form-group">
-                  <label for="property-values" class="col-sm-3 control-label">Values</label>
-                  <div class="col-sm-9">
-                     <input name="title" type="text" class="form-control" id="property-values" placeholder="Values">
-                     <small class="text-muted">Comma separated values.</small>
-                  </div>
-               </div>
-               <div class="form-group">
-                  <div class="col-sm-offset-3 col-sm-9">
-                     <div class="checkbox">
-                        <label>
-                        <input type="checkbox"> Public
-                        </label>
-                     </div>
-                     <small class="text-muted">Enable to make this property available in the Community Portal.</small>
-                  </div>
-               </div>
-               <div class="form-group">
-                  <div class="col-sm-offset-3 checkbox col-sm-4">
-                   <label>
-                     <input type="checkbox">Apply to members</label>
-                  </div>
-                  <div class="checkbox col-sm-5">
-                      <label><input type="checkbox">Apply to teams</label>
-                  </div>
-               </div>
-            </div>
-            <div class="modal-footer">
-               <button type="button" class="btn btn-default" data-dismiss="modal">
-               Close
-               </button>
-               <button type="submit" class="btn btn-primary"><span>Add</span>
-               </button>
-            </div>
-         </div>
-      </form>
-   </div>
-</div>
 <div id="imported-members-modal" class="modal fade">
    <div class="modal-dialog modal-xl">
       <div class="modal-content">
@@ -170,7 +113,7 @@
 </div>
 <div>
    <h4 class="rnd-title" title="Member properties">Member Properties</h4>
-   <button type="button" class="btn btn-primary">Add property</button>
+   <button type="button" class="btn btn-primary" ui-sref="app.organization.settings.community.addProperty">Add property</button>
    <div class="rnd-container">
       <ol class="numbered-list">
          <li>

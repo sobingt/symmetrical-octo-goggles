@@ -30,7 +30,36 @@
       </tr>
     </thead>
     <tbody>
-      
+      <tr ng-repeat="user in users">
+        <td>
+          <input class="align-top" type="checkbox">
+          <div class="image-table">
+            <div class="profile-sm image-cell">
+              <img>
+            </div>
+            <div class="info-cell">
+              <a class="member-name dark-link" href="#"></a>
+              <p class="member-email">
+                <a class="dark-link" href="">
+                  {{user.userName}}
+                </a>
+              </p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p>
+            {{user.email}}
+          </p>
+        </td>
+        <td>
+          
+        </td>
+        <td>
+          <div class="social-profiles" profiles="">
+          </div>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

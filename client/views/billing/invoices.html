@@ -26,7 +26,7 @@
     </div>
   </div>
   <div class="btn-group">
-    <button class="btn btn-primary" ng-click="addInvoice()">Add invoice</button>
+    <button class="btn btn-primary" ui-sref="app.organization.billing.invoices.addInvoice">Add invoice</button>
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="caret"></span>
       <span class="sr-only">Toggle Dropdown</span>
@@ -111,7 +111,7 @@
               <input class="align-top" type="checkbox">
               <div class="image-table middle">
                 <div class="info-cell">
-                  <a class="dark-link ng-binding" ui-sref="organization.manage.billing.invoice({id: p._id})" href="/geekout/billing/invoices/572a8d03c521afda7397010c">
+                  <a class="dark-link ng-binding" ui-sref="app.organization.billing.invoices.viewInvoice" href="">
                     {{invoice.invoiceNo}}
                   </a>
                 </div>

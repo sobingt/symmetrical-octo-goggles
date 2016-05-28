@@ -1,0 +1,46 @@
+<form class="form-horizontal" role="form">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      <h3 class="modal-title ng-binding">Add Company</h3>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="team-name" class="col-sm-3 control-label">Name</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" ng-model="team.name" id="team-name" placeholder="Office Innovation Labs">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="team-email" class="col-sm-3 control-label">Email</label>
+        <div class="col-sm-9">
+          <input type="email" class="form-control ng-pristine ng-untouched ng-valid ng-valid-email" ng-model="team.email" id="team-email" placeholder="example@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="team-twitter" class="col-sm-3 control-label">Twitter</label>
+        <div class="col-sm-9">
+          <input id="team-twitter" class="form-control" placeholder="Twitter handle" ng-model="team.twitterHandle">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Start Date</label>
+        <div class="col-sm-9">
+          <span class="k-widget k-datepicker k-header form-control ng-scope">
+            <span class="k-picker-wrap k-state-default">
+              <input id="team-startDate" class="form-control ng-scope k-input" kendo-date-picker="" placeholder="Start Date" k-ng-model="team.startDate" k-rebind="team" k-format="dateFormat" k-min="firstPossibleDate" k-max="lastPossibleDate" data-role="datepicker" type="text" role="combobox" aria-expanded="false" aria-owns="team-startDate_dateview" aria-disabled="false" aria-readonly="false" style="width: 100%;">
+              <span unselectable="on" class="k-select" role="button" aria-controls="team-startDate_dateview">
+                <span unselectable="on" class="k-icon k-i-calendar">select</span></span></span></span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">
+      Close
+      </button>
+      <button type="submit" class="btn btn-primary ng-binding" ng-disabled="!team.name" data-dismiss="modal" ng-click="commitTeam()" disabled="disabled">
+      Add
+      </button>
+    </div>
+  </div>
+</form>

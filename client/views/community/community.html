@@ -1,4 +1,4 @@
-<section ng-app="Community" class="container">
+<section class="container">
   <div class="row">
     <div class="col-sm-3">
       <h6 class="rnd-title text-uppercase">Community</h6>
@@ -23,7 +23,7 @@
           </label>
           <input id="search-input" type="search" class="form-control inline-search" placeholder="Search">
         </div>
-          <button class="btn btn-primary">Add company</button>
+          <button ui-sref="app.orgranization.community.addCompany" class="btn btn-primary">Add company</button>
           <button class="btn btn-primary">Export</button>
       </div>
 
@@ -69,7 +69,7 @@
                     </div>
                   </div>
                   <div class="info-cell">
-                    <a ui-sref="organization.manage.team({ team: team._id })" class="dark-link" href="">
+                    <a ui-sref="app.organization.community.members.profile" class="dark-link" href="">
                       {{user.userName}}
                     </a>
                     <p class="member-email">{{user.email}}</p>

@@ -1,0 +1,110 @@
+<div ui-view="" class="ng-scope">
+  <div class="row ng-scope">
+    <div class="col-md-4">
+      <h4 class="rnd-title" title="Members details">Invoice</h4>
+      <div class="dropdown pull-right actions-menu ng-scope" ng-if="canDeleteInvoice(invoice)">
+        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="editMenu" data-toggle="dropdown">
+        <i class="fa fa-cog"></i> Actions
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" data-placement="bottom" role="menu" aria-labelledby="editMenu">
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" ng-click="deleteInvoice()">
+            <i class="fa fa-trash-o"></i> Delete
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="rnd-container member-card">
+        <div class="profile-md inline pull-left"><i class="fa fa-file-text-o"></i></div>
+        <h3 class="ng-binding"># </h3>
+        <div class="clearfix"></div>
+        <hr>
+        <p class="member-info">
+          <label><i class="fa fa-user"></i> To</label>
+          <span class="member-info-value">
+            <span target="invoice" class="ng-isolate-scope">
+              <a class="dark-link ng-binding ng-isolate-scope" ui-sref="organization.manage.member({ id: member._id })" member="member" href="/geekout/community/members/"></a><!-- ngIf: team && member && !hideTeam --><!-- ngIf: !hideTeam --><a ui-sref="organization.manage.team({ team: team._id })" class="dark-link ng-binding ng-isolate-scope" ng-if="!hideTeam" team="team" href="/geekout/community/teams/571a5c570d5ad7c46ec5fbf6">Bit Brothers</a><!-- end ngIf: !hideTeam -->
+            </span>
+          </span>
+        </p>
+        <div class="member-info">
+          <label><i class="fa fa-clock-o"></i> Status</label>
+          <span class="member-info-value payment-status ng-binding overdue" ng-class="getClassFromStatus(invoice.status)">Overdue</span>
+        </div>
+        <p class="member-info">
+          <label><i class="fa fa-calendar-o"></i> Issue Date</label>
+          <span class="member-info-value ng-binding">May 5, 2016</span>
+        </p>
+        <p class="member-info">
+          <label><i class="fa fa-calendar-o"></i> Due Date</label>
+          <span class="member-info-value ng-binding">May 7, 2016</span>
+        </p>
+        <p class="member-info">
+          <label><i class="fa fa-calendar"></i> Period</label>
+          <span class="member-info-value ng-binding">May 7, 2016 - Jun 6, 2016</span>
+        </p>
+        <p class="member-info">
+          <label><i class="fa fa-percent"></i> Discount</label>
+          <span class="member-info-value ng-binding">0%</span>
+        </p>
+        <p class="member-info">
+          <label><i class="fa fa-calculator"></i> VAT</label>
+          <span class="member-info-value ng-binding">Excluded</span>
+        </p>
+        <p class="member-info">
+          <label><i class="fa fa-money"></i> Total</label>
+          <strong class="member-info-value ng-binding">₹100.00</strong>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h4 class="rnd-title" title="Plans">Lines</h4>
+      <div class="rnd-container">
+        <table class="table no-border">
+          <thead>
+            <tr>
+              <th><label>Description</label></th>
+              <th><label>Quantity</label></th>
+              <th class="column-right"><label>Discount</label></th>
+              <th class="column-right"><label>Price</label></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in lines" class="ng-scope">
+              <td class="ng-binding">Inception, 100.00₹, May 7, 2016 - Jun 6, 2016</td>
+              <td class="ng-binding">1.00</td>
+              <td class="column-right ng-binding">0%</td>
+              <td class="column-right ng-binding">₹100.00</td>
+            </tr>
+            <tr>
+              <td colspan="1"></td>
+              <td colspan="3" class="column-right">
+                <div>
+                  <span>Subtotal: </span>
+                  <strong class="ng-binding">₹100.00</strong>
+                </div>
+                <div ng-if="invoice.taxType !== 'noTax'" class="ng-scope">
+                  <span ng-if="invoice.taxType === 'excluded'" class="ng-scope">Total </span>
+                  <span class="ng-binding">Tax (%): </span>
+                  <strong class="ng-binding">₹0.00</strong>
+                </div>
+                <div class="invoice-total pull-right">
+                  <span>Total: </span>
+                  <strong class="ng-binding">₹100.00</strong>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h4 class="rnd-title" title="Payments">Payments</h4>
+      <button type="button" class="btn btn-primary btn" ui-sref="app.organization.billing.invoices.viewInvoice.addPayment">Add payment</button>
+      <div class="rnd-container ng-scope" ng-if="invoice.charges.length === 0">
+        <div class="no-items-section">No payments recorded for this invoice.</div>
+      </div>
+    </div>
+  </div>
+</div>

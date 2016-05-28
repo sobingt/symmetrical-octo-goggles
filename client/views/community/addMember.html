@@ -1,0 +1,75 @@
+<form class="form-horizontal" role="form">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">
+      <span aria-hidden="true">×</span>
+      <span class="sr-only">Close</span>
+      </button>
+      <h3 class="modal-title inline">Add Member</h3>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="member-name" class="col-sm-3 control-label">Name</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" ng-model="member.name" id="member-name" placeholder="John Doe" ng-required="true" required="required">
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="form-group">
+        <label for="member-team" class="col-sm-3 control-label">Company</label>
+        <div class="col-sm-9">
+          <span class="form-control"><span tabindex="-1" unselectable="on" class="k-dropdown-wrap k-state-default">
+            <input class="form-control" type="text" title="" role="combobox" style="width: 100%;">
+            <span tabindex="-1">
+              <span role="button">select</span></span></span>
+              <input id="member-team" class="form-control" data-role="combobox" style="display: none;"></span>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="form-group">
+        <label for="member-email" class="col-sm-3 control-label">Email</label>
+        <div class="col-sm-9">
+          <input type="email" class="form-control" id="member-email" placeholder="example@email.com">
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="form-group">
+        <label for="member-phone" class="col-sm-3 control-label">Phone</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="member-phone" placeholder="+44 7700 900101">
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Position</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" placeholder="Position">
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Phone</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" placeholder="Phone">
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div>
+        <div class="form-group">
+          <label for="plan" class="col-sm-3 control-label">Plan</label>
+          <div class="col-sm-9">
+            <select id="plan" class="form-control">
+              <option value="" class="" selected="selected">Not Selected</option>
+              <option label="₹100.00, Inception">₹100.00, Inception</option>
+              <option label="₹120.00, The Brady Bunch">₹120.00, The Brady Bunch</option>
+              <option label="₹150.00, The Lone Ranger">₹150.00, The Lone Ranger</option>
+            </select>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+      <button type="button" ui-sref="app.organization.community.members" class="btn btn-default pull-left" data-dismiss="modal">Back</button>
+      <button type="submit" class="btn btn-primary" ng-disabled="!isMemberValid()" ng-click="commitMember()" disabled="disabled">
+        <span class="ng-scope">Add</span>
+      </button>
+</form>

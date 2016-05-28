@@ -1,0 +1,200 @@
+<form class="form-horizontal ng-pristine ng-valid ng-valid-required" role="form">
+  <div class="modal-content">
+    <div class="form-header">
+      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      <h3 class="modal-title inline ng-binding">Edit Plan</h3>
+      <div class="rnd-filter-tabs-panel">
+        <a ng-click="tab='general'" ng-class="{ active: tab === 'general' }" class="active">
+        <span class="filter-label">General</span>
+        </a>
+        <a ng-click="tab='credits'" ng-class="{ active: tab === 'credits' }">
+        <span class="filter-label">Credits</span>
+        </a>
+        <a ng-click="tab='passes'" ng-class="{ active: tab === 'passes' }">
+        <span class="filter-label">Day passes</span>
+        </a>
+        <a ng-click="tab='addOns'" ng-class="{ active: tab === 'addOns' }" ng-show="isRecurring(plan)" class="">
+        <span class="filter-label">Add ons</span>
+        </a>
+        <a ng-click="tab='setupFees'" ng-class="{ active: tab === 'setupFees' }" ng-show="isRecurring(plan)" class="">
+        <span class="filter-label">Setup fees</span>
+        </a>
+      </div>
+    </div>
+    <div class="form-body" ng-show="tab === 'general'">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Type</label>
+        <div class="col-sm-10">
+          <div class="btn-group btn-group-justified">
+            <!-- ngRepeat: (key, type) in planTypes -->
+            <div class="btn-group ng-scope" ng-repeat="(key, type) in planTypes">
+              <button type="button" class="btn btn-default btn-sm" ng-class="{ active: plan.type === key }" ng-click="plan.type=key" title="Private office">
+                <i class="fa fa-building-o"></i>
+                <div class="ng-binding">Private office</div>
+              </button>
+            </div>
+            <!-- end ngRepeat: (key, type) in planTypes -->
+            <div class="btn-group ng-scope" ng-repeat="(key, type) in planTypes">
+              <button type="button" class="btn btn-default btn-sm" ng-class="{ active: plan.type === key }" ng-click="plan.type=key" title="Dedicated desk">
+                <i class="fa fa-desktop"></i>
+                <div class="ng-binding">Dedicated desk</div>
+              </button>
+            </div>
+            <!-- end ngRepeat: (key, type) in planTypes -->
+            <div class="btn-group ng-scope" ng-repeat="(key, type) in planTypes">
+              <button type="button" class="btn btn-default btn-sm active" ng-class="{ active: plan.type === key }" ng-click="plan.type=key" title="Hot desk">
+                <i class="fa fa-laptop"></i>
+                <div class="ng-binding">Hot desk</div>
+              </button>
+            </div>
+            <!-- end ngRepeat: (key, type) in planTypes -->
+            <div class="btn-group ng-scope" ng-repeat="(key, type) in planTypes">
+              <button type="button" class="btn btn-default btn-sm" ng-class="{ active: plan.type === key }" ng-click="plan.type=key" title="Service">
+                <i class="fa fa-print"></i>
+                <div class="ng-binding">Service</div>
+              </button>
+            </div>
+            <!-- end ngRepeat: (key, type) in planTypes -->
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="plan-name" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control ng-pristine ng-valid ng-touched" ng-model="plan.name" id="plan-name" placeholder="Full-time">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="plan-price" class="col-sm-2 control-label">Price</label>
+        <div class="col-sm-5">
+          <div class="input-group">
+            <input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-valid-required" ng-model="plan.price" step="1" id="plan-price" required="" placeholder="Price">
+            <span class="input-group-addon ng-binding">INR</span>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <span title="" class="k-widget k-dropdown k-header form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="" aria-disabled="false" aria-readonly="false" aria-busy="false" style="" aria-activedescendant="86242582-5bd9-4e0d-8c20-49e859c47b3c">
+            <span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input ng-scope">month</span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span>
+            <select class="form-control" kendo-drop-down-list="" k-value-primitive="true" k-ng-model="plan.intervalLength" k-data-source="intervalLengths" data-role="dropdownlist" style="display: none;">
+              <option value="once">once</option>
+              <option value="month" selected="selected">month</option>
+            </select>
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="plan-desc" class="col-sm-2 control-label">Description</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="plan.description" id="plan-desc" placeholder="Perfect for people just starting out">
+        </div>
+      </div>
+      <!-- ngIf: offices.length>1 -->
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Options</label>
+        <div class="col-sm-10">
+          <!-- ngIf: isRecurring(plan) -->
+          <div class="checkbox ng-scope" ng-if="isRecurring(plan)">
+            <label>
+            <input type="checkbox" ng-model="plan.freeMeetingRooms" class="ng-pristine ng-untouched ng-valid"> Free meeting rooms
+            </label>
+          </div>
+          <!-- end ngIf: isRecurring(plan) -->
+          <!-- ngIf: isRecurring(plan) && org.settings.community.enabled -->
+          <!-- ngIf: org.settings.community.enabled -->
+          <small>Public plans are visible for members in the members portal.</small>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body ng-hide" ng-show="tab === 'credits'">
+      <div class="form-group">
+        <div class="col-sm-12">
+          <table class="table no-borders row">
+            <thead>
+              <tr>
+                <th>
+                  <label>Rate</label>
+                </th>
+                <th>
+                  <label>Credits</label>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- ngRepeat: credit in plan.credits -->
+              <tr>
+                <td>
+                  <button type="button" class="btn btn-default" ng-click="newCredit()">
+                  Add
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body ng-hide" ng-show="tab === 'passes'">
+      <div class="form-group">
+        <label for="plan-passes" class="col-sm-4 control-label">Days included</label>
+        <div class="col-sm-6">
+          <input type="number" class="form-control ng-pristine ng-untouched ng-valid" ng-model="plan.passes" id="plan-passes">
+        </div>
+      </div>
+    </div>
+    <div class="modal-body ng-hide" ng-show="tab === 'addOns'">
+      <div class="form-group">
+        <div class="col-sm-12">
+          <table class="table no-borders row">
+            <thead>
+              <tr>
+                <th>
+                  <label>Name</label>
+                </th>
+                <th>
+                  <label>Price</label>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- ngRepeat: addOn in plan.addOns -->
+              <tr>
+                <td>
+                  <button type="button" class="btn btn-default" ng-click="newAddOn()">
+                  Add
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body ng-hide" ng-show="tab === 'setupFees'">
+      <div class="form-group">
+        <div class="col-sm-12">
+          <table class="table no-borders row">
+            <tbody>
+              <!-- ngRepeat: fee in setupFees -->
+              <tr>
+                <td>
+                  <button type="button" class="btn btn-default" ng-click="addSetupFee()">
+                  Add
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="form-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">
+      Close
+      </button>
+      <button type="submit" class="btn btn-primary" ng-click="commitPlan()" ng-disabled="plan.price===undefined">
+        <!-- ngIf: originalPlan --><span ng-if="originalPlan" class="ng-scope">Update</span><!-- end ngIf: originalPlan -->
+        <!-- ngIf: !originalPlan -->
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,135 @@
+<form class="form-horizontal">
+  <div class="modal-content">
+    <div class="form-header">
+      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      <h3 class="modal-title">Add Invoice</h3>
+    </div>
+    <div class="form-body">
+      <div class="form-group">
+        <label for="payment-to" class="col-sm-2 control-label" ng-hide="payment.member || originalInvoice">To</label>
+        <div class="col-sm-4" ng-hide="payment.member || originalInvoice">
+          <span title="" class="k-widget k-dropdown k-header form-control ng-scope" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="payment-to_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" style="">
+            <span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input ng-scope">Not selected</span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span>
+            <select id="payment-to" class="form-control ng-scope" kendo-drop-down-list="" k-ng-model="invoice.target.team" k-value-primitive="true" k-data-value-field="'_id'" k-data-text-field="'name'" k-filter="'contains'" k-on-change="onTargetChange()" k-data-source="teams" k-rebind="payment" k-option-label="{ name: 'Not selected', _id: null }" data-role="dropdownlist" style="display: none;">
+              <option value="" selected="selected">Not selected</option>
+              <option value="5719deb80d5ad7c46ec5fbd5">Geekout</option>
+              <option value="571a5c570d5ad7c46ec5fbf6">Bit Brothers</option>
+            </select>
+          </span>
+        </div>
+        <label for="payment-method" class="col-sm-2 control-label ng-hide" ng-show="invoicingType === 'basic' &amp;&amp; (invoice.target.team || invoice.target.member)">Payment Method</label>
+        <div class="col-sm-4 ng-hide" ng-show="invoicingType === 'basic' &amp;&amp; (invoice.target.team || invoice.target.member)">
+          <span title="" class="k-widget k-dropdown k-header form-control ng-pristine ng-untouched ng-valid" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="payment-method_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="385dd6b7-4890-42fe-83d5-bb5c8e9c240d" style="">
+            <span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input ng-scope"></span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span>
+            <select id="payment-method" class="form-control ng-pristine ng-untouched ng-valid" kendo-drop-down-list="" ng-model="payment.method" data-role="dropdownlist" style="display: none;">
+              <option value="cash">Cash</option>
+              <option value="bank">Bank Transfer</option>
+              <option value="pos">POS</option>
+            </select>
+          </span>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="form-group">
+        <label for="payment-number" class="col-sm-2 control-label">Invoice #</label>
+        <div class="col-sm-4">
+          <input id="payment-number" class="form-control ng-pristine ng-untouched ng-valid" ng-model="payment.number">
+        </div>
+        <label for="payment-date" class="col-sm-2 control-label">Issue Date</label>
+        <div class="col-sm-4">
+          <span class="k-widget k-datepicker k-header form-control ng-scope"><span class="k-picker-wrap k-state-default"><input id="payment-date" class="form-control ng-scope k-input" kendo-date-picker="" k-ng-model="invoice.issueDate" k-on-change="issueDateChanged()" k-rebind="payment" k-format="dateFormat" k-parse-formats="['dd/MM/yyyy', 'yyyy-MM-ddTHH:mm:ss']" data-role="datepicker" type="text" role="combobox" aria-expanded="false" aria-owns="payment-date_dateview" aria-disabled="false" aria-readonly="false" style="width: 100%;"><span unselectable="on" class="k-select" role="button" aria-controls="payment-date_dateview"><span unselectable="on" class="k-icon k-i-calendar">select</span></span></span></span>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="form-group">
+        <label for="invoice-date" class="col-sm-2 control-label">Period Start</label>
+        <div class="col-sm-4">
+          <span class="k-widget k-datepicker k-header form-control ng-scope"><span class="k-picker-wrap k-state-default"><input id="invoice-date" class="form-control ng-scope k-input" kendo-date-picker="" k-ng-model="invoice.periodStart" k-on-change="regenerateLines()" k-depth="'year'" k-start="'year'" k-rebind="invoice" k-format="'MMMM yyyy'" k-parse-formats="['MMMM yyyy', 'yyyy-MM-ddTHH:mm:ss']" data-role="datepicker" type="text" role="combobox" aria-expanded="false" aria-owns="invoice-date_dateview" aria-disabled="false" aria-readonly="false" style="width: 100%;"><span unselectable="on" class="k-select" role="button" aria-controls="invoice-date_dateview"><span unselectable="on" class="k-icon k-i-calendar">select</span></span></span></span>
+        </div>
+        <label for="payment-for" class="col-sm-2 control-label">Pay For</label>
+        <div class="col-sm-4">
+          <span title="" class="k-widget k-dropdown k-header form-control ng-pristine ng-untouched ng-valid" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="payment-for_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" style="" aria-activedescendant="a1706776-a4e7-4fb4-87f7-644f15962608">
+            <span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input ng-scope">1 month</span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span>
+            <select id="payment-for" class="form-control ng-pristine ng-untouched ng-valid" kendo-drop-down-list="" ng-model="invoice.periodLength" ng-change="regenerateLines()" data-role="dropdownlist" style="display: none;">
+              <option value="1" selected="selected">1 month</option>
+              <option value="2">2 months</option>
+              <option value="3">3 months</option>
+              <option value="4">4 months</option>
+              <option value="5">5 months</option>
+              <option value="6">6 months</option>
+              <option value="12">12 months</option>
+            </select>
+          </span>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="form-group">
+        <label for="due-date" class="col-sm-2 control-label">Due Date</label>
+        <div class="col-sm-4">
+          <span class="k-widget k-datepicker k-header form-control ng-scope"><span class="k-picker-wrap k-state-default"><input id="due-date" class="form-control ng-scope k-input" kendo-date-picker="" k-ng-model="invoice.dueDate" k-rebind="payment" k-format="dateFormat" k-on-change="dueDateChanged()" data-role="datepicker" type="text" role="combobox" aria-expanded="false" aria-owns="due-date_dateview" aria-disabled="false" aria-readonly="false" style="width: 100%;"><span unselectable="on" class="k-select" role="button" aria-controls="due-date_dateview"><span unselectable="on" class="k-icon k-i-calendar">select</span></span></span></span>
+        </div>
+        <label for="payment-discount" class="col-sm-2 control-label">Discount</label>
+        <div class="col-sm-4">
+          <div class="input-group">
+            <input id="payment-discount" type="number" class="form-control ng-pristine ng-untouched ng-valid ng-valid-min ng-valid-max" ng-model="invoice.discount" ng-change="mainDiscountChanged()" step="5" min="0" max="100">
+            <span class="input-group-addon">%</span>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <table class="table no-borders">
+            <thead>
+              <tr>
+                <th class="col-sm-4">
+                  <label>Description</label>
+                </th>
+                <th class="col-sm-2 column-right">
+                  <label class="ng-binding">Unit Price ₹</label>
+                </th>
+                <th class="col-sm-2 column-right">
+                  <label>Quantity</label>
+                </th>
+                <th class="col-sm-2 column-right">
+                  <label>Discount %</label>
+                </th>
+                <th class="col-sm-2 column-right">
+                  <label>Price</label>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="3">
+                  <button class="btn btn-default btn-sm" ng-click="addLine()">Add</button>
+                </td>
+                <td colspan="2" class="column-right">
+                  <div>
+                    <span>Subtotal: </span>
+                    <strong class="ng-binding">₹0.00</strong>
+                  </div>
+                  <div ng-if="payment.taxType !== 'noTax'" class="ng-scope">
+                    <span ng-if="payment.taxType === 'excluded'" class="ng-scope">Total </span><!-- end ngIf: payment.taxType === 'excluded' -->
+                    <span class="ng-binding">Tax (%): </span>
+                    <strong class="ng-binding">₹</strong>
+                  </div>
+                  <div class="invoice-total pull-right">
+                    <span>Total: </span>
+                    <strong class="ng-binding">₹</strong>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="form-footer">
+      <button type="button" class="btn btn-default" ui-sref="app.organization.billing">Back</button>
+      <button type="submit" class="btn btn-primary ng-scope" ng-click="commitPayment()" ng-if="!originalInvoice" ng-disabled="!canCommitInvoice()" data-dismiss="modal" disabled="disabled">Add
+      </button>
+    </div>
+  </div>
+</form>

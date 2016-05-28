@@ -7,7 +7,7 @@
       </label>
       <input id="search-input" type="search" class="form-control inline-search" placeholder="Search">
    </div>
-   <button class="btn btn-primary">Add member</button>
+   <button ui-sref="app.organization.community.members.addMember" class="btn btn-primary">Add member</button>
    <button class="btn btn-primary">Export</button>
 </div>
 
@@ -48,7 +48,7 @@
                      <img>
                   </div>
                   <div class="info-cell">
-                     <a class="dark-link">{{user.userName}}</a>
+                     <a class="dark-link" ui-sref="app.organization.community.members.profile">{{user.userName}}</a>
                      <p class="member-email">{{user.email}}</p>
                   </div>
                </div>

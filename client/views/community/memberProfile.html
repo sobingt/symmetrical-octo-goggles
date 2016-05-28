@@ -1,0 +1,136 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div>
+        <h4 class="rnd-title" title="Members details">Member</h4>
+        <div class="dropdown pull-right">
+          <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="editMenu" data-toggle="dropdown">
+          <i class="fa fa-cog"></i> Actions
+          <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li role="presentation">
+              <a role="menuitem">
+              <span class="fa fa-pencil"></span> Edit
+              </a>
+            </li>
+            <li role="presentation">
+              <a role="menuitem">
+                <span class="fa fa-user-plus"></span> Enable User
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li role="presentation">
+              <a role="menuitem" tabindex="-1" ng-click="deleteMember(member)">
+              <i class="fa fa-trash-o"></i> Delete
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="rnd-container member-card">
+        <div class="image-table">
+          <div class="profile-lg image-cell user-avatar ng-isolate-scope" item="member">
+            <img ng-if="image" ng-src="//www.gravatar.com/avatar/42fdb3a097087e051cfbf3c9a184d3e1?s=263&amp;d=mm" on-error="removeImage()" class="ng-scope" src="//www.gravatar.com/avatar/42fdb3a097087e051cfbf3c9a184d3e1?s=263&amp;d=mm">
+          </div>
+          <div class="info-cell">
+            <h3 class="member-header">Darshan</h3>
+            <p class="member-email">darshansapaliga009@gmail.com</p>
+            <p class="member-company"><a ui-sref="organization.manage.team({ team: member.team })" class="dark-link" href="/geekout/community/teams/5719deb80d5ad7c46ec5fbd5">Geekout</a></p>
+          </div>
+        </div>
+        <div tags="member.tags" can-edit="true" class="ng-isolate-scope">
+          <a ng-click="adding=true" class="btn-icon" ng-hide="adding || !canEdit">
+            <i class="fa fa-plus"></i><span ng-if="tags.length===0" class="ng-scope">Add tag</span><!-- end ngIf: tags.length===0 -->
+          </a>
+          <div ng-show="adding" class="tag-add ng-hide">
+            <span tabindex="-1" role="presentation" class="k-widget k-autocomplete k-header ng-pristine ng-untouched ng-valid k-state-default"><input ng-model="newTag" kendo-auto-complete="" k-data-source="allTags" class="ng-pristine ng-untouched ng-valid k-input" data-role="autocomplete" type="text" autocomplete="off" role="textbox" aria-haspopup="true" aria-disabled="false" aria-readonly="false" aria-autocomplete="list" aria-owns="" style="width: 100%;"><span class="k-icon k-loading" style="display:none"></span></span> <a ng-click="add(newTag)" class="btn-icon"><i class="fa fa-check"></i></a> <a class="btn-icon" ng-click="cancel()"><i class="fa fa-remove"></i></a>
+          </div>
+        </div>
+        <div class="social-profiles ng-isolate-scope" profiles="member.socialProfiles">
+        </div>
+        <hr>
+        <p class="member-info">
+          <label><i class="fa fa-map-marker"></i> Location</label>
+          <span class="member-info-value member-locations ng-isolate-scope" resource="member.info.membership.resource" office="member.info.membership.office" empty="Not assigned">
+            <span class="empty-location" ng-if="!location">Not assigned</span>
+          </span>
+        </p>
+        <p class="member-info">
+          <label><i class="fa fa-mobile"></i> Phone</label>
+          <span class="member-info-value"></span>
+        </p>
+        <hr>
+        <p class="member-info">
+          <label><i class="fa fa-clock-o"></i> Status</label>
+          <span class="member-info-value member-status contact" ng-class="member.info.status">Contact</span>
+        </p>
+        <p class="member-info">
+          <label><i class="fa fa-calendar-o"></i> Joined</label>
+          <span class="member-info-value">-</span>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div>
+        <h4 class="rnd-title" title="Plans">Plans</h4>
+        <div class="rnd-container ng-isolate-scope" memberships="member.info.memberships" show-status="true" selected-items="selectedMemberships">
+          <p class="no-items-section" ng-if="memberships.length===0">
+            There are no plans.
+          </p>
+        </div>
+      </div>
+      <div>
+        <h4 class="rnd-title inline" title="One off charges">One Off Fees</h4>
+        <button type="button" class="btn btn-primary btn-sm" ng-if="perm>1" ng-click="addFee(member.team, member._id)">
+        Add fee
+        </button>
+        <div class="rnd-container ng-isolate-scope" fees="fees">
+          <p class="no-items-section">
+            There are no one off fees.
+          </p>
+        </div>
+      </div>
+      <billing-details-list member="member" class="ng-isolate-scope">
+      </billing-details-list>
+      <bookings-list member="member._id" class="ng-isolate-scope">
+        <div ng-hide="noBookings" class="ng-hide">
+          <h4 class="rnd-title inline" title="Bookings">Bookings</h4>
+          <div class="rnd-container">
+            <section class="date-section search-section ng-isolate-scope" model="month">
+              <span class="k-widget k-datepicker k-header form-control"><span class="k-picker-wrap k-state-default"><input id="invoice-start-date" class="form-control k-input" kendo-date-picker="" k-ng-model="model" k-depth="'year'" k-start="'year'" k-format="'MMM yyyy'" k-rebind="model" k-parse-formats="['MMM yyyy', 'yyyy-MM-ddTHH:mm:ss']" data-role="datepicker" type="text" role="combobox" aria-expanded="false" aria-owns="invoice-start-date_dateview" aria-disabled="false" aria-readonly="false" style="width: 100%;"><span unselectable="on" class="k-select" role="button" aria-controls="invoice-start-date_dateview"><span unselectable="on" class="k-icon k-i-calendar">select</span></span></span></span>
+              <a ng-show="model" ng-click="model = undefined" class="fa fa-times-circle"></a>
+            </section>
+            <table class="table bookings-table">
+              <thead>
+                <tr>
+                  <th>Meeting Room</th>
+                  <th>Time</th>
+                  <th>Length</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="2"></td>
+                  <td><strong class="ng-binding">0h 0m</strong></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </bookings-list>
+      <div>
+        <h4 class="rnd-title" title="Activity">Activity</h4>
+        <div class="rnd-container">
+          <div class="activity ng-isolate-scope" memberships="member.info.memberships">
+            <p class="no-items-section" ng-if="activity.length===0">
+              There are no activity items.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

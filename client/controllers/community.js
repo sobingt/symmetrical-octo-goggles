@@ -6,25 +6,25 @@ angular.module('ChefEzy')
       type: "ORG",
       email: "darshansapaliga009@gmail.com",
       phone: "9920980886",
-      plan: [{
+      plan: {
         planId: "inception"
-      }]
+      }
     },{
       userName: "darshanyo",
       type: "MGR",
       email: "darshansapaliga00981@gmail.com",
       phone: "99209",
-      plan: [{
+      plan: {
         planId: "decisive"
-      }]
+      }
     },{
       userName: "darshansapa",
       type: "COW",
       email: "darshansapaliga@gmail.com",
       phone: "09830098",
-      plan: [{
+      plan: {
         planId: "modular"
-      }]
+      }
     }];
 
   });
