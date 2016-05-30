@@ -1,0 +1,63 @@
+<form class="form-horizontal" role="form">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">
+        <span aria-hidden="true">×</span>
+        <span class="sr-only">Close</span></button>
+      <h3 class="modal-title ng-binding">Add Floorplan</h3>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="room-name" class="col-sm-3 control-label">Name</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-model="room.name" id="room-name" placeholder="Floorplan name" required="" autofocus="">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="room-office" class="col-sm-3 control-label">Location</label>
+        <div class="col-sm-9">
+          <span title="" class="k-widget k-dropdown k-header form-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="room-office_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="ce18a870-494c-49a7-b84e-9be9f9cdcf96" style="">
+            <span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input ng-scope">geek</span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span>
+            <select id="room-office" class="form-control" kendo-drop-down-list="" k-ng-model="room.office" k-value-primitive="true" k-data-value-field="'_id'" k-data-text-field="'name'" k-rebind="room" k-data-source="offices" data-role="dropdownlist" style="display: none;">
+              <option value="574c618f2fc62557714b6f43" selected="selected">geek</option>
+            </select>
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="room-floor" class="col-sm-3 control-label">Floor</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control ng-pristine ng-untouched ng-valid" ng-model="room.floor" id="room-floor" placeholder="Plan floor">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="room-size" class="col-sm-3 control-label">Area</label>
+        <div class="col-sm-9">
+          <div class="input-group ng-isolate-scope" label-id="room-size" value="room.area" scale="large" target="floor" show-units="true" power="2">
+            <input class="form-control ng-pristine ng-untouched ng-valid ng-valid-min" id="" type="number" ng-model="formattedValue" min="0" step="any" ng-focus="focus()" ng-blur="blur()">
+            <div class="input-group-addon ng-binding ng-scope" ng-if="showUnits">
+              <sup ng-if="power &amp;&amp; power>1" class="ng-scope">2</sup>
+            </div>
+
+          </div>
+        </div>
+      </div
+      <div class="form-group ng-scope" ng-if="!originalRoom">
+        <label class="col-sm-3 control-label">Floorplan</label>
+        <div class="col-sm-9">
+          <button type="button" class="btn btn-primary ng-binding" ng-disabled="uploading" ng-click="chooseImage()">
+          Upload
+          </button>
+          <input id="modal-background-upload" type="file" file-picked="backgroundFilePicked($file)" accept="image/*" class="hidden-upload ng-isolate-scope">
+        </div>
+      </div
+    </div>
+    <div class="clearfix"></div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button<button ng-if="!originalRoom" type="submit" class="btn btn-primary pull-right ng-scope" ng-disabled="!canSaveRoom() || uploading" ng-click="addRoomAndOpenDesigner()" data-dismiss="modal" disabled="disabled">Create &amp; Design
+      </button>
+      <button ng-if="!originalRoom" type="button" class="btn btn-primary pull-right ng-scope" ng-disabled="!canSaveRoom() || uploading" ng-click="addRoom()" data-dismiss="modal" disabled="disabled">Create
+      </button>
+    </div>
+  </div>
+</form>

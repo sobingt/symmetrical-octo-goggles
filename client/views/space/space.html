@@ -14,44 +14,98 @@
         </div>
     </div>
     <div class="col-sm-9" ui-view="content">
-      <div id="add-room-modal" class="modal fade" rnd-modal="" modal-focus="#room-name">
-      </div>
-      <div id="rename-room-modal" class="modal fade ng-scope">
-        <div class="modal-dialog modal-sm">
-          <form role="form" class="ng-pristine">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title">Rename Floorplan</h3>
-              </div>
-              <div class="modal-body">
-                <div class="form-group">
-                  <label for="room-name-edit">Name</label>
-                  <input type="text" class="form-control" id="room-name-edit" required="" autofocus="">
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">
-                Save
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
       <div class="ng-scope">
         <h4 class="rnd-title" title="Locations">Locations</h4>
-        <div class="pull-right ng-scope" ng-if="perm>1">
+        <div class="pull-right">
         </div>
       </div>
       <div class="section" header="Add location" help="It looks you don't have any Locations. Start by adding yours.">
         <h3 class="ng-scope">
-          <a class="arrow-link">Add location</a>
+          <a class="arrow-link" ui-sref="app.organization.space.addLocations">Add location</a>
         </h3>
         <p class="text-muted">It looks you don't have any Locations. Start by adding yours.</p>
       </div>
       <div class="row">
+        <div class="ng-scope">
+          <h4 class="rnd-title" title="Locations">Locations</h4>
+          <div class="pull-right ng-scope" ng-if="perm>1">
+          </div>
+        </div>
+
+          <div class="col-sm-12">
+            <div class="rnd-container">
+              <div class="dropdown room-menu pull-right">
+                <button class="btn-icon dropdown-toggle btn-actions" type="button" id="editOfficeMenu" data-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-cog"></i> Actions
+                <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="editOfficeMenu">
+                  <li role="presentation" title="Office settings">
+                    <a role="menuitem" ng-click="editOffice(office)"> <span class="fa fa-pencil"></span> Edit</a>
+                  </li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="newRoom(office)"><i class="fa fa-plus"></i> Add floor</a></li>
+                  <li class="divider"></li>
+                  <li><a role="menuitem" ng-click="deleteOffice(office)"> <span class="fa fa-trash-o"></span> Delete</a></li>
+                </ul>
+              </div>
+              <h3 class="rnd-container-header ng-binding">geek</h3>
+              <i class="office-status ng-binding open" ng-class="{open: office.isOpen}">Operational</i>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Floorplan</th>
+                    <th>Name</th>
+                    <th>Floor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="floor in floors">
+                    <td>
+                      <a title="Open in designer." ui-sref="organization.office.floorplan({ office: office.slug, roomSlug: room.slug })" href="">
+                      <img class="room-preview" height="50px">
+                      <p> {{floor.floorPlan}}
+                      </a>
+                    </td>
+                    <td>
+                      <div>
+                        <a title="Open in designer." class="dark-link" ui-sref="organization.office.floorplan({ office: office.slug, roomSlug: room.slug })" href="/geekout/geek/geek">
+                          {{floor.name}}
+                        </a>
+                        <div class="room-menu dropdown">
+                          <button class="btn-icon dropdown-toggle" type="button" id="roomEditMenu" data-toggle="dropdown" title="Room operations - edit, duplicate or delete." aria-expanded="false">
+                          <i class="fa fa-cog"></i>
+                          </button>
+                          <ul class="dropdown-menu" role="menu" aria-labelledby="roomEditMenu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="editRoom(room)"> <span class="fa fa-pencil" title="Open the edit dialog to modify the selected room."></span> Edit</a>
+                            </li>
+                            <li role="presentation">
+                              <a role="menuitem" tabindex="-1" ui-sref="organization.office.design({ office: office.slug, roomSlug: room.slug })" href="/geekout/geek/geek/design">
+                                <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="5 5 20 20">
+                                  <path d="M5.6,6.6v18h7v-2h0c0-2.2,1.8-4,4-4v6h7v-18H5.6z M21.6,22.6h-4v-5h-1v0c-2.8,0-5,2.2-5,5h0h-4v-14h14V22.6z"></path>
+                                </svg>
+                                Design
+                              </a>
+                            </li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="cloneRoom(room)"> <span class="fa fa-files-o" title="Duplicate the room with it's properties and furniture."></span>
+                              Duplicate</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="deleteRoom(room)"><span class="fa fa-trash-o" title="Deletes the selected room."></span>
+                              Delete</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span title="Floor" class="ng-binding">{{floor.floor}}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
       </div>
     </div>
   </section>

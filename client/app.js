@@ -272,6 +272,15 @@ angular.module('ChefEzy', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'u
           }
         }
       })
+      .state('app.organization.space.addLocations', {
+        url: '/addLocations',
+        views: {
+          'content@app.organization.space': {
+            controller: 'SpaceCtrl',
+            templateUrl: 'views/space/addLocations.html'
+          }
+        }
+      })
       .state('app.organization.space.meetingRooms', {
         url: '/meeting-rooms',
         views: {
